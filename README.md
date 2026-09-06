@@ -2,7 +2,6 @@
 
 ![status](https://img.shields.io/badge/status-early--build-yellow)
 ![python](https://img.shields.io/badge/python-3.12-blue)
-![license](https://img.shields.io/badge/license-MIT-green)
 
 **Th**reat & Harassment **E**arly-warning system using **O**bservational **D**ata, **R**isk **A**nalytics
 
@@ -17,7 +16,7 @@ Named after Empress Theodora of Byzantium, who rose from social marginalization 
 3. **Anonymous reporting portal** — no auth, no persistent identifiers, deliberately minimal data retention.
 4. **IC dashboard** — aggregate/cohort views only; individual escalation requires multi-party sign-off.
 
-This is a course project (SY, B.Tech CSE - Data Science) built on **synthetic data only**. It does not connect to real Slack/Gmail infrastructure, does not replace IC investigative authority, and does not claim to solve open problems like reporting-portal stylometric deanonymization. See `docs/spec.md` for the full specification, threat model, and explicit non-goals.
+This is a project built on **synthetic data only**. It does not connect to real Slack/Gmail infrastructure, does not replace IC investigative authority, and does not claim to solve open problems like reporting-portal stylometric deanonymization. See `docs/spec.md` for the full specification, threat model, and explicit non-goals.
 
 ## Status
 
@@ -54,13 +53,10 @@ theodra/
 └── tests/
 ```
 
-## Non-goals (see docs/spec.md §7 for full list)
+## Non-goals (see docs/spec.md for full list)
 
 - Not a replacement for IC investigation or decision-making authority
 - Not connected to real organizational data in this phase
 - Not a production-grade ARX k-anonymity implementation
 - Does not solve stylometric deanonymization risk on the reporting portal
 
-## License
-
-TBD
