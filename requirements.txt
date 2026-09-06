@@ -1,6 +1,6 @@
-flask
-scikit-learn
-pandas
-numpy
-faker
-pytest
+flask==3.0.3
+scikit-learn==1.5.2
+pandas==2.2.3
+numpy==2.1.2
+faker==30.3.0
+pytest==8.3.3

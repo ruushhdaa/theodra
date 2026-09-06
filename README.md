@@ -1,5 +1,9 @@
 # THEODRA
 
+![status](https://img.shields.io/badge/status-early--build-yellow)
+![python](https://img.shields.io/badge/python-3.12-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+
 **Th**reat & Harassment **E**arly-warning system using **O**bservational **D**ata, **R**isk **A**nalytics
 
 A three-layer early-warning system for workplace harassment (POSH Act context), built to surface behavioral communication anomalies for Internal Committee (IC) review — without ever exposing message content or identities below a formal k-anonymity threshold.
@@ -18,6 +22,22 @@ This is a course project (SY, B.Tech CSE - Data Science) built on **synthetic da
 ## Status
 
 Early build — spec-complete, implementation in progress (1.5-month build window).
+
+## Quickstart
+
+```bash
+git clone https://github.com/ruushhdaa/theodra.git
+cd theodra
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+pytest
+```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, branch conventions, and the
+privacy/security ground rules every change must respect.
 
 ## Structure
 
