@@ -1,12 +1,31 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+*/dist/
+.next/
+*/.next/
+build/
+out/
+
+# Python
 __pycache__/
 *.pyc
 .venv/
 venv/
 .env
+.env*.local
 *.egg-info/
 data/synthetic/*.csv
 data/synthetic/*.parquet
-.DS_Store
 .ipynb_checkpoints/
 *.log
 instance/
+
+# System & Editor
+.DS_Store
+Thumbs.db
+artifacts/
+.tempmediaStorage/

@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --bg-navy: #0A0E28;
+  --surface-navy: #13193A;
+  --surface-elevated: #1C234E;
+  --surface-card: #151C3E;
+  --border-navy: #262E5F;
+  --border-subtle: #1D244C;
+
+  /* Logo-sampled colors */
+  --gold-amber: #E0A96D;
+  --gold-bright: #F0B83A;
+  --maroon-wine: #4E182A;
+
+  --text-primary: #F4F1EB;
+  --text-secondary: #BDB9AD;
+  --text-muted: #7A756B;
+
+  --font-lora: 'Lora', Georgia, serif;
+  --font-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+@theme inline {
+  --color-navy: var(--bg-navy);
+  --color-surface: var(--surface-navy);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-card: var(--surface-card);
+  --color-border-navy: var(--border-navy);
+  --color-border-subtle: var(--border-subtle);
+
+  --color-gold: var(--gold-amber);
+  --color-yellow: var(--gold-bright);
+  --color-maroon: var(--maroon-wine);
+
+  --color-text-main: var(--text-primary);
+  --color-text-sec: var(--text-secondary);
+  --color-text-mute: var(--text-muted);
+
+  --font-serif: var(--font-lora);
+  --font-sans: var(--font-jakarta);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0E28;
+  color: #F4F1EB;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numbers for dashboard tables */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Custom crisp scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0E28;
+}
+::-webkit-scrollbar-thumb {
+  background: #262E5F;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E0A96D;
+}

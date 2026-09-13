@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ── THEODRA Design Tokens ───────────────────────────────────────────── */
+:root {
+  --gold:     #DCB13C;
+  --aqua:     #57BDA2;
+  --teal:     #2493A2;
+  --midblue:  #304A78;
+  --navy:     #2C3259;
+  --dark:     #0A0E28;
+
+  --text:      #F4F1EB;
+  --text-sec:  #B8B5AD;
+  --text-muted:#7A7770;
+}
+
+@theme inline {
+  --color-gold:        var(--gold);
+  --color-aqua:        var(--aqua);
+  --color-teal:        var(--teal);
+  --color-midblue:     var(--midblue);
+  --color-navy:        var(--navy);
+  --color-dark:        var(--dark);
+  --color-text:        var(--text);
+  --color-text-sec:    var(--text-sec);
+  --color-text-muted:  var(--text-muted);
+  --font-serif:        var(--font-lora);
+  --font-sans:         var(--font-jakarta);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--dark);
+  /* Subtle dot-grid dossier texture */
+  background-image: radial-gradient(circle, rgba(48, 74, 120, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--text);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Tabular nums ────────────────────────────────────────────────────── */
+.tabular {
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--midblue); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--teal); }
+
+/* ── Table base ──────────────────────────────────────────────────────── */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-size: 0.8rem;
+}
+.spec-table thead th {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--midblue);
+  background: rgba(10, 14, 40, 0.5);
+}
+.spec-table tbody td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(48, 74, 120, 0.25);
+  color: var(--text-sec);
+  vertical-align: top;
+}
+.spec-table tbody tr:last-child td { border-bottom: none; }
+.spec-table tbody tr:hover td { background: rgba(44, 50, 89, 0.3); }
+.spec-table code {
+  font-family: "Fira Code", "Cascadia Code", monospace;
+  font-size: 0.8em;
+  color: var(--aqua);
+  background: rgba(87, 189, 162, 0.08);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
