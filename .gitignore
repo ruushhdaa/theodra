@@ -29,3 +29,5 @@ instance/
 Thumbs.db
 artifacts/
 .tempmediaStorage/
+
+.vercel
