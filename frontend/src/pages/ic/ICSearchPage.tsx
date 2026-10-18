@@ -53,7 +53,7 @@ export const ICSearchPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="pb-4 border-b border-[#304A78]">
+      <div className="pb-4 border-b border-[#262E5F]">
         <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
           Unified Information Retrieval
         </span>
@@ -66,7 +66,7 @@ export const ICSearchPage: React.FC = () => {
       </div>
 
       {/* Large Search Bar */}
-      <div className="relative bg-[#2C3259] border border-[#304A78] p-4 shadow-2xl">
+      <div className="relative bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 shadow-xl">
         <div className="relative">
           <input
             type="text"
@@ -74,7 +74,7 @@ export const ICSearchPage: React.FC = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Type search terms, case references (CASE-2026-08), cohort patterns (PAT-8821), or report codes..."
-            className="w-full bg-[#0A0E28] border border-[#304A78] pl-11 pr-4 py-3 text-sm text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+            className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl pl-11 pr-4 py-3 text-sm text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162] transition-colors"
           />
           <Search className="w-5 h-5 text-[#DDA162] absolute left-3.5 top-3.5 pointer-events-none" />
         </div>
@@ -83,34 +83,34 @@ export const ICSearchPage: React.FC = () => {
       {/* Results Sections */}
       <div className="space-y-6">
         {/* Cases Section */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-5 shadow-2xl space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-[#304A78]">
-            <div className="flex items-center gap-2">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#262E5F]">
+            <div className="flex items-center gap-2.5">
               <Briefcase className="w-4 h-4 text-[#DDA162]" />
               <h3 className="font-serif text-sm font-bold text-[#F4F1EB] uppercase tracking-wider">
                 Cases ({matchedCases.length})
               </h3>
             </div>
-            <Link to="/ic/cases" className="text-xs text-[#DDA162] hover:underline">
+            <Link to="/ic/cases" className="text-xs text-[#DDA162] hover:underline font-semibold">
               View all
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
             {matchedCases.map((c) => (
               <Link
                 key={c.id}
                 to={`/ic/cases/${c.id}`}
-                className="p-3 bg-[#0A0E28] border border-[#304A78] hover:border-[#DDA162] text-xs transition-colors block"
+                className="p-4 bg-[#0E1438] border border-[#262E5F] hover:border-[#DDA162] hover:bg-[#262E5F] rounded-xl text-xs transition-colors block group shadow-sm"
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono font-bold text-[#F4F1EB]">{c.id}</span>
-                  <span className="text-[10px] bg-[#304A78] text-[#DDA162] px-1.5 py-0.2">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-mono font-bold text-[#F4F1EB] group-hover:text-[#DDA162]">{c.id}</span>
+                  <span className="text-[10px] bg-[#161E48] text-[#DDA162] px-2 py-0.5 rounded-full border border-[#262E5F]">
                     {c.stage}
                   </span>
                 </div>
                 <h4 className="font-medium text-[#F4F1EB] line-clamp-1">{c.title}</h4>
-                <div className="text-[10px] text-[#A87C56] mt-1">
+                <div className="text-[10px] text-[#A87C56] mt-1.5">
                   Opened {c.dateOpened} • {c.department}
                 </div>
               </Link>
@@ -119,34 +119,34 @@ export const ICSearchPage: React.FC = () => {
         </div>
 
         {/* Patterns Section */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-5 shadow-2xl space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-[#304A78]">
-            <div className="flex items-center gap-2">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#262E5F]">
+            <div className="flex items-center gap-2.5">
               <Activity className="w-4 h-4 text-[#EBBA4A]" />
               <h3 className="font-serif text-sm font-bold text-[#F4F1EB] uppercase tracking-wider">
                 Telemetry Patterns ({matchedPatterns.length})
               </h3>
             </div>
-            <Link to="/ic/patterns" className="text-xs text-[#DDA162] hover:underline">
+            <Link to="/ic/patterns" className="text-xs text-[#DDA162] hover:underline font-semibold">
               View all
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
             {matchedPatterns.map((p) => (
               <Link
                 key={p.id}
                 to={`/ic/patterns/${p.id}`}
-                className="p-3 bg-[#0A0E28] border border-[#304A78] hover:border-[#DDA162] text-xs transition-colors block"
+                className="p-4 bg-[#0E1438] border border-[#262E5F] hover:border-[#DDA162] hover:bg-[#262E5F] rounded-xl text-xs transition-colors block group shadow-sm"
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono font-bold text-[#F4F1EB]">{p.id}</span>
-                  <span className="text-[10px] bg-[#304A78] text-[#EBBA4A] px-1.5 py-0.2">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-mono font-bold text-[#F4F1EB] group-hover:text-[#DDA162]">{p.id}</span>
+                  <span className="text-[10px] bg-amber-950/80 text-[#EBBA4A] px-2 py-0.5 rounded-full border border-[#EBBA4A]">
                     {p.severity}
                   </span>
                 </div>
                 <h4 className="font-medium text-[#F4F1EB] line-clamp-1">{p.rolePairing}</h4>
-                <div className="text-[10px] text-[#A87C56] mt-1">
+                <div className="text-[10px] text-[#A87C56] mt-1.5">
                   {p.department} • Updated {p.lastUpdated}
                 </div>
               </Link>
@@ -155,34 +155,34 @@ export const ICSearchPage: React.FC = () => {
         </div>
 
         {/* Reports Section */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-5 shadow-2xl space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-[#304A78]">
-            <div className="flex items-center gap-2">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#262E5F]">
+            <div className="flex items-center gap-2.5">
               <Inbox className="w-4 h-4 text-[#DDA162]" />
               <h3 className="font-serif text-sm font-bold text-[#F4F1EB] uppercase tracking-wider">
                 Anonymous Reports ({matchedReports.length})
               </h3>
             </div>
-            <Link to="/ic/reports" className="text-xs text-[#DDA162] hover:underline">
+            <Link to="/ic/reports" className="text-xs text-[#DDA162] hover:underline font-semibold">
               View all
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
             {matchedReports.map((r) => (
               <Link
                 key={r.id}
                 to={`/ic/reports/${r.id}`}
-                className="p-3 bg-[#0A0E28] border border-[#304A78] hover:border-[#DDA162] text-xs transition-colors block"
+                className="p-4 bg-[#0E1438] border border-[#262E5F] hover:border-[#DDA162] hover:bg-[#262E5F] rounded-xl text-xs transition-colors block group shadow-sm"
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono font-bold text-[#F4F1EB]">{r.id}</span>
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-mono font-bold text-[#F4F1EB] group-hover:text-[#DDA162]">{r.id}</span>
                   <span className="font-mono text-[10px] text-[#DDA162]">[{r.referenceCode}]</span>
                 </div>
                 <h4 className="font-medium text-[#F4F1EB] line-clamp-1">
                   {r.concernTags.join(", ")}
                 </h4>
-                <div className="text-[10px] text-[#A87C56] mt-1">
+                <div className="text-[10px] text-[#A87C56] mt-1.5">
                   {r.submissionWeek} • Status: {r.status}
                 </div>
               </Link>
@@ -191,9 +191,9 @@ export const ICSearchPage: React.FC = () => {
         </div>
 
         {/* Documents Section */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-5 shadow-2xl space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-[#304A78]">
-            <div className="flex items-center gap-2">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#262E5F]">
+            <div className="flex items-center gap-2.5">
               <FileText className="w-4 h-4 text-[#DDA162]" />
               <h3 className="font-serif text-sm font-bold text-[#F4F1EB] uppercase tracking-wider">
                 Statutory Documents ({matchedDocs.length})
@@ -201,15 +201,15 @@ export const ICSearchPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             {matchedDocs.map((d) => (
               <div
                 key={d.id}
-                className="p-3 bg-[#0A0E28] border border-[#304A78] text-xs flex items-center justify-between"
+                className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs flex items-center justify-between shadow-sm"
               >
                 <div>
                   <span className="font-semibold text-[#F4F1EB] block">{d.name}</span>
-                  <span className="text-[10px] text-[#A87C56] block mt-0.5">
+                  <span className="text-[10px] text-[#A87C56] block mt-1">
                     {d.category} • {d.version} • {d.uploadDate}
                   </span>
                 </div>

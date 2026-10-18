@@ -42,7 +42,7 @@ export const ICLedgerPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Immutable Audit Registry
@@ -58,7 +58,7 @@ export const ICLedgerPage: React.FC = () => {
           <button
             type="button"
             onClick={handleExportCSV}
-            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-2 cursor-pointer shadow-md"
+            className="px-4 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors flex items-center gap-2 cursor-pointer shadow-lg"
           >
             <Download className="w-4 h-4" />
             <span>Export as CSV</span>
@@ -67,36 +67,36 @@ export const ICLedgerPage: React.FC = () => {
       </div>
 
       {exportNotice && (
-        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162]">
+        <div className="p-3.5 bg-[#0E1438] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl animate-in fade-in duration-200">
           Response Ledger export generated and saved with SHA-256 integrity seal.
         </div>
       )}
 
       {/* Filter Bar */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-        <div className="w-full md:w-72 relative">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs shadow-xl">
+        <div className="w-full md:w-80 relative">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search reference, member, disposition..."
-            className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+            className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-4 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
           />
-          <Search className="w-3.5 h-3.5 text-[#A87C56] absolute right-3 top-2.5 pointer-events-none" />
+          <Search className="w-3.5 h-3.5 text-[#A87C56] absolute right-3.5 top-3 pointer-events-none" />
         </div>
 
-        <div className="flex items-center gap-3 w-full md:w-auto">
+        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
           <span className="text-[#A87C56]">Source Type:</span>
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5">
             {["All", "Cohort Pattern", "Anonymous Report", "Interim Relief"].map((t) => (
               <button
                 key={t}
                 type="button"
                 onClick={() => setFilterType(t)}
-                className={`px-3 py-1.5 text-xs font-semibold border transition-colors ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
                   filterType === t
-                    ? "bg-[#0A0E28] border-[#DDA162] text-[#DDA162]"
-                    : "bg-[#0A0E28]/40 border-[#304A78] text-[#A87C56] hover:text-[#F4F1EB]"
+                    ? "bg-[#262E5F] border-[#DDA162] text-[#DDA162]"
+                    : "bg-[#0E1438] border-[#262E5F] text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB]"
                 }`}
               >
                 {t}
@@ -107,25 +107,25 @@ export const ICLedgerPage: React.FC = () => {
       </div>
 
       {/* Ledger Table */}
-      <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider">
-                <th className="py-3 px-4">Ledger ID</th>
-                <th className="py-3 px-4">Source Type</th>
-                <th className="py-3 px-4">Reference</th>
-                <th className="py-3 px-4">Date Reviewed</th>
-                <th className="py-3 px-4">IC Member</th>
-                <th className="py-3 px-4">Disposition</th>
-                <th className="py-3 px-4">Reasoning</th>
-                <th className="py-3 px-4 text-right">Tamper Seal</th>
+              <tr className="bg-[#0A0E28] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider">
+                <th className="py-3.5 px-4">Ledger ID</th>
+                <th className="py-3.5 px-4">Source Type</th>
+                <th className="py-3.5 px-4">Reference</th>
+                <th className="py-3.5 px-4">Date Reviewed</th>
+                <th className="py-3.5 px-4">IC Member</th>
+                <th className="py-3.5 px-4">Disposition</th>
+                <th className="py-3.5 px-4">Reasoning</th>
+                <th className="py-3.5 px-4 text-right">Tamper Seal</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#304A78]/50">
+            <tbody className="divide-y divide-[#262E5F]/60">
               {filtered.map((item) => (
-                <tr key={item.id} className="hover:bg-[#0A0E28]/40 transition-colors">
-                  <td className="py-3.5 px-4 font-mono font-bold text-[#F4F1EB] flex items-center gap-1.5">
+                <tr key={item.id} className="hover:bg-[#262E5F] transition-colors cursor-pointer group">
+                  <td className="py-3.5 px-4 font-mono font-bold text-[#F4F1EB] group-hover:text-[#DDA162] flex items-center gap-2">
                     <Lock className="w-3.5 h-3.5 text-[#DDA162] shrink-0" />
                     <span>{item.id}</span>
                   </td>
@@ -137,12 +137,12 @@ export const ICLedgerPage: React.FC = () => {
                   <td className="py-3.5 px-4 text-[#F4F1EB] font-medium">{item.icMember}</td>
                   <td className="py-3.5 px-4">
                     <span
-                      className={`text-[10px] px-2.5 py-0.5 font-bold uppercase tracking-wider ${
+                      className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${
                         item.disposition === "Escalate" || item.disposition === "Inquiry Instituted"
-                          ? "bg-amber-950/80 text-[#EBBA4A] border border-[#EBBA4A]"
+                          ? "bg-amber-950/80 text-[#EBBA4A] border-[#EBBA4A]"
                           : item.disposition === "Relief Ordered"
-                          ? "bg-[#304A78] text-[#DDA162]"
-                          : "bg-[#0A0E28] text-[#A87C56]"
+                          ? "bg-[#161E48] text-[#DDA162] border-[#262E5F]"
+                          : "bg-[#0E1438] text-[#A87C56] border-[#262E5F]"
                       }`}
                     >
                       {item.disposition}

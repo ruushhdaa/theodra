@@ -93,7 +93,7 @@ export const ICCasesPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Inquiry Workflow Board
@@ -102,14 +102,14 @@ export const ICCasesPage: React.FC = () => {
             Case Management
           </h1>
           <p className="font-serif text-xs text-[#A87C56] mt-1">
-            Drag cards across columns to advance case lifecycle from intake to disposition.
+            Drag cards across columns to advance case lifecycle from intake to statutory disposition.
           </p>
         </div>
         <div>
           <button
             type="button"
             onClick={() => setNewModalOpen(true)}
-            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+            className="px-4 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-lg"
           >
             <Plus className="w-4 h-4" />
             <span>New Case</span>
@@ -126,15 +126,15 @@ export const ICCasesPage: React.FC = () => {
               key={col.stage}
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, col.stage)}
-              className="bg-[#2C3259] border border-[#304A78] p-3 flex flex-col min-h-[500px]"
+              className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 flex flex-col min-h-[540px] shadow-xl"
             >
               {/* Column Header */}
-              <div className="flex items-center justify-between pb-3 border-b border-[#304A78] mb-3 px-1">
+              <div className="flex items-center justify-between pb-3.5 border-b border-[#262E5F] mb-3 px-1">
                 <div className="flex items-center gap-2">
                   <span className="font-serif text-sm font-bold text-[#F4F1EB]">
                     {col.label}
                   </span>
-                  <span className="text-[10px] bg-[#0A0E28] text-[#DDA162] font-mono px-2 py-0.5 border border-[#304A78]">
+                  <span className="text-[10px] bg-[#11173D] text-[#DDA162] font-mono px-2 py-0.5 rounded-full border border-[#262E5F]">
                     {col.count}
                   </span>
                 </div>
@@ -143,7 +143,7 @@ export const ICCasesPage: React.FC = () => {
               {/* Cards List */}
               <div className="space-y-3 flex-1">
                 {colCases.length === 0 ? (
-                  <div className="h-32 border border-dashed border-[#304A78]/60 flex items-center justify-center text-[11px] text-[#A87C56] text-center p-3">
+                  <div className="h-36 rounded-xl border border-dashed border-[#262E5F] flex items-center justify-center text-[11px] text-[#A87C56] text-center p-4">
                     Drag cases here to move to {col.label}
                   </div>
                 ) : (
@@ -152,19 +152,19 @@ export const ICCasesPage: React.FC = () => {
                       key={cs.id}
                       draggable
                       onDragStart={(e) => handleDragStart(e, cs.id)}
-                      className="bg-[#0A0E28] border border-[#304A78] hover:border-[#DDA162] p-4 text-xs space-y-3 cursor-grab active:cursor-grabbing transition-all group"
+                      className="bg-[#0E1438] border border-[#262E5F] hover:border-[#DDA162] hover:bg-[#262E5F] p-4 rounded-xl text-xs space-y-3 cursor-grab active:cursor-grabbing transition-all shadow-md group"
                     >
                       <div className="flex items-center justify-between">
                         <span className="font-mono font-bold text-[#F4F1EB] group-hover:text-[#DDA162]">
                           {cs.id}
                         </span>
                         <span
-                          className={`text-[9px] px-2 py-0.5 font-bold uppercase tracking-wider ${
+                          className={`text-[9px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${
                             cs.severity === "Flagged"
-                              ? "bg-amber-950/80 text-[#EBBA4A] border border-[#EBBA4A]"
+                              ? "bg-amber-950/80 text-[#EBBA4A] border-[#EBBA4A]"
                               : cs.severity === "Elevated"
-                              ? "bg-[#304A78] text-[#DDA162]"
-                              : "bg-[#2C3259] text-[#A87C56]"
+                              ? "bg-[#161E48] text-[#DDA162] border-[#262E5F]"
+                              : "bg-[#0A0E28] text-[#A87C56] border-[#262E5F]"
                           }`}
                         >
                           {cs.severity}
@@ -175,7 +175,7 @@ export const ICCasesPage: React.FC = () => {
                         {cs.title}
                       </h4>
 
-                      <div className="space-y-1 text-[11px] text-[#A87C56] pt-1 border-t border-[#304A78]/60">
+                      <div className="space-y-1.5 text-[11px] text-[#A87C56] pt-2 border-t border-[#262E5F]">
                         <div>Dept: <span className="text-[#F4F1EB]">{cs.department}</span></div>
                         <div className="flex items-center justify-between">
                           <span>Opened: {cs.dateOpened}</span>
@@ -184,8 +184,8 @@ export const ICCasesPage: React.FC = () => {
                       </div>
 
                       {cs.retaliationFlagged && (
-                        <div className="p-1.5 bg-amber-950/40 border border-[#EBBA4A] text-[#EBBA4A] text-[10px] flex items-center gap-1">
-                          <ShieldAlert className="w-3 h-3 shrink-0" />
+                        <div className="p-2 bg-amber-950/40 border border-[#EBBA4A] text-[#EBBA4A] text-[10px] rounded-lg flex items-center gap-1.5">
+                          <ShieldAlert className="w-3.5 h-3.5 shrink-0" />
                           <span>Retaliation Watch Active</span>
                         </div>
                       )}
@@ -193,10 +193,10 @@ export const ICCasesPage: React.FC = () => {
                       <div className="pt-2 flex justify-end">
                         <Link
                           to={`/ic/cases/${cs.id}`}
-                          className="text-[11px] text-[#DDA162] hover:text-[#EBBA4A] font-semibold inline-flex items-center gap-1"
+                          className="text-[11px] text-[#DDA162] hover:text-[#EBBA4A] font-semibold inline-flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform"
                         >
                           <span>Open Case File</span>
-                          <ArrowRight className="w-3 h-3" />
+                          <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
                     </div>
@@ -210,10 +210,10 @@ export const ICCasesPage: React.FC = () => {
 
       {/* New Case Form Modal */}
       {newModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/80 backdrop-blur-none">
-          <div className="bg-[#2C3259] border border-[#304A78] max-w-lg w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#304A78]">
-              <div className="flex items-center gap-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/85 backdrop-blur-sm">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl max-w-lg w-full p-6 text-[#F4F1EB] shadow-2xl space-y-5 animate-in fade-in duration-200">
+            <div className="flex items-center justify-between pb-3.5 border-b border-[#262E5F]">
+              <div className="flex items-center gap-2.5">
                 <Briefcase className="w-5 h-5 text-[#DDA162]" />
                 <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
                   Register New Statutory Case
@@ -222,7 +222,7 @@ export const ICCasesPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setNewModalOpen(false)}
-                className="text-[#A87C56] hover:text-[#F4F1EB]"
+                className="text-[#A87C56] hover:text-[#F4F1EB] p-1 rounded-lg hover:bg-[#262E5F] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -230,7 +230,7 @@ export const ICCasesPage: React.FC = () => {
 
             <form onSubmit={handleCreateCase} className="space-y-4 text-xs">
               <div>
-                <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                   Case Summary Title
                 </label>
                 <input
@@ -239,19 +239,19 @@ export const ICCasesPage: React.FC = () => {
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder="e.g. Conduct concern regarding travel schedules"
-                  className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-4 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                     Department
                   </label>
                   <select
                     value={newDept}
                     onChange={(e) => setNewDept(e.target.value)}
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-2.5 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   >
                     <option value="Platform Engineering">Platform Engineering</option>
                     <option value="Enterprise Sales">Enterprise Sales</option>
@@ -262,13 +262,13 @@ export const ICCasesPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                     Severity Tier
                   </label>
                   <select
                     value={newSeverity}
                     onChange={(e) => setNewSeverity(e.target.value as SeverityTier)}
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-2.5 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   >
                     <option value="Watch">Watch</option>
                     <option value="Elevated">Elevated</option>
@@ -279,13 +279,13 @@ export const ICCasesPage: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                     Assigned IC Member
                   </label>
                   <select
                     value={newAssignee}
                     onChange={(e) => setNewAssignee(e.target.value)}
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-2.5 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   >
                     <option value="Dr. Sunita Rao">Dr. Sunita Rao (Presiding Officer)</option>
                     <option value="Adv. Shalini Sen">Adv. Shalini Sen (External Member)</option>
@@ -295,7 +295,7 @@ export const ICCasesPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                     Respondent Role / Seniority
                   </label>
                   <input
@@ -303,22 +303,22 @@ export const ICCasesPage: React.FC = () => {
                     value={newRespRole}
                     onChange={(e) => setNewRespRole(e.target.value)}
                     placeholder="e.g. Senior Director"
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#304A78]">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#262E5F]">
                 <button
                   type="button"
                   onClick={() => setNewModalOpen(false)}
-                  className="px-4 py-2 border border-[#304A78] text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                  className="px-4 py-2 rounded-xl border border-[#262E5F] text-xs text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB] transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A]"
+                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors cursor-pointer shadow-md"
                 >
                   Create Case File
                 </button>

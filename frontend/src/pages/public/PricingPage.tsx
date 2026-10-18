@@ -34,7 +34,7 @@ export const PricingPage: React.FC = () => {
         {/* Pricing Cards (2 Tiers: Essentials & Enterprise) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Essentials Tier */}
-          <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl flex flex-col justify-between">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 shadow-2xl flex flex-col justify-between hover:bg-[#262E5F]/30 transition-all">
             <div>
               <span className="text-xs font-mono text-[#DDA162] uppercase tracking-wider block mb-1">
                 For Growing Teams
@@ -44,7 +44,7 @@ export const PricingPage: React.FC = () => {
                 Complete statutory grievance compliance, anonymous portal, and standard IC inquiry management.
               </p>
 
-              <div className="my-6 pb-6 border-b border-[#304A78]">
+              <div className="my-6 pb-6 border-b border-[#262E5F]">
                 <div className="flex items-baseline gap-2">
                   <span className="font-serif text-4xl font-bold text-[#F4F1EB]">₹2,999</span>
                   <span className="text-xs text-[#A87C56] font-sans">/ month</span>
@@ -82,15 +82,15 @@ export const PricingPage: React.FC = () => {
 
             <a
               href="#demo-form"
-              className="w-full py-3 bg-[#0A0E28] border border-[#304A78] text-[#DDA162] text-xs font-bold uppercase tracking-wider hover:bg-[#304A78] hover:text-[#F4F1EB] transition-colors text-center cursor-pointer block"
+              className="w-full py-3 bg-[#0E1438] border border-[#262E5F] text-[#DDA162] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#DDA162] hover:text-[#0A0E28] transition-all text-center cursor-pointer block shadow-sm"
             >
               Get Started with Essentials
             </a>
           </div>
 
           {/* Enterprise Tier */}
-          <div className="bg-[#2C3259] border-2 border-[#DDA162] p-8 shadow-2xl flex flex-col justify-between relative">
-            <span className="absolute -top-3.5 right-6 text-[10px] font-bold px-3 py-1 bg-[#DDA162] text-[#0A0E28] uppercase tracking-wider shadow">
+          <div className="bg-[#0A0E28] border-2 border-[#DDA162] rounded-2xl p-8 shadow-2xl flex flex-col justify-between relative hover:bg-[#262E5F]/30 transition-all">
+            <span className="absolute -top-3.5 right-6 text-[10px] font-bold px-3 py-1 bg-[#DDA162] text-[#0A0E28] uppercase tracking-wider rounded-full shadow">
               Most Popular for Enterprises
             </span>
             <div>
@@ -99,10 +99,10 @@ export const PricingPage: React.FC = () => {
               </span>
               <h2 className="font-serif text-2xl font-bold text-[#F4F1EB]">Enterprise</h2>
               <p className="font-serif text-xs text-[#A87C56] mt-2 mb-6">
-                Advanced communication rhythm telemetry, k-anonymity pattern alerts, Retaliation Shield, and SEBI BRSR reconciliation.
+                Advanced communication rhythm telemetry, privacy-preserving cohort alerts, Retaliation Shield, and SEBI BRSR reconciliation.
               </p>
 
-              <div className="my-6 pb-6 border-b border-[#304A78]">
+              <div className="my-6 pb-6 border-b border-[#262E5F]">
                 <div className="flex items-baseline gap-2">
                   <span className="font-serif text-4xl font-bold text-[#EBBA4A]">₹7,999</span>
                   <span className="text-xs text-[#A87C56] font-sans">/ month</span>
@@ -121,7 +121,7 @@ export const PricingPage: React.FC = () => {
                 </div>
                 <div className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-[#EBBA4A] shrink-0 mt-0.5" />
-                  <span>Mathematical k-Anonymity Guard (k ≥ 5 Cohort Surfacing)</span>
+                  <span>Cohort Privacy Guard (Mathematical Aggregation)</span>
                 </div>
                 <div className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-[#EBBA4A] shrink-0 mt-0.5" />
@@ -144,7 +144,7 @@ export const PricingPage: React.FC = () => {
 
             <a
               href="#demo-form"
-              className="w-full py-3 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors text-center cursor-pointer block shadow-lg"
+              className="w-full py-3 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-all text-center cursor-pointer block shadow-lg"
             >
               Book Corporate Pilot
             </a>
@@ -152,8 +152,8 @@ export const PricingPage: React.FC = () => {
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden shadow-2xl">
-          <div className="p-4 bg-[#0A0E28] border-b border-[#304A78]">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="p-4 bg-[#0E1438] border-b border-[#262E5F]">
             <h3 className="font-serif text-base font-bold text-[#F4F1EB]">
               Feature Comparison Matrix
             </h3>
@@ -161,44 +161,44 @@ export const PricingPage: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-sans">
               <thead>
-                <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider">
+                <tr className="bg-[#0E1438] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider">
                   <th className="py-3 px-6">Capability</th>
                   <th className="py-3 px-6 text-center">Essentials (₹2,999/mo)</th>
                   <th className="py-3 px-6 text-center text-[#DDA162]">Enterprise (₹7,999/mo)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#304A78]/60 font-serif">
-                <tr>
+              <tbody className="divide-y divide-[#262E5F]/60 font-serif">
+                <tr className="hover:bg-[#262E5F] transition-colors">
                   <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">Anonymous Reporting Gateway</td>
                   <td className="py-3.5 px-6 text-center text-[#DDA162]">✓ Included</td>
                   <td className="py-3.5 px-6 text-center text-[#EBBA4A] font-bold">✓ Included</td>
                 </tr>
-                <tr>
+                <tr className="hover:bg-[#262E5F] transition-colors">
                   <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">Quiet Flag Escrow Matching</td>
                   <td className="py-3.5 px-6 text-center text-[#DDA162]">✓ Included</td>
                   <td className="py-3.5 px-6 text-center text-[#EBBA4A] font-bold">✓ Included</td>
                 </tr>
-                <tr>
+                <tr className="hover:bg-[#262E5F] transition-colors">
                   <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">90-Day Inquiry Clock & Minutes</td>
                   <td className="py-3.5 px-6 text-center text-[#DDA162]">✓ Included</td>
                   <td className="py-3.5 px-6 text-center text-[#EBBA4A] font-bold">✓ Included</td>
                 </tr>
-                <tr>
+                <tr className="hover:bg-[#262E5F] transition-colors">
                   <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">Off-Hours Communication Telemetry</td>
                   <td className="py-3.5 px-6 text-center text-[#A87C56]">—</td>
                   <td className="py-3.5 px-6 text-center text-[#EBBA4A] font-bold">✓ Active (Slack / Teams / GSuite)</td>
                 </tr>
-                <tr>
-                  <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">k-Anonymity Cohort Surfacing (k ≥ 5)</td>
+                <tr className="hover:bg-[#262E5F] transition-colors">
+                  <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">Privacy-Preserving Cohort Surfacing</td>
                   <td className="py-3.5 px-6 text-center text-[#A87C56]">—</td>
                   <td className="py-3.5 px-6 text-center text-[#EBBA4A] font-bold">✓ Mathematical Guarantee</td>
                 </tr>
-                <tr>
+                <tr className="hover:bg-[#262E5F] transition-colors">
                   <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">Retaliation Shield Automated Tracking</td>
                   <td className="py-3.5 px-6 text-center text-[#A87C56]">—</td>
                   <td className="py-3.5 px-6 text-center text-[#EBBA4A] font-bold">✓ Automated Oversight</td>
                 </tr>
-                <tr>
+                <tr className="hover:bg-[#262E5F] transition-colors">
                   <td className="py-3.5 px-6 font-sans font-medium text-[#F4F1EB]">SEBI BRSR Disclosure Reconciliation</td>
                   <td className="py-3.5 px-6 text-center text-[#A87C56]">—</td>
                   <td className="py-3.5 px-6 text-center text-[#EBBA4A] font-bold">✓ Tri-Partite Tool</td>
@@ -209,7 +209,7 @@ export const PricingPage: React.FC = () => {
         </div>
 
         {/* Contact Sales Form */}
-        <div id="demo-form" className="bg-[#2C3259] border border-[#304A78] p-8 sm:p-10 shadow-2xl max-w-3xl mx-auto">
+        <div id="demo-form" className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 sm:p-10 shadow-2xl max-w-3xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-8">
             <span className="text-xs font-mono uppercase tracking-widest text-[#DDA162] block mb-1">
               Connect With Statutory Advisory
@@ -233,7 +233,7 @@ export const PricingPage: React.FC = () => {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g. Shalini Roy"
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export const PricingPage: React.FC = () => {
                     value={workEmail}
                     onChange={(e) => setWorkEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   />
                 </div>
               </div>
@@ -258,8 +258,8 @@ export const PricingPage: React.FC = () => {
                     required
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    placeholder="e.g. Acme Tech India Pvt Ltd"
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    placeholder="e.g. Enterprise Technologies India"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   />
                 </div>
 
@@ -268,7 +268,7 @@ export const PricingPage: React.FC = () => {
                   <select
                     value={headcount}
                     onChange={(e) => setHeadcount(e.target.value)}
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   >
                     <option value="50 - 250 employees">50 – 250 employees</option>
                     <option value="250 - 1,000 employees">250 – 1,000 employees</option>
@@ -285,14 +285,14 @@ export const PricingPage: React.FC = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell us about your current IC setup or specific compliance needs..."
-                  className="w-full bg-[#0A0E28] border border-[#304A78] p-3 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-3 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                 />
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-md"
                 >
                   <Send className="w-4 h-4" />
                   <span>Request Confidential Demo</span>
@@ -301,7 +301,7 @@ export const PricingPage: React.FC = () => {
             </form>
           ) : (
             <div className="p-8 text-center space-y-4">
-              <div className="w-14 h-14 bg-[#0A0E28] border border-[#DDA162] mx-auto flex items-center justify-center text-[#DDA162]">
+              <div className="w-14 h-14 bg-[#0E1438] border border-[#DDA162] rounded-full mx-auto flex items-center justify-center text-[#DDA162]">
                 <CheckCircle className="w-8 h-8 text-[#EBBA4A]" />
               </div>
               <h3 className="font-serif text-2xl font-bold text-[#F4F1EB]">

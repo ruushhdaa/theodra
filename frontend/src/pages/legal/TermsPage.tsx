@@ -16,7 +16,7 @@ export const TermsPage: React.FC = () => {
         </Link>
 
         {/* Title */}
-        <div className="border-b border-[#304A78] pb-6">
+        <div className="border-b border-[#262E5F] pb-6">
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-mono font-semibold">
             Statutory Legal Framework
           </span>
@@ -29,7 +29,7 @@ export const TermsPage: React.FC = () => {
         </div>
 
         {/* Full Document Sections in Editorial Lora */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed text-xs sm:text-sm text-[#F4F1EB] opacity-95">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed text-xs sm:text-sm text-[#F4F1EB] opacity-95">
           <section className="space-y-3">
             <h2 className="font-serif text-lg font-bold text-[#DDA162]">1. Acceptance of Terms</h2>
             <p>

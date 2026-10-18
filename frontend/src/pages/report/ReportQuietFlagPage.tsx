@@ -44,9 +44,9 @@ export const ReportQuietFlagPage: React.FC = () => {
         </Link>
 
         {/* Card Header */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-6 sm:p-8 shadow-2xl">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] flex items-center justify-center text-[#DDA162]">
+            <div className="w-10 h-10 rounded-xl bg-[#0E1438] border border-[#262E5F] flex items-center justify-center text-[#DDA162]">
               <ShieldAlert className="w-5 h-5" />
             </div>
             <div>
@@ -58,7 +58,7 @@ export const ReportQuietFlagPage: React.FC = () => {
           </div>
 
           {/* Plain English Explanation */}
-          <div className="p-4 bg-[#0A0E28] border border-[#304A78] text-xs text-[#F4F1EB] leading-relaxed my-4 space-y-2">
+          <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-[#F4F1EB] leading-relaxed my-4 space-y-2">
             <p className="font-semibold text-[#DDA162]">How Quiet Flag Works:</p>
             <p className="text-[#F4F1EB] opacity-90">
               Flag a concern quietly. Nothing happens until at least one other person flags the same team or individual independently. When that happens, the IC receives only a count — never your identity.
@@ -83,7 +83,7 @@ export const ReportQuietFlagPage: React.FC = () => {
                 <select
                   value={department}
                   onChange={(e) => setDepartment(e.target.value)}
-                  className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                 >
                   <option value="Platform Engineering">Platform Engineering</option>
                   <option value="Enterprise Sales">Enterprise Sales & Commercial</option>
@@ -107,7 +107,7 @@ export const ReportQuietFlagPage: React.FC = () => {
                 <select
                   value={seniority}
                   onChange={(e) => setSeniority(e.target.value)}
-                  className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                 >
                   <option value="VP / Executive Leadership">VP / Executive Leadership</option>
                   <option value="Department Head / Director">Department Head / Director</option>
@@ -131,18 +131,18 @@ export const ReportQuietFlagPage: React.FC = () => {
                         key={opt}
                         type="button"
                         onClick={() => handleToggleConcern(opt)}
-                        className={`p-2.5 text-left border text-xs font-semibold flex items-center justify-between transition-colors ${
+                        className={`p-2.5 text-left rounded-xl border text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
                           isChecked
-                            ? "bg-[#0A0E28] border-[#DDA162] text-[#DDA162]"
-                            : "bg-[#0A0E28]/60 border-[#304A78] text-[#F4F1EB] hover:border-[#DDA162]"
+                            ? "bg-[#0E1438] border-[#DDA162] text-[#DDA162]"
+                            : "bg-[#0E1438]/60 border-[#262E5F] text-[#F4F1EB] hover:border-[#DDA162]"
                         }`}
                       >
                         <span>{opt}</span>
                         <div
-                          className={`w-3.5 h-3.5 border flex items-center justify-center ${
+                          className={`w-3.5 h-3.5 rounded border flex items-center justify-center ${
                             isChecked
                               ? "border-[#DDA162] bg-[#DDA162] text-[#0A0E28]"
-                              : "border-[#304A78]"
+                              : "border-[#262E5F]"
                           }`}
                         >
                           {isChecked && <Check className="w-2.5 h-2.5 stroke-[3]" />}
@@ -153,11 +153,11 @@ export const ReportQuietFlagPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#304A78]">
+              <div className="pt-4 border-t border-[#262E5F]">
                 <button
                   type="submit"
                   disabled={concerns.length === 0}
-                  className="w-full py-3 bg-[#DDA162] text-[#0A0E28] text-xs font-bold tracking-wider uppercase hover:bg-[#EBBA4A] transition-colors disabled:opacity-40 cursor-pointer"
+                  className="w-full py-3 bg-[#DDA162] text-[#0A0E28] text-xs font-bold tracking-wider uppercase hover:bg-[#EBBA4A] rounded-xl transition-colors disabled:opacity-40 cursor-pointer shadow-md"
                 >
                   Record Quiet Flag
                 </button>
@@ -165,7 +165,7 @@ export const ReportQuietFlagPage: React.FC = () => {
             </form>
           ) : (
             <div className="py-8 text-center space-y-4">
-              <div className="w-14 h-14 bg-[#0A0E28] border border-[#DDA162] mx-auto flex items-center justify-center text-[#DDA162]">
+              <div className="w-14 h-14 rounded-2xl bg-[#0E1438] border border-[#DDA162] mx-auto flex items-center justify-center text-[#DDA162]">
                 <CheckCircle2 className="w-8 h-8 text-[#EBBA4A]" />
               </div>
               <h2 className="font-serif text-2xl font-bold text-[#F4F1EB]">
@@ -177,7 +177,7 @@ export const ReportQuietFlagPage: React.FC = () => {
               <div className="pt-4">
                 <Link
                   to="/report"
-                  className="inline-block px-6 py-2.5 bg-[#304A78] text-[#F4F1EB] text-xs font-semibold hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors"
+                  className="inline-block px-6 py-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[#F4F1EB] text-xs font-semibold hover:bg-[#262E5F] hover:text-[#DDA162] transition-colors"
                 >
                   Return to Portal Home
                 </Link>

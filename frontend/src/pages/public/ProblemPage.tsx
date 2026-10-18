@@ -20,9 +20,9 @@ export const ProblemPage: React.FC = () => {
         </div>
 
         {/* Section 1: The Silence Trap */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl space-y-4">
-          <div className="flex items-center gap-3 pb-3 border-b border-[#304A78]">
-            <div className="p-2.5 bg-[#0A0E28] border border-[#304A78] text-[#DDA162]">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 shadow-2xl space-y-4">
+          <div className="flex items-center gap-3 pb-3 border-b border-[#262E5F]">
+            <div className="p-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[#DDA162]">
               <AlertTriangle className="w-6 h-6" />
             </div>
             <h2 className="font-serif text-2xl font-bold text-[#F4F1EB]">
@@ -33,15 +33,15 @@ export const ProblemPage: React.FC = () => {
             When an employee experiences boundary violations — particularly from a senior leader, team lead, or high-performing commercial executive — the immediate rational calculation is not whether the conduct was unlawful, but whether lodging a complaint will destroy their career trajectory.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 font-sans text-xs">
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78]">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] transition-colors">
               <span className="text-xl font-serif font-bold text-[#EBBA4A] block">85%</span>
               <span className="text-[#A87C56] mt-1 block">Unreported workplace harassment rate in high-growth companies.</span>
             </div>
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78]">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] transition-colors">
               <span className="text-xl font-serif font-bold text-[#DDA162] block">6 Months</span>
               <span className="text-[#A87C56] mt-1 block">Average duration of off-hours pressure prior to an escalation.</span>
             </div>
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78]">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] transition-colors">
               <span className="text-xl font-serif font-bold text-[#F4F1EB] block">72%</span>
               <span className="text-[#A87C56] mt-1 block">Of victims report feared or experienced appraisal retaliation.</span>
             </div>
@@ -49,9 +49,9 @@ export const ProblemPage: React.FC = () => {
         </div>
 
         {/* Section 2: Quasi-Judicial Blindness */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl space-y-4">
-          <div className="flex items-center gap-3 pb-3 border-b border-[#304A78]">
-            <div className="p-2.5 bg-[#0A0E28] border border-[#304A78] text-[#DDA162]">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 shadow-2xl space-y-4">
+          <div className="flex items-center gap-3 pb-3 border-b border-[#262E5F]">
+            <div className="p-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[#DDA162]">
               <Clock className="w-6 h-6" />
             </div>
             <h2 className="font-serif text-2xl font-bold text-[#F4F1EB]">
@@ -67,9 +67,9 @@ export const ProblemPage: React.FC = () => {
         </div>
 
         {/* Section 3: The Surveillance Trap */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl space-y-4">
-          <div className="flex items-center gap-3 pb-3 border-b border-[#304A78]">
-            <div className="p-2.5 bg-[#0A0E28] border border-[#304A78] text-[#DDA162]">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 shadow-2xl space-y-4">
+          <div className="flex items-center gap-3 pb-3 border-b border-[#262E5F]">
+            <div className="p-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[#DDA162]">
               <FileCheck className="w-6 h-6" />
             </div>
             <h2 className="font-serif text-2xl font-bold text-[#F4F1EB]">
@@ -79,13 +79,13 @@ export const ProblemPage: React.FC = () => {
           <p className="font-serif text-xs sm:text-sm text-[#F4F1EB] opacity-90 leading-relaxed">
             Some organizations attempt to solve this with invasive employee monitoring software that scans message content, logs keystrokes, and reads private Slack messages. This backfires catastrophically: employees abandon internal communication platforms, trust evaporates, and compliance violates India's Digital Personal Data Protection (DPDP) Act 2023.
           </p>
-          <div className="p-4 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162]">
-            <strong>The THEODRA Resolution:</strong> Monitor metadata rhythms (timing, frequency, hierarchy) with mathematical group privacy (k ≥ 5). Never inspect content.
+          <div className="p-4 bg-[#0E1438] border border-[#DDA162] rounded-xl text-xs text-[#DDA162]">
+            <strong>The THEODRA Resolution:</strong> Monitor metadata rhythms (timing, frequency, hierarchy) with strict mathematical privacy thresholds. Never inspect content.
           </div>
         </div>
 
         {/* Next link */}
-        <div className="pt-6 border-t border-[#304A78] flex items-center justify-between">
+        <div className="pt-6 border-t border-[#262E5F] flex items-center justify-between">
           <Link
             to="/"
             className="text-xs text-[#A87C56] hover:text-[#F4F1EB] transition-colors"
@@ -94,7 +94,7 @@ export const ProblemPage: React.FC = () => {
           </Link>
           <Link
             to="/how-it-works"
-            className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors inline-flex items-center gap-1.5"
+            className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-md"
           >
             <span>Explore How It Works</span>
             <ArrowRight className="w-4 h-4" />

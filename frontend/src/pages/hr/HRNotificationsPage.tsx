@@ -45,7 +45,7 @@ export const HRNotificationsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Corporate HR Alerts
@@ -61,7 +61,7 @@ export const HRNotificationsPage: React.FC = () => {
           <button
             type="button"
             onClick={markAllRead}
-            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
           >
             <Check className="w-4 h-4" />
             <span>Mark All as Read ({unreadCount})</span>
@@ -69,17 +69,17 @@ export const HRNotificationsPage: React.FC = () => {
         )}
       </div>
 
-      {/* Notifications List */}
-      <div className="bg-[#2C3259] border border-[#304A78] divide-y divide-[#304A78]/60 shadow-2xl">
+      {/* Notifications List Container */}
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl divide-y divide-[#262E5F]/60 shadow-2xl overflow-hidden">
         {filtered.map((item) => (
           <div
             key={item.id}
             className={`p-4 flex items-start justify-between gap-4 transition-colors ${
-              !item.read ? "bg-[#304A78]/30" : "hover:bg-[#0A0E28]/40"
+              !item.read ? "bg-[#0E1438]/80 hover:bg-[#262E5F]" : "hover:bg-[#262E5F]"
             }`}
           >
             <div className="flex items-start gap-3.5">
-              <div className="p-2 bg-[#0A0E28] border border-[#304A78] shrink-0 mt-0.5">
+              <div className="p-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl shrink-0 mt-0.5">
                 {getIcon(item.type)}
               </div>
               <div>
@@ -98,7 +98,7 @@ export const HRNotificationsPage: React.FC = () => {
 
             <Link
               to={item.link}
-              className="px-3 py-1.5 bg-[#0A0E28] border border-[#304A78] text-xs font-semibold text-[#DDA162] hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors shrink-0 flex items-center gap-1.5"
+              className="px-3.5 py-1.5 bg-[#0A0E28] border border-[#262E5F] rounded-xl text-xs font-semibold text-[#DDA162] hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors shrink-0 flex items-center gap-1.5 shadow-sm"
             >
               <span>View</span>
               <ExternalLink className="w-3 h-3" />

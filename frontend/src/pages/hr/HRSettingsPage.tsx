@@ -18,7 +18,7 @@ export const HRSettingsPage: React.FC = () => {
   return (
     <div className="space-y-6 max-w-4xl">
       {/* Header */}
-      <div className="pb-4 border-b border-[#304A78]">
+      <div className="pb-4 border-b border-[#262E5F]">
         <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
           Corporate Administrator Profile
         </span>
@@ -31,15 +31,15 @@ export const HRSettingsPage: React.FC = () => {
       </div>
 
       {saved && (
-        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl flex items-center gap-2">
           <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
           <span>HR preferences updated successfully.</span>
         </div>
       )}
 
       {/* Admin Profile */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-4">
-        <div className="flex items-center gap-2 pb-3 border-b border-[#304A78]">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-4">
+        <div className="flex items-center gap-2 pb-3 border-b border-[#262E5F]">
           <User className="w-4 h-4 text-[#DDA162]" />
           <h3 className="font-serif text-base font-bold text-[#F4F1EB]">
             Administrator Credentials
@@ -53,7 +53,7 @@ export const HRSettingsPage: React.FC = () => {
               type="text"
               readOnly
               value={user?.name || "Rajesh Menon"}
-              className="w-full bg-[#0A0E28] border border-[#304A78] p-2 text-[#F4F1EB] focus:outline-none"
+              className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-2.5 text-[#F4F1EB] focus:outline-none"
             />
           </div>
 
@@ -63,7 +63,7 @@ export const HRSettingsPage: React.FC = () => {
               type="text"
               readOnly
               value={user?.email || "hr@theodra.demo"}
-              className="w-full bg-[#0A0E28] border border-[#304A78] p-2 text-[#F4F1EB] focus:outline-none"
+              className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-2.5 text-[#F4F1EB] focus:outline-none"
             />
           </div>
 
@@ -73,7 +73,7 @@ export const HRSettingsPage: React.FC = () => {
               type="text"
               readOnly
               value={user?.title || "VP Human Resources & Compliance"}
-              className="w-full bg-[#0A0E28] border border-[#304A78] p-2 text-[#F4F1EB] focus:outline-none"
+              className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-2.5 text-[#F4F1EB] focus:outline-none"
             />
           </div>
 
@@ -83,15 +83,15 @@ export const HRSettingsPage: React.FC = () => {
               type="text"
               readOnly
               value="Enterprise Corporation"
-              className="w-full bg-[#0A0E28] border border-[#262E5F] rounded-lg p-2 text-[#F4F1EB] focus:outline-none"
+              className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-2.5 text-[#F4F1EB] focus:outline-none"
             />
           </div>
         </div>
       </div>
 
       {/* Alert Dispatch Configuration */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-4">
-        <div className="flex items-center gap-2 pb-3 border-b border-[#304A78]">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-4">
+        <div className="flex items-center gap-2 pb-3 border-b border-[#262E5F]">
           <Bell className="w-4 h-4 text-[#DDA162]" />
           <h3 className="font-serif text-base font-bold text-[#F4F1EB]">
             Statutory Alert Routing
@@ -99,7 +99,7 @@ export const HRSettingsPage: React.FC = () => {
         </div>
 
         <form onSubmit={handleSave} className="space-y-3 text-xs">
-          <label className="flex items-center justify-between p-3 bg-[#0A0E28] border border-[#304A78] cursor-pointer">
+          <label className="flex items-center justify-between p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] transition-colors cursor-pointer">
             <div>
               <span className="font-semibold text-[#F4F1EB] block">
                 Retaliation Shield anomalous action alert
@@ -112,11 +112,11 @@ export const HRSettingsPage: React.FC = () => {
               type="checkbox"
               checked={notifyRetaliation}
               onChange={(e) => setNotifyRetaliation(e.target.checked)}
-              className="w-4 h-4 accent-[#DDA162]"
+              className="w-4 h-4 accent-[#DDA162] cursor-pointer"
             />
           </label>
 
-          <label className="flex items-center justify-between p-3 bg-[#0A0E28] border border-[#304A78] cursor-pointer">
+          <label className="flex items-center justify-between p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] transition-colors cursor-pointer">
             <div>
               <span className="font-semibold text-[#F4F1EB] block">
                 Annual report filing period reminder (30 days prior to DO deadline)
@@ -129,11 +129,11 @@ export const HRSettingsPage: React.FC = () => {
               type="checkbox"
               checked={notifyAnnualWindow}
               onChange={(e) => setNotifyAnnualWindow(e.target.checked)}
-              className="w-4 h-4 accent-[#DDA162]"
+              className="w-4 h-4 accent-[#DDA162] cursor-pointer"
             />
           </label>
 
-          <label className="flex items-center justify-between p-3 bg-[#0A0E28] border border-[#304A78] cursor-pointer">
+          <label className="flex items-center justify-between p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] transition-colors cursor-pointer">
             <div>
               <span className="font-semibold text-[#F4F1EB] block">
                 Internal Committee tenure expiry warnings
@@ -146,14 +146,14 @@ export const HRSettingsPage: React.FC = () => {
               type="checkbox"
               checked={notifyQuorumChanges}
               onChange={(e) => setNotifyQuorumChanges(e.target.checked)}
-              className="w-4 h-4 accent-[#DDA162]"
+              className="w-4 h-4 accent-[#DDA162] cursor-pointer"
             />
           </label>
 
           <div className="pt-3 flex justify-end">
             <button
               type="submit"
-              className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors cursor-pointer"
+              className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors cursor-pointer shadow-md"
             >
               Save Admin Preferences
             </button>

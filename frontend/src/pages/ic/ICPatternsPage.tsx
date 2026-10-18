@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Activity, Search, Filter, ArrowUpDown, ArrowRight, ShieldCheck } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Activity, Search, Filter, ArrowUpDown, ArrowRight, ShieldCheck, Eye } from "lucide-react";
 import { MOCK_PATTERN_COHORTS, PatternCohort, SeverityTier } from "../../data/mockData";
 import { TableSkeleton } from "../../components/SkeletonLoader";
 
 export const ICPatternsPage: React.FC = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [patterns, setPatterns] = useState<PatternCohort[]>(MOCK_PATTERN_COHORTS);
   const [search, setSearch] = useState("");
@@ -14,7 +15,7 @@ export const ICPatternsPage: React.FC = () => {
   const [sortAsc, setSortAsc] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 600);
+    const timer = setTimeout(() => setLoading(false), 400);
     return () => clearTimeout(timer);
   }, []);
 
@@ -57,7 +58,7 @@ export const ICPatternsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Telemetry Analysis Gateway
@@ -66,27 +67,27 @@ export const ICPatternsPage: React.FC = () => {
             Cohort Pattern Detection
           </h1>
           <p className="font-serif text-xs text-[#A87C56] mt-1">
-            Privacy-preserving communication telemetry grouped by mathematical k-anonymity (k ≥ 5).
+            Privacy-preserving communication telemetry grouped into aggregated cohorts.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs bg-[#2C3259] px-3.5 py-2 border border-[#304A78] text-[#DDA162]">
-          <ShieldCheck className="w-4 h-4" />
+        <div className="flex items-center gap-2 text-xs bg-[#0A0E28] px-3.5 py-2 border border-[#262E5F] rounded-xl text-[#DDA162]">
+          <ShieldCheck className="w-4 h-4 text-[#DDA162]" />
           <span>Zero Content Read • Pure Metadata</span>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs shadow-xl">
         {/* Search */}
-        <div className="w-full md:w-72 relative">
+        <div className="w-full md:w-80 relative">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search cohort ID, role, department..."
-            className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+            className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-4 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162] transition-colors"
           />
-          <Search className="w-3.5 h-3.5 text-[#A87C56] absolute right-3 top-2.5 pointer-events-none" />
+          <Search className="w-3.5 h-3.5 text-[#A87C56] absolute right-3.5 top-3 pointer-events-none" />
         </div>
 
         {/* Filters */}
@@ -96,10 +97,10 @@ export const ICPatternsPage: React.FC = () => {
             <select
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
-              className="bg-[#0A0E28] border border-[#304A78] px-2.5 py-1.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+              className="bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
             >
               {departments.map((d) => (
-                <option key={d} value={d}>
+                <option key={d} value={d} className="bg-[#0A0E28] text-[#F4F1EB]">
                   {d}
                 </option>
               ))}
@@ -111,10 +112,10 @@ export const ICPatternsPage: React.FC = () => {
             <select
               value={selectedSeverity}
               onChange={(e) => setSelectedSeverity(e.target.value)}
-              className="bg-[#0A0E28] border border-[#304A78] px-2.5 py-1.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+              className="bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
             >
               {severities.map((s) => (
-                <option key={s} value={s}>
+                <option key={s} value={s} className="bg-[#0A0E28] text-[#F4F1EB]">
                   {s}
                 </option>
               ))}
@@ -127,13 +128,13 @@ export const ICPatternsPage: React.FC = () => {
       {loading ? (
         <TableSkeleton rows={8} cols={8} />
       ) : (
-        <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl overflow-hidden shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider">
+                <tr className="bg-[#0A0E28] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider">
                   <th
-                    className="py-3 px-4 cursor-pointer hover:text-[#DDA162]"
+                    className="py-3.5 px-4 cursor-pointer hover:text-[#DDA162]"
                     onClick={() => handleSort("id")}
                   >
                     <div className="flex items-center gap-1">
@@ -142,7 +143,7 @@ export const ICPatternsPage: React.FC = () => {
                     </div>
                   </th>
                   <th
-                    className="py-3 px-4 cursor-pointer hover:text-[#DDA162]"
+                    className="py-3.5 px-4 cursor-pointer hover:text-[#DDA162]"
                     onClick={() => handleSort("department")}
                   >
                     <div className="flex items-center gap-1">
@@ -150,9 +151,9 @@ export const ICPatternsPage: React.FC = () => {
                       <ArrowUpDown className="w-3 h-3" />
                     </div>
                   </th>
-                  <th className="py-3 px-4">Role Pairing</th>
+                  <th className="py-3.5 px-4">Role Pairing</th>
                   <th
-                    className="py-3 px-4 cursor-pointer hover:text-[#DDA162]"
+                    className="py-3.5 px-4 cursor-pointer hover:text-[#DDA162]"
                     onClick={() => handleSort("severity")}
                   >
                     <div className="flex items-center gap-1">
@@ -160,9 +161,9 @@ export const ICPatternsPage: React.FC = () => {
                       <ArrowUpDown className="w-3 h-3" />
                     </div>
                   </th>
-                  <th className="py-3 px-4">Duration</th>
+                  <th className="py-3.5 px-4">Duration</th>
                   <th
-                    className="py-3 px-4 cursor-pointer hover:text-[#DDA162]"
+                    className="py-3.5 px-4 cursor-pointer hover:text-[#DDA162]"
                     onClick={() => handleSort("cohortSize")}
                   >
                     <div className="flex items-center gap-1">
@@ -170,11 +171,11 @@ export const ICPatternsPage: React.FC = () => {
                       <ArrowUpDown className="w-3 h-3" />
                     </div>
                   </th>
-                  <th className="py-3 px-4">Last Updated</th>
-                  <th className="py-3 px-4 text-right">Actions</th>
+                  <th className="py-3.5 px-4">Last Updated</th>
+                  <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#304A78]/50">
+              <tbody className="divide-y divide-[#262E5F]/60">
                 {sorted.length === 0 ? (
                   <tr>
                     <td colSpan={8} className="py-8 text-center text-sm text-[#A87C56]">
@@ -183,8 +184,12 @@ export const ICPatternsPage: React.FC = () => {
                   </tr>
                 ) : (
                   sorted.map((pat) => (
-                    <tr key={pat.id} className="hover:bg-[#0A0E28]/40 transition-colors">
-                      <td className="py-3.5 px-4 font-mono font-bold text-[#F4F1EB]">
+                    <tr
+                      key={pat.id}
+                      onClick={() => navigate(`/ic/patterns/${pat.id}`)}
+                      className="hover:bg-[#262E5F] transition-colors cursor-pointer group"
+                    >
+                      <td className="py-3.5 px-4 font-mono font-bold text-[#F4F1EB] group-hover:text-[#DDA162]">
                         {pat.id}
                       </td>
                       <td className="py-3.5 px-4 text-[#F4F1EB]">{pat.department}</td>
@@ -193,12 +198,12 @@ export const ICPatternsPage: React.FC = () => {
                       </td>
                       <td className="py-3.5 px-4">
                         <span
-                          className={`text-[10px] px-2.5 py-0.5 font-bold uppercase tracking-wider ${
+                          className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${
                             pat.severity === "Flagged"
-                              ? "bg-amber-950/80 text-[#EBBA4A] border border-[#EBBA4A]"
+                              ? "bg-amber-950/80 text-[#EBBA4A] border-[#EBBA4A]"
                               : pat.severity === "Elevated"
-                              ? "bg-[#304A78] text-[#DDA162]"
-                              : "bg-[#0A0E28] text-[#304A78] border border-[#304A78] text-[#A87C56]"
+                              ? "bg-[#161E48] text-[#DDA162] border-[#262E5F]"
+                              : "bg-[#0E1438] text-[#A87C56] border-[#262E5F]"
                           }`}
                         >
                           {pat.severity}
@@ -206,14 +211,16 @@ export const ICPatternsPage: React.FC = () => {
                       </td>
                       <td className="py-3.5 px-4 text-[#A87C56]">{pat.duration}</td>
                       <td className="py-3.5 px-4 font-mono text-[#F4F1EB]">
-                        <span className="text-[#DDA162] font-semibold">{pat.cohortSize}</span> (k ≥ 5)
+                        <span className="text-[#DDA162] font-semibold">{pat.cohortSize}</span> members
                       </td>
                       <td className="py-3.5 px-4 text-[#A87C56]">{pat.lastUpdated}</td>
                       <td className="py-3.5 px-4 text-right">
                         <Link
                           to={`/ic/patterns/${pat.id}`}
-                          className="px-3 py-1.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors inline-flex items-center gap-1.5"
+                          onClick={(e) => e.stopPropagation()}
+                          className="px-3 py-1.5 bg-[#0A0E28] border border-[#262E5F] group-hover:border-[#DDA162] group-hover:bg-[#DDA162] text-[#DDA162] group-hover:text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors inline-flex items-center gap-1.5 shadow-sm"
                         >
+                          <Eye className="w-3.5 h-3.5" />
                           <span>Review</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </Link>

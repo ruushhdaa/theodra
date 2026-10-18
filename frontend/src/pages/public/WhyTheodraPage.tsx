@@ -12,7 +12,7 @@ export const WhyTheodraPage: React.FC = () => {
     {
       dimension: "Content Privacy & Surveillance",
       oldWay: "Either total blindness or invasive keyword scrapers reading private email/chat message bodies.",
-      theodraWay: "Pure metadata rhythm telemetry: zero words, attachments, or emails inspected; mathematical k-anonymity (k ≥ 5).",
+      theodraWay: "Pure metadata rhythm telemetry: zero words, attachments, or emails inspected; cohort aggregate verification.",
     },
     {
       dimension: "Employee Fear & Trust",
@@ -53,19 +53,19 @@ export const WhyTheodraPage: React.FC = () => {
         </div>
 
         {/* Detailed Comparison Table */}
-        <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden shadow-2xl">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl overflow-hidden shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider font-sans">
+                <tr className="bg-[#0E1438] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider font-sans">
                   <th className="py-4 px-6 w-1/4">Operational Dimension</th>
                   <th className="py-4 px-6 w-3/8">The Old Way (Legacy Portals & Hotlines)</th>
                   <th className="py-4 px-6 w-3/8 text-[#DDA162]">The THEODRA Paradigm</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#304A78]/50 font-serif">
+              <tbody className="divide-y divide-[#262E5F]/50 font-serif">
                 {comparisonRows.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-[#0A0E28]/40 transition-colors">
+                  <tr key={idx} className="hover:bg-[#262E5F] transition-colors">
                     <td className="py-5 px-6 font-semibold text-[#F4F1EB] font-sans">
                       {row.dimension}
                     </td>
@@ -90,8 +90,8 @@ export const WhyTheodraPage: React.FC = () => {
 
         {/* Three Core Architectural Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-3">
-            <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] text-[#DDA162] flex items-center justify-center">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-3 hover:bg-[#262E5F] transition-colors">
+            <div className="w-10 h-10 bg-[#0E1438] border border-[#262E5F] text-[#DDA162] rounded-xl flex items-center justify-center">
               <Zap className="w-5 h-5" />
             </div>
             <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
@@ -102,20 +102,20 @@ export const WhyTheodraPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-3">
-            <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] text-[#DDA162] flex items-center justify-center">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-3 hover:bg-[#262E5F] transition-colors">
+            <div className="w-10 h-10 bg-[#0E1438] border border-[#262E5F] text-[#DDA162] rounded-xl flex items-center justify-center">
               <Lock className="w-5 h-5" />
             </div>
             <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
               Mathematical Integrity
             </h3>
             <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
-              Protects every employee through proven k-anonymity. No single employee's identity is ever exposed to algorithmic bias or supervisory review.
+              Protects every employee through proven cohort aggregation. No single employee's identity is ever exposed to algorithmic bias or supervisory review.
             </p>
           </div>
 
-          <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-3">
-            <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] text-[#DDA162] flex items-center justify-center">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-3 hover:bg-[#262E5F] transition-colors">
+            <div className="w-10 h-10 bg-[#0E1438] border border-[#262E5F] text-[#DDA162] rounded-xl flex items-center justify-center">
               <Scale className="w-5 h-5" />
             </div>
             <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
@@ -128,13 +128,13 @@ export const WhyTheodraPage: React.FC = () => {
         </div>
 
         {/* Footer CTAs */}
-        <div className="pt-6 border-t border-[#304A78] flex items-center justify-between">
-          <Link to="/how-it-works" className="text-xs text-[#A87C56] hover:text-[#F4F1EB]">
+        <div className="pt-6 border-t border-[#262E5F] flex items-center justify-between">
+          <Link to="/how-it-works" className="text-xs text-[#A87C56] hover:text-[#F4F1EB] transition-colors">
             ← How It Works
           </Link>
           <Link
             to="/pricing"
-            className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors inline-flex items-center gap-1.5"
+            className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors inline-flex items-center gap-1.5 shadow-sm"
           >
             <span>View Pricing & Tiers</span>
             <ArrowRight className="w-4 h-4" />

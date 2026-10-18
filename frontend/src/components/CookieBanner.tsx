@@ -25,7 +25,7 @@ export const CookieBanner: React.FC = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 bg-[#2C3259] border border-[#304A78] p-4 text-[#F4F1EB] shadow-2xl">
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 bg-[#0A0E28] border border-[#262E5F] p-4 text-[#F4F1EB] rounded-2xl shadow-2xl">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
           <ShieldCheck className="w-5 h-5 text-[#DDA162] shrink-0 mt-0.5" />
@@ -37,7 +37,7 @@ export const CookieBanner: React.FC = () => {
               <button
                 type="button"
                 onClick={handleAccept}
-                className="px-3 py-1.5 bg-[#DDA162] text-[#0A0E28] text-xs font-semibold hover:bg-[#EBBA4A] transition-colors"
+                className="px-3.5 py-1.5 bg-[#DDA162] text-[#0A0E28] text-xs font-semibold rounded-lg hover:bg-[#EBBA4A] transition-colors shadow-sm"
               >
                 Accept Essential
               </button>

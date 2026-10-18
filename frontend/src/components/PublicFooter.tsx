@@ -4,13 +4,13 @@ import { Shield, Lock } from "lucide-react";
 
 export const PublicFooter: React.FC = () => {
   return (
-    <footer className="bg-[#0A0E28] border-t border-[#304A78] text-[#F4F1EB] mt-auto">
+    <footer className="bg-[#0A0E28] border-t border-[#262E5F] text-[#F4F1EB] mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <img src="/theodra-logo.png" alt="THEODRA" className="h-8 w-auto object-contain" />
+              <img src="/theodra-logo.png" alt="THEODRA" className="h-8 w-auto object-contain rounded" />
               <span className="font-serif text-xl font-bold tracking-wider text-[#F4F1EB]">
                 THEODRA
               </span>
@@ -20,7 +20,7 @@ export const PublicFooter: React.FC = () => {
             </p>
             <div className="flex items-center gap-4 text-xs text-[#A87C56] pt-2">
               <span className="flex items-center gap-1.5">
-                <Shield className="w-4 h-4 text-[#DDA162]" /> k-Anonymity (k ≥ 5)
+                <Shield className="w-4 h-4 text-[#DDA162]" /> Zero Content Read
               </span>
               <span className="flex items-center gap-1.5">
                 <Lock className="w-4 h-4 text-[#DDA162]" /> DPDP Act 2023 Compliant
@@ -132,7 +132,7 @@ export const PublicFooter: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-[#304A78] flex flex-col sm:flex-row items-center justify-between text-xs text-[#A87C56] gap-4">
+        <div className="mt-12 pt-6 border-t border-[#262E5F] flex flex-col sm:flex-row items-center justify-between text-xs text-[#A87C56] gap-4">
           <p>© {new Date().getFullYear()} THEODRA Systems Inc. All rights reserved.</p>
           <p className="text-center sm:text-right text-[11px]">
             Engineered in India under the Sexual Harassment of Women at Workplace Act 2013.

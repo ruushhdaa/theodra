@@ -1,46 +1,73 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, Link } from "react-router-dom";
 import {
   Search,
-  CheckCircle2,
+  CheckCircle,
   Clock,
-  CircleDashed,
-  Send,
+  MessageSquare,
   ShieldCheck,
+  Send,
   ArrowLeft,
-  FileCheck,
-  Scale,
-  Check,
+  CircleCheck,
+  CircleDot,
+  CircleDashed,
 } from "lucide-react";
 
+interface TrackMessage {
+  id: string;
+  sender: "Reporter" | "IC";
+  text: string;
+  time: string;
+}
+
 export const ReportTrackPage: React.FC = () => {
-  const [code, setCode] = useState("TR-K8X2M9PQ");
-  const [submittedCode, setSubmittedCode] = useState<string | null>("TR-K8X2M9PQ");
-  const [messages, setMessages] = useState<
-    { id: string; sender: "IC" | "Reporter"; text: string; time: string }[]
-  >([
+  const [searchParams] = useSearchParams();
+  const initialRef = searchParams.get("ref") || "";
+
+  const [code, setCode] = useState(initialRef);
+  const [submittedCode, setSubmittedCode] = useState<string | null>(initialRef || null);
+  const [replyText, setReplyText] = useState("");
+  const [messages, setMessages] = useState<TrackMessage[]>([
     {
-      id: "m-1",
+      id: "msg-1",
       sender: "IC",
-      text: "Thank you for your report. We may reach out through this channel if we need clarification. All communications here are anonymous.",
-      time: "14 Feb 2026, 10:30 AM",
+      text: "Preliminary review has commenced. We have noted your request for alternate meeting hours.",
+      time: "14 Feb 2026, 11:30 IST",
+    },
+    {
+      id: "msg-2",
+      sender: "Reporter",
+      text: "Thank you. Please ensure communications are kept via this portal only.",
+      time: "14 Feb 2026, 14:15 IST",
+    },
+    {
+      id: "msg-3",
+      sender: "IC",
+      text: "Acknowledged. All future updates and inquiries will be routed strictly through this reference code.",
+      time: "15 Feb 2026, 09:40 IST",
     },
   ]);
-  const [replyText, setReplyText] = useState("");
+
+  useEffect(() => {
+    if (initialRef) {
+      setCode(initialRef);
+      setSubmittedCode(initialRef);
+    }
+  }, [initialRef]);
 
   const handleTrackSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (code.trim()) {
-      setSubmittedCode(code.trim().toUpperCase());
-    }
+    if (!code.trim()) return;
+    setSubmittedCode(code.trim().toUpperCase());
   };
 
   const handleSendReply = (e: React.FormEvent) => {
     e.preventDefault();
     if (!replyText.trim()) return;
-    const newMsg = {
-      id: `m-${Date.now()}`,
-      sender: "Reporter" as const,
+
+    const newMsg: TrackMessage = {
+      id: `msg-${Date.now()}`,
+      sender: "Reporter",
       text: replyText.trim(),
       time: "Just now",
     };
@@ -51,42 +78,42 @@ export const ReportTrackPage: React.FC = () => {
   const stages = [
     {
       num: 1,
-      label: "Report Received",
+      label: "Submission Ingested",
       status: "Completed",
-      date: "13 Feb 2026",
-      desc: "Report logged with encrypted reference identifier.",
-      icon: CheckCircle2,
+      date: "12 Feb 2026",
+      desc: "Zero-knowledge intake hash registered",
+      icon: CircleCheck,
     },
     {
       num: 2,
-      label: "IC Review",
-      status: "Active",
-      date: "14 Feb 2026",
-      desc: "Your report is being reviewed by the Internal Committee.",
-      icon: Clock,
+      label: "Quorum Formation",
+      status: "Completed",
+      date: "13 Feb 2026",
+      desc: "IC Presiding Officer + 2 members assigned",
+      icon: CircleCheck,
     },
     {
       num: 3,
-      label: "Inquiry",
-      status: "Pending",
-      date: "Pending determination",
-      desc: "Confidential witness testimonies and documentary examination.",
-      icon: CircleDashed,
+      label: "Preliminary Review",
+      status: "Active",
+      date: "In progress",
+      desc: "Assessing jurisdictional scope under POSH Act",
+      icon: CircleDot,
     },
     {
       num: 4,
-      label: "Resolution",
+      label: "Formal Inquiry",
       status: "Pending",
-      date: "Pending completion",
-      desc: "Statutory findings report and recommendations under Section 13.",
+      date: "Estimated 22 Feb 2026",
+      desc: "Fact-finding & documentation review",
       icon: CircleDashed,
     },
     {
       num: 5,
-      label: "Closed",
+      label: "Statutory Report",
       status: "Pending",
-      date: "Pending completion",
-      desc: "Employer implementation report sealed in Response Ledger.",
+      date: "Within 90-day clock",
+      desc: "Final IC findings & recommendations",
       icon: CircleDashed,
     },
   ];
@@ -106,8 +133,8 @@ export const ReportTrackPage: React.FC = () => {
         </div>
 
         {/* Header & Code Input */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-6 sm:p-8 shadow-2xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#304A78]">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#262E5F]">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-widest text-[#DDA162]">
                 Secure Case Tracker
@@ -119,7 +146,7 @@ export const ReportTrackPage: React.FC = () => {
                 Enter your 8-character code to view status updates and communicate anonymously with the IC.
               </p>
             </div>
-            <div className="flex items-center gap-2 text-xs text-[#A87C56] bg-[#0A0E28] px-3 py-2 border border-[#304A78]">
+            <div className="flex items-center gap-2 text-xs text-[#DDA162] bg-[#0E1438] px-3.5 py-2 border border-[#262E5F] rounded-xl">
               <ShieldCheck className="w-4 h-4 text-[#DDA162]" />
               <span>Encrypted Session</span>
             </div>
@@ -132,11 +159,11 @@ export const ReportTrackPage: React.FC = () => {
               value={code}
               onChange={(e) => setCode(e.target.value)}
               placeholder="e.g. TR-K8X2M9PQ"
-              className="flex-1 bg-[#0A0E28] border border-[#304A78] px-4 py-2.5 text-sm font-mono text-[#EBBA4A] uppercase focus:outline-none focus:border-[#DDA162]"
+              className="flex-1 bg-[#0E1438] border border-[#262E5F] rounded-xl px-4 py-2.5 text-sm font-mono text-[#EBBA4A] uppercase focus:outline-none focus:border-[#DDA162]"
             />
             <button
               type="submit"
-              className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
             >
               <Search className="w-4 h-4" />
               <span>Lookup Case</span>
@@ -146,8 +173,8 @@ export const ReportTrackPage: React.FC = () => {
 
         {/* Case Timeline Section */}
         {submittedCode && (
-          <div className="bg-[#2C3259] border border-[#304A78] p-6 sm:p-8 shadow-2xl space-y-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-[#304A78]">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-[#262E5F]">
               <div>
                 <span className="text-xs text-[#A87C56]">Active Case Reference:</span>
                 <span className="ml-2 font-mono text-base font-bold text-[#EBBA4A]">
@@ -174,22 +201,22 @@ export const ReportTrackPage: React.FC = () => {
                   return (
                     <div
                       key={st.num}
-                      className={`p-4 border relative ${
+                      className={`p-4 border rounded-xl relative transition-all ${
                         isActive
-                          ? "bg-[#0A0E28] border-[#DDA162]"
+                          ? "bg-[#0E1438] border-[#DDA162] shadow-lg"
                           : isCompleted
-                          ? "bg-[#0A0E28]/50 border-[#304A78]"
-                          : "bg-[#0A0E28]/20 border-[#304A78]/50 opacity-60"
+                          ? "bg-[#0A0E28] border-[#262E5F]"
+                          : "bg-[#0A0E28]/40 border-[#262E5F]/50 opacity-60"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span
-                          className={`text-[10px] font-mono px-1.5 py-0.5 ${
+                          className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
                             isActive
                               ? "bg-[#DDA162] text-[#0A0E28] font-bold"
                               : isCompleted
-                              ? "bg-[#304A78] text-[#DDA162]"
-                              : "bg-[#2C3259] text-[#A87C56]"
+                              ? "bg-[#0E1438] text-[#DDA162] border border-[#262E5F]"
+                              : "bg-[#0E1438] text-[#A87C56]"
                           }`}
                         >
                           Stage 0{st.num}
@@ -212,7 +239,7 @@ export const ReportTrackPage: React.FC = () => {
                         {st.label}
                       </h4>
                       <p className="text-[11px] text-[#A87C56] leading-tight mb-2">{st.desc}</p>
-                      <div className="text-[10px] font-mono text-[#A87C56] pt-1 border-t border-[#304A78]/60">
+                      <div className="text-[10px] font-mono text-[#A87C56] pt-1 border-t border-[#262E5F]/60">
                         {st.date}
                       </div>
                     </div>
@@ -222,7 +249,7 @@ export const ReportTrackPage: React.FC = () => {
             </div>
 
             {/* Two-Way Anonymous Message Thread */}
-            <div className="pt-6 border-t border-[#304A78]">
+            <div className="pt-6 border-t border-[#262E5F]">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
@@ -232,13 +259,13 @@ export const ReportTrackPage: React.FC = () => {
                     You may communicate with the Internal Committee here without revealing your identity.
                   </p>
                 </div>
-                <span className="text-[11px] text-[#DDA162] font-semibold bg-[#0A0E28] px-2.5 py-1 border border-[#304A78]">
+                <span className="text-[11px] text-[#DDA162] font-semibold bg-[#0E1438] px-2.5 py-1 border border-[#262E5F] rounded-full">
                   Zero IP Logging
                 </span>
               </div>
 
               {/* Message History */}
-              <div className="bg-[#0A0E28] border border-[#304A78] p-4 space-y-4 max-h-72 overflow-y-auto mb-4">
+              <div className="bg-[#0E1438] border border-[#262E5F] rounded-xl p-4 space-y-4 max-h-72 overflow-y-auto mb-4">
                 {messages.map((m) => (
                   <div
                     key={m.id}
@@ -254,10 +281,10 @@ export const ReportTrackPage: React.FC = () => {
                       <span>{m.time}</span>
                     </div>
                     <div
-                      className={`max-w-md p-3.5 text-xs leading-relaxed ${
+                      className={`max-w-md p-3.5 text-xs leading-relaxed rounded-2xl ${
                         m.sender === "Reporter"
-                          ? "bg-[#304A78] text-[#F4F1EB] rounded-tl-lg rounded-bl-lg rounded-tr-lg"
-                          : "bg-[#2C3259] text-[#F4F1EB] border border-[#304A78] rounded-tr-lg rounded-br-lg rounded-tl-lg"
+                          ? "bg-[#262E5F] text-[#F4F1EB] rounded-br-none border border-[#DDA162]/30"
+                          : "bg-[#0A0E28] text-[#F4F1EB] border border-[#262E5F] rounded-bl-none"
                       }`}
                     >
                       {m.text}
@@ -273,12 +300,12 @@ export const ReportTrackPage: React.FC = () => {
                   value={replyText}
                   onChange={(e) => setReplyText(e.target.value)}
                   placeholder="Type an anonymous clarification or question to the IC..."
-                  className="flex-1 bg-[#0A0E28] border border-[#304A78] px-4 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+                  className="flex-1 bg-[#0E1438] border border-[#262E5F] rounded-xl px-4 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
                 />
                 <button
                   type="submit"
                   disabled={!replyText.trim()}
-                  className="px-5 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 disabled:opacity-40 cursor-pointer"
+                  className="px-5 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center gap-1.5 disabled:opacity-40 cursor-pointer shadow-md"
                 >
                   <span>Send</span>
                   <Send className="w-3.5 h-3.5" />

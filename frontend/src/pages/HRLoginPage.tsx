@@ -41,7 +41,7 @@ export const HRLoginPage: React.FC = () => {
           <img
             src="/theodra-logo.png"
             alt="THEODRA Logo"
-            className="h-16 w-auto mx-auto object-contain transition-transform group-hover:scale-105"
+            className="h-16 w-auto mx-auto object-contain rounded-xl transition-transform group-hover:scale-105"
           />
         </Link>
         <span className="font-mono text-xs uppercase tracking-widest text-[#DDA162] block">
@@ -56,9 +56,9 @@ export const HRLoginPage: React.FC = () => {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 shadow-2xl">
           {error && (
-            <div className="mb-5 p-3 bg-[#0A0E28] border border-amber-600/60 text-[#EBBA4A] text-xs flex items-start gap-2.5">
+            <div className="mb-5 p-3.5 bg-amber-950/40 border border-[#EBBA4A] text-[#EBBA4A] text-xs rounded-xl flex items-start gap-2.5">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
@@ -76,7 +76,7 @@ export const HRLoginPage: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="hr@theodra.demo"
-                  className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
                 />
                 <Mail className="w-4 h-4 text-[#A87C56] absolute right-3 top-3 pointer-events-none" />
               </div>
@@ -93,7 +93,7 @@ export const HRLoginPage: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
                 />
                 <Lock className="w-4 h-4 text-[#A87C56] absolute right-3 top-3 pointer-events-none" />
               </div>
@@ -102,7 +102,7 @@ export const HRLoginPage: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 py-3 bg-[#DDA162] text-[#0A0E28] text-xs font-bold tracking-wider uppercase hover:bg-[#EBBA4A] transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full mt-2 py-3 bg-[#DDA162] text-[#0A0E28] text-xs font-bold tracking-wider uppercase hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shadow-md"
             >
               {loading ? (
                 <span>Verifying Administrator Access...</span>
@@ -116,8 +116,8 @@ export const HRLoginPage: React.FC = () => {
           </form>
 
           {/* Visible Hint Box Below Form */}
-          <div className="mt-6 pt-5 border-t border-[#304A78]">
-            <div className="bg-[#0A0E28] border border-[#304A78] p-3 text-xs">
+          <div className="mt-6 pt-5 border-t border-[#262E5F]">
+            <div className="bg-[#0E1438] border border-[#262E5F] rounded-xl p-3.5 text-xs">
               <div className="flex items-center justify-between mb-1.5">
                 <span className="font-semibold text-[#DDA162] flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4" /> Demo Credentials
@@ -125,7 +125,7 @@ export const HRLoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleUseDemo}
-                  className="text-[11px] text-[#EBBA4A] hover:underline"
+                  className="text-[11px] text-[#EBBA4A] hover:underline cursor-pointer font-semibold"
                 >
                   Auto-fill
                 </button>
@@ -136,7 +136,7 @@ export const HRLoginPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-4 text-center space-y-1.5">
+            <div className="mt-4 text-center space-y-2">
               <Link
                 to="/ic/login"
                 className="text-xs text-[#A87C56] hover:text-[#DDA162] transition-colors block"

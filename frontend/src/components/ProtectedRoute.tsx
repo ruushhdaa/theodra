@@ -27,8 +27,8 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
 
     return (
       <div className="min-h-screen bg-[#0A0E28] flex items-center justify-center p-6">
-        <div className="max-w-lg w-full bg-[#2C3259] border border-[#304A78] p-8 text-center rounded-[4px] shadow-2xl">
-          <div className="w-14 h-14 rounded-full bg-[#0A0E28] border border-[#DDA162]/30 flex items-center justify-center mx-auto mb-5 text-[#EBBA4A]">
+        <div className="max-w-lg w-full bg-[#0A0E28] border border-[#262E5F] p-8 text-center rounded-2xl shadow-2xl">
+          <div className="w-14 h-14 rounded-2xl bg-[#0E1438] border border-[#262E5F] flex items-center justify-center mx-auto mb-5 text-[#EBBA4A]">
             <Lock className="w-6 h-6 text-[#DDA162]" />
           </div>
 
@@ -51,7 +51,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
             )}
           </p>
 
-          <div className="p-4 bg-[#0A0E28] border border-[#304A78] rounded-[4px] mb-6 text-left">
+          <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl mb-6 text-left">
             <div className="flex items-center gap-2 font-sans text-xs font-semibold text-[#DDA162] mb-1">
               <ShieldAlert className="w-4 h-4 text-[#EBBA4A]" />
               Role Enforcement in Action
@@ -70,7 +70,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
                   switchRole("IC Member");
                   navigate("/ic/dashboard");
                 }}
-                className="w-full sm:w-auto font-sans text-xs font-medium bg-[#EBBA4A] text-[#0A0E28] px-5 py-2.5 rounded-[4px] hover:bg-[#DDA162] transition-colors flex items-center justify-center gap-2 cursor-pointer font-semibold"
+                className="w-full sm:w-auto font-sans text-xs font-medium bg-[#EBBA4A] text-[#0A0E28] px-5 py-2.5 rounded-xl hover:bg-[#DDA162] transition-colors flex items-center justify-center gap-2 cursor-pointer font-semibold shadow-md"
               >
                 Switch to IC Member Role <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -83,7 +83,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
                   switchRole("HR Admin");
                   navigate("/hr/dashboard");
                 }}
-                className="w-full sm:w-auto font-sans text-xs font-medium bg-[#EBBA4A] text-[#0A0E28] px-5 py-2.5 rounded-[4px] hover:bg-[#DDA162] transition-colors flex items-center justify-center gap-2 cursor-pointer font-semibold"
+                className="w-full sm:w-auto font-sans text-xs font-medium bg-[#EBBA4A] text-[#0A0E28] px-5 py-2.5 rounded-xl hover:bg-[#DDA162] transition-colors flex items-center justify-center gap-2 cursor-pointer font-semibold shadow-md"
               >
                 Switch to HR Admin Role <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -92,7 +92,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
             {user.role === "Employee" && (
               <Link
                 to="/report"
-                className="w-full sm:w-auto font-sans text-xs font-medium bg-[#EBBA4A] text-[#0A0E28] px-5 py-2.5 rounded-[4px] hover:bg-[#DDA162] transition-colors flex items-center justify-center gap-2"
+                className="w-full sm:w-auto font-sans text-xs font-medium bg-[#EBBA4A] text-[#0A0E28] px-5 py-2.5 rounded-xl hover:bg-[#DDA162] transition-colors flex items-center justify-center gap-2 shadow-md"
               >
                 Go to Anonymous Reporting Portal
               </Link>
@@ -100,7 +100,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
 
             <Link
               to={user.role === "IC Member" ? "/ic/dashboard" : user.role === "HR Admin" ? "/hr/dashboard" : "/"}
-              className="w-full sm:w-auto font-sans text-xs font-medium border border-[#304A78] text-[#F4F1EB]/80 hover:text-[#F4F1EB] px-5 py-2.5 rounded-[4px] transition-colors flex items-center justify-center gap-2"
+              className="w-full sm:w-auto font-sans text-xs font-medium border border-[#262E5F] text-[#F4F1EB]/80 hover:text-[#F4F1EB] hover:bg-[#262E5F] px-5 py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Return to My Dashboard
             </Link>

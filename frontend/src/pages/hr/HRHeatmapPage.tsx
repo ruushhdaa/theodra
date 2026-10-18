@@ -23,8 +23,8 @@ export const HRHeatmapPage: React.FC = () => {
 
   // Color mapping based on palette
   const getBadgeColor = (score: number) => {
-    if (score >= 80) return "bg-[#304A78] text-[#F4F1EB] border-[#304A78]"; // Healthy
-    if (score >= 70) return "bg-[#2C3259] text-[#DDA162] border-[#DDA162]"; // Stable
+    if (score >= 80) return "bg-[#0E1438] text-[#F4F1EB] border-[#262E5F]"; // Healthy
+    if (score >= 70) return "bg-[#161E48] text-[#DDA162] border-[#262E5F]"; // Stable
     if (score >= 50) return "bg-amber-950/60 text-[#EBBA4A] border-[#EBBA4A]"; // Attention
     return "bg-amber-950 text-[#EBBA4A] border-[#EBBA4A]"; // Critical
   };
@@ -32,7 +32,7 @@ export const HRHeatmapPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Anonymized Voluntary Pulse Telemetry
@@ -44,7 +44,7 @@ export const HRHeatmapPage: React.FC = () => {
             Aggregated voluntary workplace safety ratings across organizational divisions.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs bg-[#2C3259] px-3.5 py-2 border border-[#304A78] text-[#DDA162]">
+        <div className="flex items-center gap-2 text-xs bg-[#0A0E28] px-3.5 py-2 border border-[#262E5F] rounded-xl text-[#DDA162]">
           <Map className="w-4 h-4" />
           <span>8 Departments Monitored</span>
         </div>
@@ -63,10 +63,10 @@ export const HRHeatmapPage: React.FC = () => {
                 key={dep.id}
                 type="button"
                 onClick={() => setSelectedDept(dep)}
-                className={`p-5 text-left border transition-all cursor-pointer shadow-lg flex flex-col justify-between h-44 ${
+                className={`p-5 text-left rounded-2xl border transition-all cursor-pointer shadow-lg flex flex-col justify-between h-44 ${
                   isSelected
-                    ? "bg-[#2C3259] border-2 border-[#DDA162]"
-                    : "bg-[#2C3259] border-[#304A78] hover:border-[#DDA162]"
+                    ? "bg-[#262E5F] border-[#DDA162]"
+                    : "bg-[#0A0E28] border-[#262E5F] hover:bg-[#262E5F] hover:border-[#DDA162]"
                 }`}
               >
                 <div>
@@ -75,7 +75,7 @@ export const HRHeatmapPage: React.FC = () => {
                       {dep.name}
                     </span>
                     <span
-                      className={`text-[10px] px-2 py-0.5 font-bold uppercase tracking-wider border ${getBadgeColor(
+                      className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${getBadgeColor(
                         dep.score
                       )}`}
                     >
@@ -88,7 +88,7 @@ export const HRHeatmapPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-[#304A78] flex items-end justify-between">
+                <div className="pt-3 border-t border-[#262E5F]/60 flex items-end justify-between">
                   <div>
                     <span className="text-[10px] uppercase text-[#A87C56] block">Safety Index</span>
                     <span className="font-serif text-2xl font-bold text-[#EBBA4A]">
@@ -116,8 +116,8 @@ export const HRHeatmapPage: React.FC = () => {
         </div>
 
         {/* Side Panel: Selected Department Trend Chart (3 cols) */}
-        <div className="lg:col-span-3 bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-4">
-          <div className="pb-3 border-b border-[#304A78]">
+        <div className="lg:col-span-3 bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-4">
+          <div className="pb-3 border-b border-[#262E5F]">
             <span className="text-[10px] uppercase tracking-wider text-[#DDA162] font-semibold block">
               Department Telemetry Detail
             </span>
@@ -133,16 +133,17 @@ export const HRHeatmapPage: React.FC = () => {
             <span className="text-xs font-semibold text-[#F4F1EB] block mb-2">
               4-Week Safety Pulse Progression
             </span>
-            <div className="h-44 w-full bg-[#0A0E28] border border-[#304A78] p-2">
+            <div className="h-44 w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-2">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={miniChartData}>
-                  <CartesianGrid stroke="#304A78" strokeDasharray="3 3" vertical={false} />
+                  <CartesianGrid stroke="#262E5F" strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="week" stroke="#A87C56" fontSize={10} tickLine={false} />
                   <YAxis domain={[30, 100]} stroke="#A87C56" fontSize={10} tickLine={false} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#0A0E28",
-                      borderColor: "#304A78",
+                      borderColor: "#262E5F",
+                      borderRadius: "0.75rem",
                       fontSize: "11px",
                       color: "#F4F1EB",
                     }}
@@ -159,7 +160,7 @@ export const HRHeatmapPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78] text-[11px] text-[#A87C56] leading-relaxed">
+          <div className="p-3 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[11px] text-[#A87C56] leading-relaxed">
             Status assessment: {selectedDept.level === "Critical" ? (
               <span className="text-[#EBBA4A] font-semibold">
                 High pressure indicator. Recommend dispatching proactive sensitization workshop.
@@ -178,7 +179,7 @@ export const HRHeatmapPage: React.FC = () => {
       </div>
 
       {/* Mandatory Footer Note */}
-      <div className="p-4 bg-[#0A0E28] border border-[#304A78] text-xs text-[#A87C56] text-center">
+      <div className="p-4 bg-[#0A0E28] border border-[#262E5F] rounded-2xl text-xs text-[#A87C56] text-center shadow-md">
         Scores reflect anonymous voluntary pulse responses. Departments with fewer than 5 respondents are not shown.
       </div>
     </div>

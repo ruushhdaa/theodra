@@ -62,12 +62,10 @@ export const HRExportsPage: React.FC = () => {
     setDownloadingId(option.id);
     setReadyNotice(null);
 
-    // Prompt specifies: show a loading spinner for 1.5 seconds then trigger dummy download / ready confirmation
     setTimeout(() => {
       setDownloadingId(null);
       setReadyNotice(`Export ready: ${option.title} (${option.format}) downloaded successfully.`);
 
-      // Trigger actual dummy file download
       const content = `THEODRA COMPLIANCE EXPORT: ${option.title}\nGenerated on: ${new Date().toISOString()}\nOrganization: Corporate Compliance Organization\nStatus: Statutorily Verified`;
       const blob = new Blob([content], {
         type: option.format === "PDF" ? "application/pdf" : "text/csv;charset=utf-8;",
@@ -85,7 +83,7 @@ export const HRExportsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Regulatory Documentation Archive
@@ -97,14 +95,14 @@ export const HRExportsPage: React.FC = () => {
             Compile and download certified statutory filings, audit archives, and board briefing packages.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs bg-[#2C3259] px-3.5 py-2 border border-[#304A78] text-[#DDA162]">
+        <div className="flex items-center gap-2 text-xs bg-[#0A0E28] px-3.5 py-2 border border-[#262E5F] rounded-xl text-[#DDA162]">
           <Download className="w-4 h-4" />
           <span>Cryptographically Sealed Exports</span>
         </div>
       </div>
 
       {readyNotice && (
-        <div className="p-3.5 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2 shadow-lg">
+        <div className="p-3.5 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl flex items-center gap-2 shadow-lg">
           <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
           <span>{readyNotice}</span>
         </div>
@@ -119,18 +117,18 @@ export const HRExportsPage: React.FC = () => {
           return (
             <div
               key={opt.id}
-              className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl flex flex-col justify-between h-56 transition-all hover:border-[#DDA162]"
+              className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] hover:border-[#DDA162] p-6 rounded-2xl shadow-2xl flex flex-col justify-between h-56 transition-all group"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="p-2.5 bg-[#0A0E28] border border-[#304A78] text-[#DDA162]">
+                  <div className="p-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[#DDA162] group-hover:border-[#DDA162] transition-colors">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 bg-[#0A0E28] text-[#DDA162] font-mono border border-[#304A78] font-bold">
+                  <span className="text-[10px] px-2.5 py-0.5 bg-[#0E1438] text-[#DDA162] font-mono border border-[#262E5F] rounded-full font-bold">
                     {opt.format}
                   </span>
                 </div>
-                <h3 className="font-serif text-base font-bold text-[#F4F1EB] mb-1.5">
+                <h3 className="font-serif text-base font-bold text-[#F4F1EB] group-hover:text-[#DDA162] mb-1.5 transition-colors">
                   {opt.title}
                 </h3>
                 <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
@@ -138,12 +136,12 @@ export const HRExportsPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#304A78]">
+              <div className="pt-4 border-t border-[#262E5F]/60">
                 <button
                   type="button"
                   disabled={isLoading}
                   onClick={() => handleGenerate(opt)}
-                  className="w-full py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                  className="w-full py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 shadow-md"
                 >
                   {isLoading ? (
                     <>

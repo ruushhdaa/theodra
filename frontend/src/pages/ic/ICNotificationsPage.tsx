@@ -50,7 +50,7 @@ export const ICNotificationsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Alerts & Statutory Messages
@@ -66,7 +66,7 @@ export const ICNotificationsPage: React.FC = () => {
           <button
             type="button"
             onClick={markAllRead}
-            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+            className="px-4 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-lg"
           >
             <Check className="w-4 h-4" />
             <span>Mark All as Read ({unreadCount})</span>
@@ -89,10 +89,10 @@ export const ICNotificationsPage: React.FC = () => {
             key={tab.key}
             type="button"
             onClick={() => setFilterType(tab.key)}
-            className={`px-3.5 py-1.5 text-xs font-semibold border transition-colors ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
               filterType === tab.key
-                ? "bg-[#2C3259] border-[#DDA162] text-[#DDA162]"
-                : "bg-[#0A0E28] border-[#304A78] text-[#A87C56] hover:text-[#F4F1EB]"
+                ? "bg-[#262E5F] border-[#DDA162] text-[#DDA162]"
+                : "bg-[#0E1438] border-[#262E5F] text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB]"
             }`}
           >
             {tab.label}
@@ -101,7 +101,7 @@ export const ICNotificationsPage: React.FC = () => {
       </div>
 
       {/* Notifications List */}
-      <div className="bg-[#2C3259] border border-[#304A78] divide-y divide-[#304A78]/60 shadow-2xl">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl divide-y divide-[#262E5F]/60 shadow-2xl overflow-hidden">
         {filtered.length === 0 ? (
           <div className="p-8 text-center text-xs text-[#A87C56]">
             No notifications found under the selected filter.
@@ -111,11 +111,11 @@ export const ICNotificationsPage: React.FC = () => {
             <div
               key={item.id}
               className={`p-4 flex items-start justify-between gap-4 transition-colors ${
-                !item.read ? "bg-[#304A78]/30" : "hover:bg-[#0A0E28]/40"
+                !item.read ? "bg-[#11173D]" : "hover:bg-[#262E5F]"
               }`}
             >
               <div className="flex items-start gap-3.5">
-                <div className="p-2 bg-[#0A0E28] border border-[#304A78] shrink-0 mt-0.5">
+                <div className="p-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl shrink-0 mt-0.5">
                   {getIcon(item.type)}
                 </div>
                 <div>
@@ -136,10 +136,10 @@ export const ICNotificationsPage: React.FC = () => {
 
               <Link
                 to={item.link}
-                className="px-3 py-1.5 bg-[#0A0E28] border border-[#304A78] text-xs font-semibold text-[#DDA162] hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors shrink-0 flex items-center gap-1.5"
+                className="px-3.5 py-1.5 bg-[#0E1438] border border-[#262E5F] text-xs font-semibold text-[#DDA162] hover:bg-[#262E5F] hover:border-[#DDA162] rounded-xl transition-colors shrink-0 flex items-center gap-1.5 shadow-sm"
               >
                 <span>View</span>
-                <ExternalLink className="w-3 h-3" />
+                <ExternalLink className="w-3.5 h-3.5" />
               </Link>
             </div>
           ))

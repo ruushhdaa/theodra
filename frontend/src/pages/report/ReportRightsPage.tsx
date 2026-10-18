@@ -56,7 +56,7 @@ export const ReportRightsPage: React.FC = () => {
         </Link>
 
         {/* Header */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-6 sm:p-8 shadow-2xl">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl">
           <div className="flex items-center gap-3 mb-2">
             <Scale className="w-6 h-6 text-[#DDA162]" />
             <span className="text-[11px] font-semibold uppercase tracking-widest text-[#DDA162]">
@@ -76,24 +76,24 @@ export const ReportRightsPage: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="bg-[#2C3259] border border-[#304A78] transition-colors overflow-hidden"
+                className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl transition-all overflow-hidden shadow-md"
               >
                 <button
                   type="button"
                   onClick={() => setOpenSection(isOpen ? null : idx)}
-                  className="w-full text-left p-5 flex items-center justify-between gap-4 hover:bg-[#304A78]/30 transition-colors"
+                  className="w-full text-left p-5 flex items-center justify-between gap-4 hover:bg-[#262E5F] transition-colors cursor-pointer"
                 >
                   <span className="font-serif text-base font-semibold text-[#F4F1EB]">
                     {sec.title}
                   </span>
-                  <div className="w-6 h-6 rounded-none bg-[#0A0E28] border border-[#304A78] flex items-center justify-center shrink-0 text-[#DDA162]">
+                  <div className="w-7 h-7 rounded-xl bg-[#0E1438] border border-[#262E5F] flex items-center justify-center shrink-0 text-[#DDA162]">
                     {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="p-5 pt-0 border-t border-[#304A78]/60 bg-[#0A0E28]/40">
-                    <p className="font-serif text-xs sm:text-sm text-[#F4F1EB] leading-relaxed opacity-95">
+                  <div className="p-5 pt-0 border-t border-[#262E5F]/60 bg-[#0E1438]/50">
+                    <p className="font-serif text-xs sm:text-sm text-[#F4F1EB] leading-relaxed opacity-95 pt-4">
                       {sec.content}
                     </p>
                   </div>
@@ -104,7 +104,7 @@ export const ReportRightsPage: React.FC = () => {
         </div>
 
         {/* Help footer */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
           <div>
             <h4 className="font-serif text-sm font-semibold text-[#F4F1EB]">Need immediate support?</h4>
             <p className="font-serif text-xs text-[#A87C56]">
@@ -113,7 +113,7 @@ export const ReportRightsPage: React.FC = () => {
           </div>
           <Link
             to="/report/resources"
-            className="px-5 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors shrink-0"
+            className="px-5 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors shrink-0 shadow-md"
           >
             View Safety Resources
           </Link>

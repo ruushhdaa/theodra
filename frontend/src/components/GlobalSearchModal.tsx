@@ -143,18 +143,18 @@ export const GlobalSearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose 
               <div className="text-[11px] font-semibold uppercase tracking-wider text-[#DDA162] mb-2 flex items-center gap-1.5">
                 <Activity className="w-3.5 h-3.5" /> Cohort Patterns
               </div>
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 {patternResults.map((p) => (
                   <button
                     key={p.id}
                     onClick={() => handleSelect(`/ic/patterns/${p.id}`)}
-                    className="w-full text-left p-2.5 bg-[#0A0E28]/60 hover:bg-[#304A78]/50 border border-[#304A78] flex items-center justify-between group transition-colors"
+                    className="w-full text-left p-3 bg-[#0E1438] hover:bg-[#262E5F] border border-[#262E5F] hover:border-[#DDA162]/50 rounded-xl flex items-center justify-between group transition-colors shadow-sm"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-xs text-[#F4F1EB]">{p.id}</span>
+                        <span className="font-semibold text-xs text-[#F4F1EB] group-hover:text-[#DDA162]">{p.id}</span>
                         <span className="text-xs text-[#A87C56]">({p.department})</span>
-                        <span className="text-[10px] px-1.5 py-0.2 bg-[#304A78] text-[#DDA162]">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#161E48] text-[#DDA162] border border-[#262E5F]">
                           {p.severity}
                         </span>
                       </div>
@@ -173,16 +173,16 @@ export const GlobalSearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose 
               <div className="text-[11px] font-semibold uppercase tracking-wider text-[#DDA162] mb-2 flex items-center gap-1.5">
                 <Briefcase className="w-3.5 h-3.5" /> Cases
               </div>
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 {caseResults.map((c) => (
                   <button
                     key={c.id}
                     onClick={() => handleSelect(`/ic/cases/${c.id}`)}
-                    className="w-full text-left p-2.5 bg-[#0A0E28]/60 hover:bg-[#304A78]/50 border border-[#304A78] flex items-center justify-between group transition-colors"
+                    className="w-full text-left p-3 bg-[#0E1438] hover:bg-[#262E5F] border border-[#262E5F] hover:border-[#DDA162]/50 rounded-xl flex items-center justify-between group transition-colors shadow-sm"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-xs text-[#F4F1EB]">{c.id}</span>
+                        <span className="font-semibold text-xs text-[#F4F1EB] group-hover:text-[#DDA162]">{c.id}</span>
                         <span className="text-xs text-[#A87C56]">— {c.title}</span>
                       </div>
                       <p className="text-xs text-[#A87C56] mt-0.5">
@@ -202,16 +202,16 @@ export const GlobalSearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose 
               <div className="text-[11px] font-semibold uppercase tracking-wider text-[#DDA162] mb-2 flex items-center gap-1.5">
                 <Inbox className="w-3.5 h-3.5" /> Anonymous Reports
               </div>
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 {reportResults.map((r) => (
                   <button
                     key={r.id}
                     onClick={() => handleSelect(`/ic/reports/${r.id}`)}
-                    className="w-full text-left p-2.5 bg-[#0A0E28]/60 hover:bg-[#304A78]/50 border border-[#304A78] flex items-center justify-between group transition-colors"
+                    className="w-full text-left p-3 bg-[#0E1438] hover:bg-[#262E5F] border border-[#262E5F] hover:border-[#DDA162]/50 rounded-xl flex items-center justify-between group transition-colors shadow-sm"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-xs text-[#F4F1EB]">{r.id}</span>
+                        <span className="font-semibold text-xs text-[#F4F1EB] group-hover:text-[#DDA162]">{r.id}</span>
                         <span className="text-xs text-[#DDA162] font-mono">[{r.referenceCode}]</span>
                         <span className="text-xs text-[#A87C56]">{r.submissionWeek}</span>
                       </div>
@@ -230,17 +230,17 @@ export const GlobalSearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose 
               <div className="text-[11px] font-semibold uppercase tracking-wider text-[#DDA162] mb-2 flex items-center gap-1.5">
                 <FileText className="w-3.5 h-3.5" /> Policy Documents
               </div>
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 {docResults.map((d) => (
                   <button
                     key={d.id}
                     onClick={() => handleSelect(isIC ? "/ic/minutes" : "/hr/policy")}
-                    className="w-full text-left p-2.5 bg-[#0A0E28]/60 hover:bg-[#304A78]/50 border border-[#304A78] flex items-center justify-between group transition-colors"
+                    className="w-full text-left p-3 bg-[#0E1438] hover:bg-[#262E5F] border border-[#262E5F] hover:border-[#DDA162]/50 rounded-xl flex items-center justify-between group transition-colors shadow-sm"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-xs text-[#F4F1EB]">{d.name}</span>
-                        <span className="text-[10px] px-1.5 py-0.2 bg-[#304A78] text-[#DDA162]">
+                        <span className="font-semibold text-xs text-[#F4F1EB] group-hover:text-[#DDA162]">{d.name}</span>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#161E48] text-[#DDA162] border border-[#262E5F]">
                           {d.version}
                         </span>
                       </div>
@@ -255,7 +255,7 @@ export const GlobalSearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose 
         </div>
 
         {/* Modal Footer */}
-        <div className="px-4 py-2 border-t border-[#304A78] bg-[#0A0E28] flex items-center justify-between text-xs text-[#A87C56]">
+        <div className="px-4 py-3 border-t border-[#262E5F] bg-[#0A0E28] flex items-center justify-between text-xs text-[#A87C56]">
           <span>Press ESC or click outside to dismiss</span>
           <span>{isIC ? "Internal Committee Mode (Full Access)" : "HR Admin Mode (Aggregate Only)"}</span>
         </div>

@@ -112,27 +112,27 @@ export const ICPatternDetailPage: React.FC = () => {
       </div>
 
       {/* Top: Cohort Metadata Card */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#304A78]">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#262E5F]">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-[#0A0E28] border border-[#304A78] text-[#DDA162]">
+            <div className="p-3 bg-[#11173D] border border-[#262E5F] rounded-xl text-[#DDA162]">
               <Activity className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="font-serif text-2xl font-bold text-[#F4F1EB]">{cohort.id}</h1>
                 <span
-                  className={`text-[10px] px-2.5 py-0.5 font-bold uppercase tracking-wider ${
+                  className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${
                     cohort.severity === "Flagged"
-                      ? "bg-amber-950/80 text-[#EBBA4A] border border-[#EBBA4A]"
+                      ? "bg-amber-950/80 text-[#EBBA4A] border-[#EBBA4A]"
                       : cohort.severity === "Elevated"
-                      ? "bg-[#304A78] text-[#DDA162]"
-                      : "bg-[#0A0E28] text-[#A87C56]"
+                      ? "bg-[#161E48] text-[#DDA162] border-[#262E5F]"
+                      : "bg-[#0E1438] text-[#A87C56] border-[#262E5F]"
                   }`}
                 >
                   {cohort.severity} Severity
                 </span>
-                <span className="text-[10px] px-2 py-0.5 bg-[#0A0E28] text-[#DDA162] font-mono border border-[#304A78]">
+                <span className="text-[10px] px-2.5 py-0.5 bg-[#11173D] text-[#DDA162] font-mono border border-[#262E5F] rounded-full">
                   {cohort.escalationStatus}
                 </span>
               </div>
@@ -146,7 +146,7 @@ export const ICPatternDetailPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setPairReviewModalOpen(true)}
-              className="px-4 py-2 bg-[#0A0E28] border border-[#304A78] text-xs font-semibold text-[#DDA162] hover:border-[#DDA162] transition-colors flex items-center gap-2"
+              className="px-4 py-2 bg-[#0A0E28] border border-[#262E5F] rounded-xl text-xs font-semibold text-[#DDA162] hover:bg-[#262E5F] hover:border-[#DDA162] transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
             >
               <FileSearch className="w-4 h-4" />
               <span>{cohort.pairReviewRequested ? "Pair Review Active" : "Request Pair Review"}</span>
@@ -156,39 +156,39 @@ export const ICPatternDetailPage: React.FC = () => {
 
         {/* Metadata Details Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 text-xs">
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78]">
+          <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl">
             <span className="text-[10px] uppercase text-[#A87C56] block">Role Pairing</span>
             <span className="font-semibold text-[#F4F1EB] block mt-1">{cohort.rolePairing}</span>
           </div>
 
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78]">
+          <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl">
             <span className="text-[10px] uppercase text-[#A87C56] block">First Detected</span>
             <span className="font-semibold text-[#F4F1EB] block mt-1">{cohort.firstDetected}</span>
           </div>
 
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78]">
+          <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl">
             <span className="text-[10px] uppercase text-[#A87C56] block">Duration Window</span>
             <span className="font-semibold text-[#F4F1EB] block mt-1">{cohort.duration}</span>
           </div>
 
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78]">
+          <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl">
             <span className="text-[10px] uppercase text-[#A87C56] block">Privacy Cohort Size</span>
             <span className="font-semibold text-[#DDA162] block mt-1 font-mono">
-              {cohort.cohortSize} individuals (k ≥ 5)
+              {cohort.cohortSize} individuals (Cohort Protected)
             </span>
           </div>
         </div>
 
         {/* Dynamics Description */}
-        <div className="mt-4 p-4 bg-[#0A0E28] border border-[#304A78] text-xs text-[#F4F1EB] leading-relaxed">
+        <div className="mt-4 p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-[#F4F1EB] leading-relaxed">
           <span className="font-semibold text-[#DDA162] block mb-1">Algorithmic Telemetry Observation:</span>
           {cohort.dynamicsDescription}
         </div>
       </div>
 
-      {/* Middle: Three Line Charts Side by Side (Recharts) */}
+      {/* Middle: Three Line Charts Side by Side */}
       <div>
-        <div className="pb-3 border-b border-[#304A78] mb-4 flex items-center justify-between">
+        <div className="pb-3 border-b border-[#262E5F] mb-4 flex items-center justify-between">
           <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
             Weekly Communication Telemetry Trends
           </h3>
@@ -197,7 +197,7 @@ export const ICPatternDetailPage: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Chart 1: Communication Frequency */}
-          <div className="bg-[#2C3259] border border-[#304A78] p-4 flex flex-col justify-between">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-5 shadow-xl flex flex-col justify-between">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-wider text-[#DDA162]">
                 1. Communication Frequency
@@ -209,13 +209,14 @@ export const ICPatternDetailPage: React.FC = () => {
             <div className="h-56 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={cohort.trendData}>
-                  <CartesianGrid stroke="#304A78" strokeDasharray="3 3" vertical={false} />
+                  <CartesianGrid stroke="#262E5F" strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="week" stroke="#A87C56" fontSize={10} tickLine={false} />
                   <YAxis stroke="#A87C56" fontSize={10} tickLine={false} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#0A0E28",
-                      borderColor: "#304A78",
+                      borderColor: "#262E5F",
+                      borderRadius: "8px",
                       fontSize: "11px",
                       color: "#F4F1EB",
                     }}
@@ -233,7 +234,7 @@ export const ICPatternDetailPage: React.FC = () => {
           </div>
 
           {/* Chart 2: After-Hours Ratio */}
-          <div className="bg-[#2C3259] border border-[#304A78] p-4 flex flex-col justify-between">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-5 shadow-xl flex flex-col justify-between">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-wider text-[#EBBA4A]">
                 2. After-Hours Ratio (%)
@@ -245,13 +246,14 @@ export const ICPatternDetailPage: React.FC = () => {
             <div className="h-56 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={cohort.trendData}>
-                  <CartesianGrid stroke="#304A78" strokeDasharray="3 3" vertical={false} />
+                  <CartesianGrid stroke="#262E5F" strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="week" stroke="#A87C56" fontSize={10} tickLine={false} />
                   <YAxis stroke="#A87C56" fontSize={10} tickLine={false} unit="%" />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#0A0E28",
-                      borderColor: "#304A78",
+                      borderColor: "#262E5F",
+                      borderRadius: "8px",
                       fontSize: "11px",
                       color: "#F4F1EB",
                     }}
@@ -269,7 +271,7 @@ export const ICPatternDetailPage: React.FC = () => {
           </div>
 
           {/* Chart 3: Exclusivity Score */}
-          <div className="bg-[#2C3259] border border-[#304A78] p-4 flex flex-col justify-between">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-5 shadow-xl flex flex-col justify-between">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-wider text-[#DDA162]">
                 3. Exclusivity Score
@@ -281,13 +283,14 @@ export const ICPatternDetailPage: React.FC = () => {
             <div className="h-56 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={cohort.trendData}>
-                  <CartesianGrid stroke="#304A78" strokeDasharray="3 3" vertical={false} />
+                  <CartesianGrid stroke="#262E5F" strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="week" stroke="#A87C56" fontSize={10} tickLine={false} />
                   <YAxis stroke="#A87C56" fontSize={10} tickLine={false} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#0A0E28",
-                      borderColor: "#304A78",
+                      borderColor: "#262E5F",
+                      borderRadius: "8px",
                       fontSize: "11px",
                       color: "#F4F1EB",
                     }}
@@ -295,9 +298,9 @@ export const ICPatternDetailPage: React.FC = () => {
                   <Line
                     type="monotone"
                     dataKey="exclusivityScore"
-                    stroke="#304A78"
+                    stroke="#DDA162"
                     strokeWidth={2}
-                    dot={{ fill: "#304A78", r: 4 }}
+                    dot={{ fill: "#DDA162", r: 4 }}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -307,8 +310,8 @@ export const ICPatternDetailPage: React.FC = () => {
       </div>
 
       {/* Bottom: Pattern Assessment Panel */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl">
-        <div className="pb-4 border-b border-[#304A78] mb-4 flex items-center justify-between">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl">
+        <div className="pb-4 border-b border-[#262E5F] mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Lock className="w-4 h-4 text-[#DDA162]" />
             <h3 className="font-serif text-base font-bold text-[#F4F1EB]">
@@ -319,7 +322,7 @@ export const ICPatternDetailPage: React.FC = () => {
         </div>
 
         {savedSuccess && (
-          <div className="mb-4 p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+          <div className="mb-4 p-3 bg-[#0E1438] border border-[#DDA162] rounded-xl text-xs text-[#DDA162] flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
             <span>Assessment successfully recorded in Response Ledger.</span>
           </div>
@@ -335,7 +338,7 @@ export const ICPatternDetailPage: React.FC = () => {
               value={assessmentNote}
               onChange={(e) => setAssessmentNote(e.target.value)}
               placeholder="Record observations regarding after-hours ping clustering, hierarchy differentials, or contextual correlation with anonymous reports..."
-              className="w-full bg-[#0A0E28] border border-[#304A78] p-3 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162] leading-relaxed"
+              className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-3.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162] leading-relaxed"
             />
           </div>
 
@@ -348,10 +351,10 @@ export const ICPatternDetailPage: React.FC = () => {
                     key={disp}
                     type="button"
                     onClick={() => setDisposition(disp)}
-                    className={`px-3 py-1.5 text-xs font-semibold border transition-colors ${
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors cursor-pointer ${
                       disposition === disp
-                        ? "bg-[#0A0E28] border-[#DDA162] text-[#DDA162]"
-                        : "bg-[#0A0E28]/40 border-[#304A78] text-[#A87C56] hover:text-[#F4F1EB]"
+                        ? "bg-[#262E5F] border-[#DDA162] text-[#DDA162]"
+                        : "bg-[#0E1438] border-[#262E5F] text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB]"
                     }`}
                   >
                     {disp}
@@ -362,7 +365,7 @@ export const ICPatternDetailPage: React.FC = () => {
 
             <button
               type="submit"
-              className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors cursor-pointer"
+              className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors cursor-pointer shadow-md"
             >
               {disposition === "Escalate" ? "Proceed to Escalation Vote" : "Save Assessment"}
             </button>
@@ -372,9 +375,9 @@ export const ICPatternDetailPage: React.FC = () => {
 
       {/* Escalation Two-Vote Modal */}
       {escalateModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/80 backdrop-blur-none">
-          <div className="bg-[#2C3259] border border-[#304A78] max-w-lg w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4">
-            <div className="flex items-center gap-3 pb-3 border-b border-[#304A78]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/85">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl max-w-lg w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4 animate-in fade-in">
+            <div className="flex items-center gap-3 pb-3 border-b border-[#262E5F]">
               <Vote className="w-6 h-6 text-[#EBBA4A]" />
               <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
                 Two-Member Statutory Escalation Protocol
@@ -386,17 +389,17 @@ export const ICPatternDetailPage: React.FC = () => {
                 <p className="text-[#F4F1EB]">
                   Escalating a cohort triggers investigative inquiry authorization. Under Section 4 operating guidelines, this requires independent concurrence from two Internal Committee members.
                 </p>
-                <div className="p-3.5 bg-[#0A0E28] border border-[#304A78] text-[#DDA162]">
+                <div className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[#DDA162]">
                   <p className="font-semibold">Current State: 0 of 2 Votes Recorded</p>
                   <p className="text-[11px] text-[#A87C56] mt-1">
-                    Casting your vote will record 1 of 2 required votes. The cohort will be marked "1 of 2 Votes Received" until a second member reviews it.
+                    Casting your vote will record 1 of 2 required votes. The cohort will be marked &quot;1 of 2 Votes Received&quot; until a second member reviews it.
                   </p>
                 </div>
-                <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#304A78]">
+                <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#262E5F]">
                   <button
                     type="button"
                     onClick={() => setEscalateModalOpen(false)}
-                    className="px-4 py-2 border border-[#304A78] text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                    className="px-4 py-2 border border-[#262E5F] rounded-lg text-xs text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB] cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -406,7 +409,7 @@ export const ICPatternDetailPage: React.FC = () => {
                       handleCastFirstVote();
                       setEscalateModalOpen(false);
                     }}
-                    className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A]"
+                    className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#EBBA4A] cursor-pointer shadow-md"
                   >
                     Cast 1st Escalation Vote
                   </button>
@@ -416,7 +419,7 @@ export const ICPatternDetailPage: React.FC = () => {
 
             {cohort.votesCount === 1 && (
               <div className="space-y-4 text-xs leading-relaxed">
-                <div className="p-3.5 bg-[#0A0E28] border border-[#EBBA4A] text-[#EBBA4A]">
+                <div className="p-3.5 bg-[#0E1438] border border-[#EBBA4A] rounded-xl text-[#EBBA4A]">
                   <p className="font-semibold">
                     1 of 2 votes received — awaiting second vote
                   </p>
@@ -430,11 +433,11 @@ export const ICPatternDetailPage: React.FC = () => {
                 <p className="text-[#F4F1EB]">
                   As an independent IC member, confirming your vote satisfies the statutory quorum requirement and will immediately flip this cohort status to <span className="text-[#EBBA4A] font-bold">Escalated</span>.
                 </p>
-                <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#304A78]">
+                <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#262E5F]">
                   <button
                     type="button"
                     onClick={() => setEscalateModalOpen(false)}
-                    className="px-4 py-2 border border-[#304A78] text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                    className="px-4 py-2 border border-[#262E5F] rounded-lg text-xs text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB] cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -444,7 +447,7 @@ export const ICPatternDetailPage: React.FC = () => {
                       handleCastSecondVote();
                       setEscalateModalOpen(false);
                     }}
-                    className="px-5 py-2 bg-[#EBBA4A] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#DDA162]"
+                    className="px-5 py-2 bg-[#EBBA4A] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#DDA162] cursor-pointer shadow-md"
                   >
                     Confirm 2nd Vote & Escalate
                   </button>
@@ -464,7 +467,7 @@ export const ICPatternDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setEscalateModalOpen(false)}
-                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-semibold"
+                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-semibold rounded-lg cursor-pointer"
                 >
                   Close Window
                 </button>
@@ -476,9 +479,9 @@ export const ICPatternDetailPage: React.FC = () => {
 
       {/* Pair Review Modal */}
       {pairReviewModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/80 backdrop-blur-none">
-          <div className="bg-[#2C3259] border border-[#304A78] max-w-lg w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4">
-            <div className="flex items-center gap-3 pb-3 border-b border-[#304A78]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/85">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl max-w-lg w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4 animate-in fade-in">
+            <div className="flex items-center gap-3 pb-3 border-b border-[#262E5F]">
               <FileSearch className="w-6 h-6 text-[#DDA162]" />
               <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
                 Request Pair Telemetry Review
@@ -500,25 +503,25 @@ export const ICPatternDetailPage: React.FC = () => {
                   value={pairCaseRef}
                   onChange={(e) => setPairCaseRef(e.target.value)}
                   placeholder="e.g. CASE-2026-09"
-                  className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2 text-xs text-[#EBBA4A] font-mono focus:outline-none focus:border-[#DDA162]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2 text-xs text-[#EBBA4A] font-mono focus:outline-none focus:border-[#DDA162]"
                 />
               </div>
 
-              <div className="p-3 bg-[#0A0E28] border border-[#304A78] text-[11px] text-[#A87C56]">
+              <div className="p-3 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[11px] text-[#A87C56]">
                 Notice: All pair telemetry requests are permanently recorded in the immutable audit log and response ledger.
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#304A78]">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#262E5F]">
                 <button
                   type="button"
                   onClick={() => setPairReviewModalOpen(false)}
-                  className="px-4 py-2 border border-[#304A78] text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                  className="px-4 py-2 border border-[#262E5F] rounded-lg text-xs text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB] cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A]"
+                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#EBBA4A] cursor-pointer shadow-md"
                 >
                   Submit Pair Review Request
                 </button>

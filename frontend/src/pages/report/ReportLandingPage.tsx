@@ -4,46 +4,43 @@ import {
   ShieldCheck,
   EyeOff,
   Users,
+  Lock,
   ArrowRight,
   Upload,
-  CheckCircle,
-  Copy,
   Check,
+  Copy,
+  CheckCircle,
   FileText,
   AlertCircle,
-  FileCode,
   Image as ImageIcon,
   Video,
   File,
-  Sparkles,
 } from "lucide-react";
 
 export const ReportLandingPage: React.FC = () => {
   const [activeMode, setActiveMode] = useState<"landing" | "form">("landing");
   const [currentStep, setCurrentStep] = useState(1);
-
-  // Form State
-  const [concerns, setConcerns] = useState<string[]>([]);
-  const [channel, setChannel] = useState("In-person");
-  const [timeframe, setTimeframe] = useState("January 2026");
-  const [description, setDescription] = useState("");
-  const [files, setFiles] = useState<{ name: string; size: string; type: string }[]>([]);
-  const [referenceCode, setReferenceCode] = useState("");
-  const [optionalContact, setOptionalContact] = useState("");
-  const [copied, setCopied] = useState(false);
-
-  // Wellness Pulse State
   const [pulseScore, setPulseScore] = useState<number | null>(null);
   const [pulseSubmitted, setPulseSubmitted] = useState(false);
 
+  // Form states
+  const [concerns, setConcerns] = useState<string[]>([]);
+  const [channel, setChannel] = useState<string>("In-person");
+  const [timeframe, setTimeframe] = useState<string>("February 2026");
+  const [description, setDescription] = useState("");
+  const [files, setFiles] = useState<{ name: string; size: string }[]>([]);
+  const [optionalContact, setOptionalContact] = useState("");
+  const [referenceCode, setReferenceCode] = useState("");
+  const [copied, setCopied] = useState(false);
+
   const concernOptions = [
-    "Verbal harassment",
-    "Inappropriate messages",
-    "Unwanted contact",
-    "Exclusion",
-    "Intimidation",
-    "Abuse of authority",
-    "Other",
+    "Unwanted physical contact",
+    "Sexually suggestive remarks or jokes",
+    "Repeated requests for dates / after-hours contact",
+    "Quid pro quo (implied career threat or promise)",
+    "Hostile work environment",
+    "Retaliation for previous refusal",
+    "Other concern",
   ];
 
   const handleToggleConcern = (c: string) => {
@@ -53,16 +50,16 @@ export const ReportLandingPage: React.FC = () => {
   };
 
   const handleFileDrop = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    const newFiles = Array.from(e.target.files).slice(0, 5).map((f) => ({
-      name: f.name,
-      size: `${(f.size / (1024 * 1024)).toFixed(1)} MB`,
-      type: f.type || "Document",
-    }));
-    setFiles((prev) => [...prev, ...newFiles].slice(0, 5));
+    if (e.target.files && e.target.files.length > 0) {
+      const newFiles = Array.from(e.target.files).slice(0, 5 - files.length).map((f) => ({
+        name: f.name,
+        size: `${(f.size / (1024 * 1024)).toFixed(1)} MB`,
+      }));
+      setFiles((prev) => [...prev, ...newFiles].slice(0, 5));
+    }
   };
 
-  const generateCode = () => {
+  const generateRefCode = () => {
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     let code = "TR-";
     for (let i = 0; i < 8; i++) {
@@ -72,15 +69,17 @@ export const ReportLandingPage: React.FC = () => {
   };
 
   const handleCompleteSubmission = () => {
-    const code = generateCode();
-    setReferenceCode(code);
+    const ref = generateRefCode();
+    setReferenceCode(ref);
     setCurrentStep(5);
   };
 
   const handleCopyCode = () => {
-    navigator.clipboard.writeText(referenceCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (referenceCode) {
+      navigator.clipboard.writeText(referenceCode);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
   };
 
   const handlePulseSubmit = (e: React.FormEvent) => {
@@ -93,7 +92,7 @@ export const ReportLandingPage: React.FC = () => {
   return (
     <div className="bg-[#0A0E28] text-[#F4F1EB] min-h-[85vh]">
       {/* Sub-navigation bar for Employee Portal */}
-      <div className="bg-[#2C3259] border-b border-[#304A78] px-4 py-2.5">
+      <div className="bg-[#0A0E28] border-b border-[#262E5F] px-4 py-2.5">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs">
           <div className="flex items-center gap-2 text-[#DDA162]">
             <ShieldCheck className="w-4 h-4" />
@@ -105,7 +104,7 @@ export const ReportLandingPage: React.FC = () => {
             <Link to="/report/track" className="text-[#F4F1EB] hover:text-[#DDA162] transition-colors">
               Track Report
             </Link>
-            <Link to="/report/flag" className="text-[#F4F1EB] hover:text-[#DDA162] transition-colors">
+            <Link to="/report/quiet-flag" className="text-[#F4F1EB] hover:text-[#DDA162] transition-colors">
               Quiet Flag
             </Link>
             <Link to="/report/rights" className="text-[#F4F1EB] hover:text-[#DDA162] transition-colors">
@@ -136,7 +135,7 @@ export const ReportLandingPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setActiveMode("form")}
-                className="w-full sm:w-auto px-7 py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold tracking-wider uppercase hover:bg-[#EBBA4A] transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                className="w-full sm:w-auto px-7 py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold tracking-wider uppercase hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg"
               >
                 <span>Make a Report</span>
                 <ArrowRight className="w-4 h-4" />
@@ -144,7 +143,7 @@ export const ReportLandingPage: React.FC = () => {
 
               <Link
                 to="/report/track"
-                className="w-full sm:w-auto px-7 py-3.5 border border-[#304A78] text-[#F4F1EB] text-xs font-semibold tracking-wider hover:bg-[#2C3259] transition-colors flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 py-3.5 border border-[#262E5F] text-[#F4F1EB] text-xs font-semibold tracking-wider hover:bg-[#262E5F] hover:border-[#DDA162] rounded-xl transition-colors flex items-center justify-center gap-2"
               >
                 <span>Track an Existing Report</span>
               </Link>
@@ -153,11 +152,11 @@ export const ReportLandingPage: React.FC = () => {
 
           {/* Three Trust Statements in Plain English */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-            <div className="bg-[#2C3259] border border-[#304A78] p-6">
-              <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] flex items-center justify-center mb-4 text-[#DDA162]">
+            <div className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] hover:border-[#DDA162] p-6 rounded-2xl shadow-xl transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-[#0E1438] border border-[#262E5F] group-hover:border-[#DDA162] flex items-center justify-center mb-4 text-[#DDA162]">
                 <EyeOff className="w-5 h-5" />
               </div>
-              <h3 className="font-serif text-base font-bold text-[#F4F1EB] mb-2">
+              <h3 className="font-serif text-base font-bold text-[#F4F1EB] group-hover:text-[#DDA162] mb-2 transition-colors">
                 Metadata only, never message content
               </h3>
               <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
@@ -165,11 +164,11 @@ export const ReportLandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#2C3259] border border-[#304A78] p-6">
-              <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] flex items-center justify-center mb-4 text-[#DDA162]">
+            <div className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] hover:border-[#DDA162] p-6 rounded-2xl shadow-xl transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-[#0E1438] border border-[#262E5F] group-hover:border-[#DDA162] flex items-center justify-center mb-4 text-[#DDA162]">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="font-serif text-base font-bold text-[#F4F1EB] mb-2">
+              <h3 className="font-serif text-base font-bold text-[#F4F1EB] group-hover:text-[#DDA162] mb-2 transition-colors">
                 No login, no IP tracking
               </h3>
               <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
@@ -177,21 +176,21 @@ export const ReportLandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#2C3259] border border-[#304A78] p-6">
-              <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] flex items-center justify-center mb-4 text-[#DDA162]">
+            <div className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] hover:border-[#DDA162] p-6 rounded-2xl shadow-xl transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-[#0E1438] border border-[#262E5F] group-hover:border-[#DDA162] flex items-center justify-center mb-4 text-[#DDA162]">
                 <Users className="w-5 h-5" />
               </div>
-              <h3 className="font-serif text-base font-bold text-[#F4F1EB] mb-2">
+              <h3 className="font-serif text-base font-bold text-[#F4F1EB] group-hover:text-[#DDA162] mb-2 transition-colors">
                 Minimum 5-person privacy rule
               </h3>
               <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
-                We strictly enforce mathematical k-anonymity. No pattern is ever shown to reviewers unless at least 5 individuals share that same pattern, preventing de-anonymization.
+                We strictly enforce privacy thresholds. No aggregated pattern is ever surfaced to reviewers unless at least 5 individuals share that same pattern, preventing individual identification.
               </p>
             </div>
           </div>
 
           {/* Optional Wellness Pulse Widget */}
-          <div className="mt-14 max-w-2xl mx-auto bg-[#2C3259] border border-[#304A78] p-6 text-center">
+          <div className="mt-14 max-w-2xl mx-auto bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 text-center shadow-2xl">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-[#DDA162] block mb-1">
               Voluntary Pulse Check
             </span>
@@ -216,10 +215,10 @@ export const ReportLandingPage: React.FC = () => {
                       key={item.val}
                       type="button"
                       onClick={() => setPulseScore(item.val)}
-                      className={`px-3.5 py-2 text-xs font-semibold border transition-all ${
+                      className={`px-3.5 py-2 text-xs font-semibold rounded-xl border transition-all cursor-pointer ${
                         pulseScore === item.val
                           ? "bg-[#DDA162] text-[#0A0E28] border-[#DDA162]"
-                          : "bg-[#0A0E28] text-[#F4F1EB] border-[#304A78] hover:border-[#DDA162]"
+                          : "bg-[#0E1438] text-[#F4F1EB] border-[#262E5F] hover:border-[#DDA162]"
                       }`}
                     >
                       {item.label}
@@ -230,14 +229,14 @@ export const ReportLandingPage: React.FC = () => {
                   <button
                     type="submit"
                     disabled={pulseScore === null}
-                    className="px-5 py-2 bg-[#304A78] text-[#F4F1EB] text-xs font-semibold hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors disabled:opacity-40 cursor-pointer"
+                    className="px-5 py-2.5 bg-[#0E1438] border border-[#262E5F] text-[#F4F1EB] text-xs font-semibold hover:bg-[#262E5F] hover:border-[#DDA162] rounded-xl transition-colors disabled:opacity-40 cursor-pointer"
                   >
                     Submit Anonymous Pulse
                   </button>
                 </div>
               </form>
             ) : (
-              <div className="p-4 bg-[#0A0E28] border border-[#304A78] text-xs text-[#DDA162] flex items-center justify-center gap-2">
+              <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-[#DDA162] flex items-center justify-center gap-2">
                 <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
                 <span>
                   Thank you. Your response is anonymous and helps your organisation understand overall workplace wellbeing.
@@ -264,15 +263,15 @@ export const ReportLandingPage: React.FC = () => {
                 {Math.round((currentStep / 5) * 100)}%
               </span>
             </div>
-            <div className="w-full h-1.5 bg-[#2C3259] overflow-hidden">
+            <div className="w-full h-2 bg-[#0E1438] rounded-full overflow-hidden border border-[#262E5F]">
               <div
-                className="h-full bg-[#DDA162] transition-all duration-300"
+                className="h-full bg-[#DDA162] rounded-full transition-all duration-300"
                 style={{ width: `${(currentStep / 5) * 100}%` }}
               />
             </div>
           </div>
 
-          <div className="bg-[#2C3259] border border-[#304A78] p-6 sm:p-8 shadow-2xl">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl">
             {/* Step 1: Nature of Concern */}
             {currentStep === 1 && (
               <div className="space-y-6">
@@ -293,18 +292,18 @@ export const ReportLandingPage: React.FC = () => {
                         key={opt}
                         type="button"
                         onClick={() => handleToggleConcern(opt)}
-                        className={`p-3.5 text-left border text-xs font-semibold flex items-center justify-between transition-colors ${
+                        className={`p-3.5 text-left rounded-xl border text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
                           isChecked
-                            ? "bg-[#0A0E28] border-[#DDA162] text-[#DDA162]"
-                            : "bg-[#0A0E28]/60 border-[#304A78] text-[#F4F1EB] hover:border-[#DDA162]"
+                            ? "bg-[#0E1438] border-[#DDA162] text-[#DDA162]"
+                            : "bg-[#0E1438]/60 border-[#262E5F] text-[#F4F1EB] hover:border-[#DDA162]"
                         }`}
                       >
                         <span>{opt}</span>
                         <div
-                          className={`w-4 h-4 border flex items-center justify-center ${
+                          className={`w-4 h-4 rounded border flex items-center justify-center ${
                             isChecked
                               ? "border-[#DDA162] bg-[#DDA162] text-[#0A0E28]"
-                              : "border-[#304A78]"
+                              : "border-[#262E5F]"
                           }`}
                         >
                           {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -320,11 +319,11 @@ export const ReportLandingPage: React.FC = () => {
                   </p>
                 )}
 
-                <div className="flex items-center justify-between pt-4 border-t border-[#304A78]">
+                <div className="flex items-center justify-between pt-4 border-t border-[#262E5F]">
                   <button
                     type="button"
                     onClick={() => setActiveMode("landing")}
-                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB] cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -332,7 +331,7 @@ export const ReportLandingPage: React.FC = () => {
                     type="button"
                     disabled={concerns.length === 0}
                     onClick={() => setCurrentStep(2)}
-                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors disabled:opacity-40"
+                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors disabled:opacity-40 cursor-pointer shadow-md"
                   >
                     Continue to Step 2
                   </button>
@@ -364,10 +363,10 @@ export const ReportLandingPage: React.FC = () => {
                             key={ch}
                             type="button"
                             onClick={() => setChannel(ch)}
-                            className={`p-2.5 text-xs text-center border font-semibold transition-colors ${
+                            className={`p-2.5 text-xs text-center rounded-xl border font-semibold transition-colors cursor-pointer ${
                               channel === ch
-                                ? "bg-[#0A0E28] border-[#DDA162] text-[#DDA162]"
-                                : "bg-[#0A0E28]/60 border-[#304A78] text-[#F4F1EB] hover:border-[#DDA162]"
+                                ? "bg-[#0E1438] border-[#DDA162] text-[#DDA162]"
+                                : "bg-[#0E1438]/60 border-[#262E5F] text-[#F4F1EB] hover:border-[#DDA162]"
                             }`}
                           >
                             {ch}
@@ -384,7 +383,7 @@ export const ReportLandingPage: React.FC = () => {
                     <select
                       value={timeframe}
                       onChange={(e) => setTimeframe(e.target.value)}
-                      className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                      className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                     >
                       <option value="February 2026">February 2026</option>
                       <option value="January 2026">January 2026</option>
@@ -396,18 +395,18 @@ export const ReportLandingPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[#304A78]">
+                <div className="flex items-center justify-between pt-4 border-t border-[#262E5F]">
                   <button
                     type="button"
                     onClick={() => setCurrentStep(1)}
-                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB] cursor-pointer"
                   >
                     Back
                   </button>
                   <button
                     type="button"
                     onClick={() => setCurrentStep(3)}
-                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors"
+                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors cursor-pointer shadow-md"
                   >
                     Continue to Step 3
                   </button>
@@ -434,7 +433,7 @@ export const ReportLandingPage: React.FC = () => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Describe what happened in your own words. You do not need to name anyone if you don't want to. For example: 'A senior colleague repeatedly paged me late at night and made comments regarding personal life...'"
-                    className="w-full bg-[#0A0E28] border border-[#304A78] p-4 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162] leading-relaxed"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl p-4 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162] leading-relaxed"
                   />
                   <div className="flex items-center justify-between mt-2 text-[11px] text-[#A87C56]">
                     <span>Minimum 15 characters recommended</span>
@@ -442,11 +441,11 @@ export const ReportLandingPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[#304A78]">
+                <div className="flex items-center justify-between pt-4 border-t border-[#262E5F]">
                   <button
                     type="button"
                     onClick={() => setCurrentStep(2)}
-                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB] cursor-pointer"
                   >
                     Back
                   </button>
@@ -454,7 +453,7 @@ export const ReportLandingPage: React.FC = () => {
                     type="button"
                     disabled={description.trim().length < 10}
                     onClick={() => setCurrentStep(4)}
-                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors disabled:opacity-40"
+                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors disabled:opacity-40 cursor-pointer shadow-md"
                   >
                     Continue to Step 4
                   </button>
@@ -475,7 +474,7 @@ export const ReportLandingPage: React.FC = () => {
                 </div>
 
                 {/* Privacy Notice */}
-                <div className="p-3.5 bg-[#0A0E28] border border-[#304A78] text-xs text-[#DDA162] flex items-start gap-2.5">
+                <div className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-[#DDA162] flex items-start gap-2.5">
                   <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5" />
                   <p className="leading-relaxed">
                     <span className="font-semibold">Privacy notice:</span> Files are encrypted in transit. The IC cannot see who uploaded them or inspect metadata revealing your identity.
@@ -483,7 +482,7 @@ export const ReportLandingPage: React.FC = () => {
                 </div>
 
                 {/* Drag-and-drop zone */}
-                <div className="border-2 border-dashed border-[#304A78] hover:border-[#DDA162] p-8 text-center bg-[#0A0E28]/40 transition-colors relative">
+                <div className="border-2 border-dashed border-[#262E5F] hover:border-[#DDA162] rounded-2xl p-8 text-center bg-[#0E1438]/50 transition-colors relative cursor-pointer">
                   <input
                     type="file"
                     multiple
@@ -509,7 +508,7 @@ export const ReportLandingPage: React.FC = () => {
                     {files.map((f, i) => (
                       <div
                         key={i}
-                        className="flex items-center justify-between p-2.5 bg-[#0A0E28] border border-[#304A78] text-xs"
+                        className="flex items-center justify-between p-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs"
                       >
                         <div className="flex items-center gap-2">
                           {f.name.endsWith(".png") || f.name.endsWith(".jpg") ? (
@@ -525,7 +524,7 @@ export const ReportLandingPage: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => setFiles(files.filter((_, idx) => idx !== i))}
-                          className="text-[#A87C56] hover:text-[#EBBA4A]"
+                          className="text-[#A87C56] hover:text-[#EBBA4A] cursor-pointer"
                         >
                           Remove
                         </button>
@@ -534,11 +533,11 @@ export const ReportLandingPage: React.FC = () => {
                   </div>
                 )}
 
-                <div className="flex items-center justify-between pt-4 border-t border-[#304A78]">
+                <div className="flex items-center justify-between pt-4 border-t border-[#262E5F]">
                   <button
                     type="button"
                     onClick={() => setCurrentStep(3)}
-                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                    className="text-xs text-[#A87C56] hover:text-[#F4F1EB] cursor-pointer"
                   >
                     Back
                   </button>
@@ -546,14 +545,14 @@ export const ReportLandingPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleCompleteSubmission}
-                      className="text-xs text-[#A87C56] hover:text-[#F4F1EB] underline"
+                      className="text-xs text-[#A87C56] hover:text-[#F4F1EB] underline cursor-pointer"
                     >
                       No files to upload
                     </button>
                     <button
                       type="button"
                       onClick={handleCompleteSubmission}
-                      className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors"
+                      className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors cursor-pointer shadow-md"
                     >
                       Submit Report
                     </button>
@@ -565,7 +564,7 @@ export const ReportLandingPage: React.FC = () => {
             {/* Step 5: Confirmation with Reference Code */}
             {currentStep === 5 && (
               <div className="space-y-6 text-center py-4">
-                <div className="w-14 h-14 bg-[#0A0E28] border border-[#DDA162] mx-auto flex items-center justify-center text-[#DDA162]">
+                <div className="w-14 h-14 rounded-2xl bg-[#0E1438] border border-[#DDA162] mx-auto flex items-center justify-center text-[#DDA162]">
                   <CheckCircle className="w-8 h-8 text-[#DDA162]" />
                 </div>
 
@@ -582,7 +581,7 @@ export const ReportLandingPage: React.FC = () => {
                 </div>
 
                 {/* Highlighted Reference Code Box */}
-                <div className="max-w-md mx-auto bg-[#0A0E28] border-2 border-[#DDA162] p-6 text-center">
+                <div className="max-w-md mx-auto bg-[#0E1438] border-2 border-[#DDA162] rounded-2xl p-6 text-center shadow-xl">
                   <span className="text-[11px] uppercase tracking-wider text-[#A87C56] block mb-1">
                     Your Anonymous Case Reference Code
                   </span>
@@ -592,7 +591,7 @@ export const ReportLandingPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleCopyCode}
-                    className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 bg-[#2C3259] border border-[#304A78] text-xs font-semibold text-[#F4F1EB] hover:bg-[#304A78] transition-colors"
+                    className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 bg-[#0A0E28] border border-[#262E5F] rounded-xl text-xs font-semibold text-[#F4F1EB] hover:bg-[#262E5F] hover:border-[#DDA162] transition-colors cursor-pointer"
                   >
                     {copied ? (
                       <>
@@ -610,7 +609,7 @@ export const ReportLandingPage: React.FC = () => {
                 </div>
 
                 {/* Optional notification contact */}
-                <div className="max-w-md mx-auto text-left pt-4 border-t border-[#304A78]">
+                <div className="max-w-md mx-auto text-left pt-4 border-t border-[#262E5F]">
                   <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
                     Optional: Email or Phone for Anonymous Status Updates
                   </label>
@@ -622,14 +621,14 @@ export const ReportLandingPage: React.FC = () => {
                     value={optionalContact}
                     onChange={(e) => setOptionalContact(e.target.value)}
                     placeholder="optional@personal-domain.com or phone"
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   />
                 </div>
 
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                   <Link
                     to="/report/track"
-                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors"
+                    className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors shadow-md"
                   >
                     Go to Case Tracker
                   </Link>
@@ -642,7 +641,7 @@ export const ReportLandingPage: React.FC = () => {
                       setConcerns([]);
                       setFiles([]);
                     }}
-                    className="px-6 py-2.5 border border-[#304A78] text-xs text-[#F4F1EB] hover:bg-[#0A0E28]"
+                    className="px-6 py-2.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-[#F4F1EB] hover:bg-[#262E5F] transition-colors cursor-pointer"
                   >
                     Return to Portal Home
                   </button>

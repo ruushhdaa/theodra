@@ -27,7 +27,7 @@ export const HRBenchmarksPage: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Comparative Industry Telemetry
@@ -39,15 +39,15 @@ export const HRBenchmarksPage: React.FC = () => {
             Benchmarking Your Organization vs IT & Technology Sector Average and Top Quartile performers.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs bg-[#0A0E28] px-3.5 py-2 border border-[#262E5F] rounded-lg text-[#DDA162]">
+        <div className="flex items-center gap-2 text-xs bg-[#0A0E28] px-3.5 py-2 border border-[#262E5F] rounded-xl text-[#DDA162]">
           <BarChart3 className="w-4 h-4" />
           <span>India Tech Sector Cohort</span>
         </div>
       </div>
 
       {/* Main Bar Chart (Recharts) */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-4">
-        <div className="pb-3 border-b border-[#304A78] flex items-center justify-between">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-4">
+        <div className="pb-3 border-b border-[#262E5F] flex items-center justify-between">
           <h3 className="font-serif text-base font-bold text-[#F4F1EB]">
             Cross-Company Performance Comparison
           </h3>
@@ -57,7 +57,7 @@ export const HRBenchmarksPage: React.FC = () => {
         <div className="h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} margin={{ top: 20, right: 30, left: 0, bottom: 20 }}>
-              <CartesianGrid stroke="#304A78" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#262E5F" strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="name" stroke="#A87C56" fontSize={11} tickLine={false} />
               <YAxis stroke="#A87C56" fontSize={11} tickLine={false} />
               <Tooltip
@@ -65,7 +65,7 @@ export const HRBenchmarksPage: React.FC = () => {
                   if (active && payload && payload.length) {
                     const data = payload[0].payload;
                     return (
-                      <div className="bg-[#0A0E28] border border-[#304A78] p-3 text-xs shadow-2xl max-w-xs text-[#F4F1EB]">
+                      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-xl p-3 text-xs shadow-2xl max-w-xs text-[#F4F1EB]">
                         <p className="font-serif font-bold text-[#DDA162] mb-1">{data.fullName}</p>
                         <p className="text-[11px] text-[#A87C56] mb-2 leading-relaxed">{data.tooltip}</p>
                         <div className="space-y-1 font-mono text-[11px]">
@@ -92,17 +92,17 @@ export const HRBenchmarksPage: React.FC = () => {
                 wrapperStyle={{ fontSize: "11px", paddingTop: "10px" }}
                 formatter={(val) => <span className="text-[#F4F1EB]">{val}</span>}
               />
-              <Bar dataKey="THEODRA" fill="#DDA162" />
-              <Bar dataKey="Industry Average" fill="#304A78" />
-              <Bar dataKey="Top Quartile" fill="#EBBA4A" />
+              <Bar dataKey="THEODRA" fill="#DDA162" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Industry Average" fill="#262E5F" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Top Quartile" fill="#EBBA4A" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
 
       {/* Numerical Data Table */}
-      <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden shadow-2xl">
-        <div className="p-4 bg-[#0A0E28] border-b border-[#304A78]">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl overflow-hidden shadow-2xl">
+        <div className="p-4 bg-[#0E1438] border-b border-[#262E5F]">
           <h3 className="font-serif text-sm font-bold text-[#F4F1EB]">
             Benchmark Metrics Detailed Table
           </h3>
@@ -111,17 +111,17 @@ export const HRBenchmarksPage: React.FC = () => {
           <table className="w-full text-left text-xs">
             <thead>
               <tr className="bg-[#0A0E28] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider">
-                <th className="py-3 px-4">Metric</th>
-                <th className="py-3 px-4 text-[#DDA162]">Your Organization</th>
-                <th className="py-3 px-4">Industry Average</th>
-                <th className="py-3 px-4">Top Quartile (P75)</th>
-                <th className="py-3 px-4">Interpretation</th>
+                <th className="py-3.5 px-4">Metric</th>
+                <th className="py-3.5 px-4 text-[#DDA162]">Your Organization</th>
+                <th className="py-3.5 px-4">Industry Average</th>
+                <th className="py-3.5 px-4">Top Quartile (P75)</th>
+                <th className="py-3.5 px-4">Interpretation</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#304A78]/50">
+            <tbody className="divide-y divide-[#262E5F]/60">
               {MOCK_PEER_BENCHMARKS.map((row) => (
-                <tr key={row.metric} className="hover:bg-[#0A0E28]/40 transition-colors">
-                  <td className="py-3.5 px-4 font-semibold text-[#F4F1EB]">
+                <tr key={row.metric} className="hover:bg-[#262E5F] transition-colors cursor-pointer group">
+                  <td className="py-3.5 px-4 font-semibold text-[#F4F1EB] group-hover:text-[#DDA162]">
                     {row.metric}
                   </td>
                   <td className="py-3.5 px-4 font-mono font-bold text-[#DDA162]">

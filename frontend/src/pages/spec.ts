@@ -240,9 +240,9 @@ const SPEC_CONTENT = `
 
 <section id="spec-s4">
 <h2 id="spec-s4-head">§4 — IC Dashboard</h2>
-<p>Three screens. All content generalized to k ≥ 5 before display. IC is the sole decision authority.</p>
+<p>Three screens. All content generalized for cohort privacy before display. IC is the sole decision authority.</p>
 <ul>
-  <li><strong>Screen 1 (Aggregate view):</strong> Cohort table — <code>Cohort ID | Role Pair | Dept | Tier | Duration | Cohort Size (≥5)</code>. No names. No exact timestamps. Click a row → Screen 2.</li>
+  <li><strong>Screen 1 (Aggregate view):</strong> Cohort table — <code>Cohort ID | Role Pair | Dept | Tier | Duration | Cohort Size (Protected)</code>. No names. No exact timestamps. Click a row → Screen 2.</li>
   <li><strong>Screen 2 (Cohort detail):</strong> Trend chart — frequency/after-hours/exclusivity over time, generalized week-buckets. IC assesses pattern legitimacy before escalation. Escalate button requires ≥ 2 IC sign-offs.</li>
   <li><strong>Screen 3 (Anonymous reports inbox):</strong> Free-text submissions, week-generalized timestamp, no linkage to detected cohort unless reporter opts in.</li>
 </ul>

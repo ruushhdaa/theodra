@@ -17,7 +17,7 @@ export const HRHealthPage: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Workforce Safety & Climate Index
@@ -29,17 +29,17 @@ export const HRHealthPage: React.FC = () => {
             Holistic corporate score synthesized across reporting frequency, resolution velocity, and policy currency.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs bg-[#2C3259] px-3.5 py-2 border border-[#304A78] text-[#DDA162]">
+        <div className="flex items-center gap-2 text-xs bg-[#0A0E28] px-3.5 py-2 border border-[#262E5F] rounded-xl text-[#DDA162]">
           <HeartPulse className="w-4 h-4" />
           <span>Quarterly Assessment Pulse</span>
         </div>
       </div>
 
       {/* Large Gauge / Radial Score Hero */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex items-center gap-8">
-          {/* Radial Gauge Display (Flat colors, no gradient) */}
-          <div className="relative w-40 h-40 rounded-full bg-[#0A0E28] border-8 border-[#DDA162] flex flex-col items-center justify-center shrink-0">
+          {/* Radial Gauge Display */}
+          <div className="relative w-40 h-40 rounded-full bg-[#0E1438] border-8 border-[#DDA162] flex flex-col items-center justify-center shrink-0 shadow-lg">
             <span className="font-serif text-5xl font-bold text-[#EBBA4A]">
               {data.overallScore}
             </span>
@@ -61,7 +61,7 @@ export const HRHealthPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-4 bg-[#0A0E28] border border-[#304A78] text-xs text-right space-y-1">
+        <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-right space-y-1">
           <span className="text-[#A87C56] block">Trend vs Q3 FY25–26:</span>
           <span className="font-serif text-xl font-bold text-[#EBBA4A] flex items-center justify-end gap-1">
             <ArrowUp className="w-4 h-4 text-[#EBBA4A]" /> +3 Points
@@ -79,11 +79,11 @@ export const HRHealthPage: React.FC = () => {
           return (
             <div
               key={sub.name}
-              className="bg-[#2C3259] border border-[#304A78] p-4 flex flex-col justify-between"
+              className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] hover:border-[#DDA162] rounded-xl p-4 flex flex-col justify-between transition-all shadow-md group"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-semibold text-[#F4F1EB]">{sub.name}</span>
+                  <span className="text-xs font-semibold text-[#F4F1EB] group-hover:text-[#DDA162] transition-colors">{sub.name}</span>
                   <div
                     className={`text-[10px] font-mono font-bold flex items-center gap-0.5 ${
                       isUp ? "text-[#EBBA4A]" : isNeutral ? "text-[#A87C56]" : "text-[#DDA162]"
@@ -104,7 +104,7 @@ export const HRHealthPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-[#304A78] text-[11px] text-[#A87C56] leading-tight font-serif">
+              <div className="pt-2 border-t border-[#262E5F] text-[11px] text-[#A87C56] leading-tight font-serif">
                 {sub.interpretation}
               </div>
             </div>
@@ -113,8 +113,8 @@ export const HRHealthPage: React.FC = () => {
       </div>
 
       {/* Historical Trend Line Chart (4 Quarters) */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-4">
-        <div className="pb-3 border-b border-[#304A78] flex items-center justify-between">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-4">
+        <div className="pb-3 border-b border-[#262E5F] flex items-center justify-between">
           <div className="flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-[#DDA162]" />
             <h3 className="font-serif text-base font-bold text-[#F4F1EB]">
@@ -127,13 +127,14 @@ export const HRHealthPage: React.FC = () => {
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data.history} margin={{ top: 20, right: 30, left: 0, bottom: 10 }}>
-              <CartesianGrid stroke="#304A78" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#262E5F" strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="quarter" stroke="#A87C56" fontSize={11} tickLine={false} />
               <YAxis domain={[50, 80]} stroke="#A87C56" fontSize={11} tickLine={false} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "#0A0E28",
-                  borderColor: "#304A78",
+                  borderColor: "#262E5F",
+                  borderRadius: "0.75rem",
                   fontSize: "11px",
                   color: "#F4F1EB",
                 }}

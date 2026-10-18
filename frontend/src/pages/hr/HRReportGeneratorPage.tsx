@@ -34,7 +34,7 @@ export const HRReportGeneratorPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Section 21 Statutory Filing
@@ -50,7 +50,7 @@ export const HRReportGeneratorPage: React.FC = () => {
           <button
             type="button"
             onClick={() => handleExport("PDF")}
-            className="px-4 py-2 bg-[#0A0E28] border border-[#304A78] text-xs font-semibold text-[#DDA162] hover:bg-[#304A78] transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2 bg-[#0A0E28] border border-[#262E5F] text-xs font-semibold text-[#DDA162] hover:bg-[#262E5F] hover:border-[#DDA162] rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Export as PDF</span>
@@ -58,7 +58,7 @@ export const HRReportGeneratorPage: React.FC = () => {
           <button
             type="button"
             onClick={() => handleExport("Word")}
-            className="px-4 py-2 bg-[#0A0E28] border border-[#304A78] text-xs font-semibold text-[#F4F1EB] hover:bg-[#304A78] transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2 bg-[#0A0E28] border border-[#262E5F] text-xs font-semibold text-[#F4F1EB] hover:bg-[#262E5F] hover:border-[#DDA162] rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Export as Word</span>
@@ -66,7 +66,7 @@ export const HRReportGeneratorPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setBoardModalOpen(true)}
-            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
           >
             <Send className="w-4 h-4" />
             <span>Submit to Board</span>
@@ -75,26 +75,26 @@ export const HRReportGeneratorPage: React.FC = () => {
       </div>
 
       {exportNotice && (
-        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl flex items-center gap-2">
           <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
           <span>{exportNotice}</span>
         </div>
       )}
 
       {boardSubmitted && (
-        <div className="p-3.5 bg-amber-950/40 border border-[#EBBA4A] text-xs text-[#EBBA4A] flex items-center gap-2">
+        <div className="p-3.5 bg-amber-950/40 border border-[#EBBA4A] text-xs text-[#EBBA4A] rounded-xl flex items-center gap-2">
           <CheckCircle className="w-4 h-4" />
           <span>Annual Report successfully submitted for inclusion in Company Secretarial Board Pack.</span>
         </div>
       )}
 
       {/* Select Period Form */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-4 flex items-center gap-4 text-xs">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 flex items-center gap-4 text-xs shadow-xl">
         <span className="font-semibold text-[#F4F1EB]">Financial Year Period:</span>
         <select
           value={financialYear}
           onChange={(e) => setFinancialYear(e.target.value)}
-          className="bg-[#0A0E28] border border-[#304A78] px-3 py-1.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+          className="bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-1.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
         >
           <option value="2025-2026">FY 2025–2026 (1 Apr 2025 – 31 Mar 2026)</option>
           <option value="2024-2025">FY 2024–2025 (Archived)</option>
@@ -102,7 +102,7 @@ export const HRReportGeneratorPage: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsGenerated(true)}
-          className="px-4 py-1.5 bg-[#304A78] text-[#F4F1EB] font-semibold hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors cursor-pointer"
+          className="px-4 py-1.5 bg-[#0E1438] border border-[#262E5F] text-[#F4F1EB] font-semibold hover:bg-[#262E5F] hover:border-[#DDA162] rounded-xl transition-colors cursor-pointer"
         >
           Re-compile Metrics
         </button>
@@ -110,9 +110,9 @@ export const HRReportGeneratorPage: React.FC = () => {
 
       {/* Auto-compiled Report Preview */}
       {isGenerated && (
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl space-y-8 font-serif">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 shadow-2xl space-y-8 font-serif">
           {/* Header */}
-          <div className="text-center pb-6 border-b border-[#304A78]">
+          <div className="text-center pb-6 border-b border-[#262E5F]">
             <span className="text-[11px] font-mono uppercase tracking-widest text-[#DDA162] block mb-1">
               Statutory Form A • Section 21 POSH Act 2013
             </span>
@@ -129,7 +129,7 @@ export const HRReportGeneratorPage: React.FC = () => {
             <h3 className="text-sm font-bold uppercase tracking-wider text-[#DDA162] font-sans">
               1. Organisation Details & Committee Constitution
             </h3>
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78] font-sans text-xs space-y-2">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl font-sans text-xs space-y-2">
               <p><span className="text-[#A87C56]">Legal Entity Name:</span> <strong className="text-[#F4F1EB]">{report.organizationName}</strong></p>
               <p><span className="text-[#A87C56]">Presiding Officer:</span> <strong className="text-[#F4F1EB]">{report.presidingOfficer}</strong></p>
               <p><span className="text-[#A87C56]">Independent External Member:</span> <strong className="text-[#F4F1EB]">{report.externalMember}</strong></p>
@@ -143,7 +143,7 @@ export const HRReportGeneratorPage: React.FC = () => {
               2. Annual Grievance Statistics (§21(a)–(d))
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-sans text-xs">
-              <div className="p-4 bg-[#0A0E28] border border-[#304A78]">
+              <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] hover:border-[#DDA162] transition-colors">
                 <span className="text-[10px] text-[#A87C56] uppercase block">Total Complaints Received</span>
                 <span className="text-2xl font-bold text-[#F4F1EB] font-serif block mt-1">
                   {report.totalComplaintsReceived}
@@ -151,7 +151,7 @@ export const HRReportGeneratorPage: React.FC = () => {
                 <span className="text-[10px] text-[#DDA162] block mt-0.5">Formal cases logged</span>
               </div>
 
-              <div className="p-4 bg-[#0A0E28] border border-[#304A78]">
+              <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] hover:border-[#DDA162] transition-colors">
                 <span className="text-[10px] text-[#A87C56] uppercase block">Complaints Disposed</span>
                 <span className="text-2xl font-bold text-[#F4F1EB] font-serif block mt-1">
                   {report.complaintsDisposedDuringYear}
@@ -159,7 +159,7 @@ export const HRReportGeneratorPage: React.FC = () => {
                 <span className="text-[10px] text-[#DDA162] block mt-0.5">Inquiry concluded</span>
               </div>
 
-              <div className="p-4 bg-[#0A0E28] border border-[#304A78]">
+              <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl hover:bg-[#262E5F] hover:border-[#EBBA4A] transition-colors">
                 <span className="text-[10px] text-[#A87C56] uppercase block">Cases Pending &gt; 90 Days</span>
                 <span className="text-2xl font-bold text-[#EBBA4A] font-serif block mt-1">
                   {report.casesPendingMoreThan90Days}
@@ -174,7 +174,7 @@ export const HRReportGeneratorPage: React.FC = () => {
             <h3 className="text-sm font-bold uppercase tracking-wider text-[#DDA162] font-sans">
               3. Sensitization & Capacity Building Workshops (§19(c))
             </h3>
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78] font-sans text-xs space-y-2">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl font-sans text-xs space-y-2">
               <p><span className="text-[#A87C56]">Workshops Conducted:</span> <strong className="text-[#F4F1EB]">{report.workshopsSensitizationSessions} sessions</strong> across regional locations</p>
               <p><span className="text-[#A87C56]">Employees Sensitized:</span> <strong className="text-[#F4F1EB]">{report.employeesTrainedCount} personnel (94.2% headcount)</strong></p>
               <p><span className="text-[#A87C56]">IC Capacity Building:</span> <strong className="text-[#F4F1EB]">All members completed annual inquiry jurisprudence certification</strong></p>
@@ -186,20 +186,20 @@ export const HRReportGeneratorPage: React.FC = () => {
             <h3 className="text-sm font-bold uppercase tracking-wider text-[#DDA162] font-sans">
               4. Actions Implemented by Employer (§13(4))
             </h3>
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78] font-sans text-xs leading-relaxed text-[#F4F1EB]">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl font-sans text-xs leading-relaxed text-[#F4F1EB]">
               {report.actionTakenByEmployer}
             </div>
           </div>
 
           {/* Signatures block */}
-          <div className="pt-8 border-t border-[#304A78] grid grid-cols-2 gap-8 font-sans text-xs">
+          <div className="pt-8 border-t border-[#262E5F] grid grid-cols-2 gap-8 font-sans text-xs">
             <div>
-              <div className="h-10 border-b border-[#304A78]/80 mb-2" />
+              <div className="h-10 border-b border-[#262E5F] mb-2" />
               <span className="font-semibold text-[#F4F1EB] block">{report.presidingOfficer}</span>
               <span className="text-[11px] text-[#A87C56]">Presiding Officer, Internal Committee</span>
             </div>
             <div>
-              <div className="h-10 border-b border-[#304A78]/80 mb-2" />
+              <div className="h-10 border-b border-[#262E5F] mb-2" />
               <span className="font-semibold text-[#F4F1EB] block">Rajesh Menon</span>
               <span className="text-[11px] text-[#A87C56]">VP Human Resources & Authorised Signatory</span>
             </div>
@@ -210,7 +210,7 @@ export const HRReportGeneratorPage: React.FC = () => {
       {/* Submit to Board Confirmation Modal */}
       {boardModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/80 backdrop-blur-none">
-          <div className="bg-[#2C3259] border border-[#304A78] max-w-md w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4 font-sans">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl max-w-md w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4 font-sans">
             <div className="flex items-center gap-2">
               <Send className="w-5 h-5 text-[#DDA162]" />
               <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
@@ -220,18 +220,18 @@ export const HRReportGeneratorPage: React.FC = () => {
             <p className="text-xs text-[#F4F1EB] leading-relaxed">
               Confirm submission of this compiled Section 21 Annual Report for formal inclusion in the Directors' Board Report under Section 134(3)(q) of the Companies Act 2013?
             </p>
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#304A78]">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#262E5F]">
               <button
                 type="button"
                 onClick={() => setBoardModalOpen(false)}
-                className="px-4 py-2 border border-[#304A78] text-xs text-[#A87C56]"
+                className="px-4 py-2 border border-[#262E5F] rounded-xl text-xs text-[#A87C56] hover:bg-[#262E5F] transition-colors"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleConfirmSubmitBoard}
-                className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A]"
+                className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors"
               >
                 Confirm Board Submission
               </button>

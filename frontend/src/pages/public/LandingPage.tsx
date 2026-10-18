@@ -58,11 +58,11 @@ export const LandingPage: React.FC = () => {
     protect: {
       num: "02",
       title: "Group-Level Privacy Guarantee",
-      subtitle: "k-Anonymity ensures individual immunity",
+      subtitle: "Multi-peer aggregation ensures individual immunity",
       description:
-        "Under strict mathematical k-anonymity (k ≥ 5), no pattern is ever surfaced to an IC reviewer unless at least five distinct individuals share that same behavioral dynamic. Individual employees cannot be singled out, deanonymized, or subjected to surveillance.",
+        "Under strict mathematical cohort aggregation, no pattern is ever surfaced to an IC reviewer unless multiple distinct individuals share that same behavioral dynamic. Individual employees cannot be singled out, deanonymized, or subjected to surveillance.",
       features: [
-        "Minimum 5-person privacy rule strictly enforced",
+        "Multi-peer aggregate privacy rule strictly enforced",
         "Two-vote IC consensus required before any cohort escalation",
         "Zero tracking cookies or IP logging on employee reporting portals",
       ],
@@ -466,7 +466,7 @@ export const LandingPage: React.FC = () => {
               <p className="text-xs font-mono text-[#F4F1EB]/90 leading-relaxed">
                 {telemetryMode === "theodra" ? (
                   <span className="text-[#DDA162]">
-                    k-Anonymity Verified (k ≥ 5): Cohort must contain at least 5 peers before committee signal appears.
+                    Cohort Privacy Guard Verified: Signal appears only when multi-peer aggregate threshold is reached.
                   </span>
                 ) : (
                   <span className="text-rose-400">

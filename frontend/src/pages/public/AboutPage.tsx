@@ -20,9 +20,9 @@ export const AboutPage: React.FC = () => {
         </div>
 
         {/* Narrative Card: 3 paragraphs about Empress Theodora + System Principle */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed">
-          <div className="flex items-center gap-3 pb-6 border-b border-[#304A78]">
-            <div className="w-10 h-10 bg-[#0A0E28] border border-[#304A78] flex items-center justify-center text-[#DDA162]">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed hover:bg-[#262E5F]/20 transition-all">
+          <div className="flex items-center gap-3 pb-6 border-b border-[#262E5F]">
+            <div className="w-10 h-10 bg-[#0E1438] border border-[#262E5F] rounded-xl flex items-center justify-center text-[#DDA162]">
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
@@ -53,7 +53,7 @@ export const AboutPage: React.FC = () => {
 
         {/* Founding Principles Summary Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
-          <div className="p-6 bg-[#2C3259] border border-[#304A78] shadow-2xl space-y-2">
+          <div className="p-6 bg-[#0A0E28] border border-[#262E5F] rounded-2xl shadow-2xl space-y-2 hover:bg-[#262E5F] transition-colors">
             <span className="text-[10px] uppercase font-mono text-[#DDA162] block">Principle I</span>
             <h3 className="font-serif text-base font-bold text-[#F4F1EB]">Preemptive Vigilance</h3>
             <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
@@ -61,15 +61,15 @@ export const AboutPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-6 bg-[#2C3259] border border-[#304A78] shadow-2xl space-y-2">
+          <div className="p-6 bg-[#0A0E28] border border-[#262E5F] rounded-2xl shadow-2xl space-y-2 hover:bg-[#262E5F] transition-colors">
             <span className="text-[10px] uppercase font-mono text-[#DDA162] block">Principle II</span>
             <h3 className="font-serif text-base font-bold text-[#F4F1EB]">Mathematical Immunity</h3>
             <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
-              Surveillance destroys psychological trust. We protect every individual through strict k-anonymity (k ≥ 5) and zero content inspection.
+              Surveillance destroys psychological trust. We protect every individual through cohort aggregation and zero content inspection.
             </p>
           </div>
 
-          <div className="p-6 bg-[#2C3259] border border-[#304A78] shadow-2xl space-y-2">
+          <div className="p-6 bg-[#0A0E28] border border-[#262E5F] rounded-2xl shadow-2xl space-y-2 hover:bg-[#262E5F] transition-colors">
             <span className="text-[10px] uppercase font-mono text-[#DDA162] block">Principle III</span>
             <h3 className="font-serif text-base font-bold text-[#F4F1EB]">Statutory Quorum</h3>
             <p className="font-serif text-xs text-[#A87C56] leading-relaxed">
@@ -79,13 +79,13 @@ export const AboutPage: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="pt-8 border-t border-[#304A78] flex items-center justify-between font-sans">
-          <Link to="/" className="text-xs text-[#A87C56] hover:text-[#F4F1EB]">
+        <div className="pt-8 border-t border-[#262E5F] flex items-center justify-between font-sans">
+          <Link to="/" className="text-xs text-[#A87C56] hover:text-[#F4F1EB] transition-colors">
             ← Return to Home
           </Link>
           <Link
             to="/report"
-            className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors inline-flex items-center gap-1.5"
+            className="px-6 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors inline-flex items-center gap-1.5 shadow-sm"
           >
             <span>Confidential Employee Portal</span>
             <ArrowRight className="w-4 h-4" />

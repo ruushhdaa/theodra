@@ -76,8 +76,8 @@ export const OnboardingTour: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-[#2C3259] border border-[#DDA162] p-5 shadow-2xl text-[#F4F1EB] animate-in fade-in slide-in-from-bottom-4 duration-300">
-      <div className="flex items-center justify-between pb-3 border-b border-[#304A78]">
+    <div className="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-5 shadow-2xl text-[#F4F1EB] animate-in fade-in slide-in-from-bottom-4 duration-300">
+      <div className="flex items-center justify-between pb-3 border-b border-[#262E5F]">
         <div className="flex items-center gap-2">
           <HelpCircle className="w-4 h-4 text-[#DDA162]" />
           <span className="text-xs uppercase tracking-wider text-[#DDA162] font-semibold">
@@ -87,7 +87,7 @@ export const OnboardingTour: React.FC = () => {
         <button
           type="button"
           onClick={handleComplete}
-          className="text-[#A87C56] hover:text-[#F4F1EB] transition-colors"
+          className="text-[#A87C56] hover:text-[#F4F1EB] p-1 rounded-lg hover:bg-[#262E5F] transition-colors cursor-pointer"
           aria-label="Skip tour"
         >
           <X className="w-4 h-4" />
@@ -99,18 +99,18 @@ export const OnboardingTour: React.FC = () => {
         <p className="text-xs text-[#F4F1EB] leading-relaxed opacity-90">{step.description}</p>
       </div>
 
-      <div className="flex items-center justify-between pt-2 border-t border-[#304A78]">
+      <div className="flex items-center justify-between pt-2 border-t border-[#262E5F]">
         <button
           type="button"
           onClick={handleComplete}
-          className="text-xs text-[#A87C56] hover:text-[#F4F1EB] transition-colors"
+          className="text-xs text-[#A87C56] hover:text-[#F4F1EB] transition-colors cursor-pointer"
         >
           Skip tour
         </button>
         <button
           type="button"
           onClick={handleNext}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#DDA162] text-[#0A0E28] text-xs font-semibold hover:bg-[#EBBA4A] transition-colors"
+          className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#DDA162] text-[#0A0E28] text-xs font-semibold hover:bg-[#EBBA4A] rounded-xl transition-colors cursor-pointer shadow-md"
         >
           {currentStep === steps.length - 1 ? (
             <>

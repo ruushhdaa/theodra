@@ -43,7 +43,7 @@ export const HRAuditPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Immutable Security & Access Telemetry
@@ -59,7 +59,7 @@ export const HRAuditPage: React.FC = () => {
           <button
             type="button"
             onClick={handleExportCSV}
-            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
           >
             <Download className="w-4 h-4" />
             <span>Export Audit CSV</span>
@@ -68,30 +68,30 @@ export const HRAuditPage: React.FC = () => {
       </div>
 
       {notice && (
-        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-[#EBBA4A]" />
           <span>{notice}</span>
         </div>
       )}
 
       {/* Mandatory Header Note */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-3.5 flex items-center gap-2.5 text-xs text-[#F4F1EB]">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 flex items-center gap-2.5 text-xs text-[#F4F1EB] shadow-xl">
         <Lock className="w-4 h-4 text-[#DDA162] shrink-0" />
         <span className="font-semibold text-[#DDA162]">Statutory Integrity Note:</span>
         <span className="text-[#F4F1EB] opacity-90">
-          Audit logs are tamper-evident and cannot be modified.
+          Audit logs are tamper-evident and cryptographically locked. Entries cannot be edited or deleted.
         </span>
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs shadow-xl">
         <div className="w-full md:w-72 relative">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search action, resource, user..."
-            className="w-full bg-[#0A0E28] border border-[#304A78] px-3.5 py-2 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+            className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
           />
           <Search className="w-3.5 h-3.5 text-[#A87C56] absolute right-3 top-2.5 pointer-events-none" />
         </div>
@@ -102,12 +102,12 @@ export const HRAuditPage: React.FC = () => {
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
-              className="bg-[#0A0E28] border border-[#304A78] px-2.5 py-1.5 text-xs text-[#F4F1EB]"
+              className="bg-[#0E1438] border border-[#262E5F] rounded-xl px-2.5 py-1.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
             >
-              <option value="All">All Roles</option>
-              <option value="IC Member">IC Member</option>
-              <option value="HR Admin">HR Admin</option>
-              <option value="System Worker">System Worker</option>
+              <option value="All" className="bg-[#0A0E28]">All Roles</option>
+              <option value="IC Member" className="bg-[#0A0E28]">IC Member</option>
+              <option value="HR Admin" className="bg-[#0A0E28]">HR Admin</option>
+              <option value="System Worker" className="bg-[#0A0E28]">System Worker</option>
             </select>
           </div>
 
@@ -116,48 +116,48 @@ export const HRAuditPage: React.FC = () => {
             <select
               value={actionFilter}
               onChange={(e) => setActionFilter(e.target.value)}
-              className="bg-[#0A0E28] border border-[#304A78] px-2.5 py-1.5 text-xs text-[#F4F1EB]"
+              className="bg-[#0E1438] border border-[#262E5F] rounded-xl px-2.5 py-1.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
             >
-              <option value="All">All Actions</option>
-              <option value="Viewed">View Events</option>
-              <option value="Vote">Vote Actions</option>
-              <option value="Report">Report Operations</option>
-              <option value="Check">Automated Checks</option>
+              <option value="All" className="bg-[#0A0E28]">All Actions</option>
+              <option value="Viewed" className="bg-[#0A0E28]">View Events</option>
+              <option value="Vote" className="bg-[#0A0E28]">Vote Actions</option>
+              <option value="Report" className="bg-[#0A0E28]">Report Operations</option>
+              <option value="Check" className="bg-[#0A0E28]">Automated Checks</option>
             </select>
           </div>
         </div>
       </div>
 
       {/* Audit Table */}
-      <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden shadow-2xl">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider">
-                <th className="py-3 px-4">Timestamp</th>
-                <th className="py-3 px-4">User</th>
-                <th className="py-3 px-4">Role</th>
-                <th className="py-3 px-4">Action</th>
-                <th className="py-3 px-4">Resource Target</th>
-                <th className="py-3 px-4">IP Address (Masked)</th>
-                <th className="py-3 px-4 text-right">Integrity Status</th>
+              <tr className="bg-[#0A0E28] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider">
+                <th className="py-3.5 px-4">Timestamp</th>
+                <th className="py-3.5 px-4">User</th>
+                <th className="py-3.5 px-4">Role</th>
+                <th className="py-3.5 px-4">Action</th>
+                <th className="py-3.5 px-4">Resource Target</th>
+                <th className="py-3.5 px-4">IP Address (Masked)</th>
+                <th className="py-3.5 px-4 text-right">Integrity Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#304A78]/50">
+            <tbody className="divide-y divide-[#262E5F]/60">
               {filtered.map((entry) => (
-                <tr key={entry.id} className="hover:bg-[#0A0E28]/40 transition-colors">
+                <tr key={entry.id} className="hover:bg-[#262E5F] transition-colors cursor-pointer group">
                   <td className="py-3.5 px-4 font-mono text-[11px] text-[#A87C56]">
                     {entry.timestamp}
                   </td>
-                  <td className="py-3.5 px-4 font-semibold text-[#F4F1EB]">{entry.user}</td>
+                  <td className="py-3.5 px-4 font-semibold text-[#F4F1EB] group-hover:text-[#DDA162]">{entry.user}</td>
                   <td className="py-3.5 px-4">
                     <span
-                      className={`text-[10px] px-2 py-0.5 font-bold uppercase ${
+                      className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase ${
                         entry.role === "IC Member"
-                          ? "bg-[#304A78] text-[#DDA162]"
+                          ? "bg-[#0E1438] text-[#DDA162] border border-[#262E5F]"
                           : entry.role === "HR Admin"
-                          ? "bg-[#2C3259] text-[#EBBA4A]"
-                          : "bg-[#0A0E28] text-[#A87C56]"
+                          ? "bg-[#161E48] text-[#EBBA4A] border border-[#262E5F]"
+                          : "bg-[#0A0E28] text-[#A87C56] border border-[#262E5F]"
                       }`}
                     >
                       {entry.role}
@@ -169,7 +169,7 @@ export const HRAuditPage: React.FC = () => {
                   </td>
                   <td className="py-3.5 px-4 font-mono text-[#A87C56]">{entry.ipMasked}</td>
                   <td className="py-3.5 px-4 text-right">
-                    <span className="text-[10px] px-2 py-0.5 bg-[#0A0E28] border border-[#304A78] text-[#DDA162] font-mono">
+                    <span className="text-[10px] px-2.5 py-0.5 bg-[#0E1438] border border-[#262E5F] text-[#DDA162] font-mono rounded-full">
                       ✓ {entry.status}
                     </span>
                   </td>

@@ -245,14 +245,14 @@ export function renderDashboard(): string {
   <div class="page-header" style="padding-top:2rem;">
     <div class="page-header-meta">IC Intelligence Dashboard · Confidential</div>
     <h1>Behavioral Anomaly Monitor</h1>
-    <p>High-density cohort surveillance workspace. All patterns generalized to k ≥ 5 before display. IC decision authority preserved.</p>
+    <p>High-density cohort surveillance workspace. All patterns generalized for cohort protection before display. IC decision authority preserved.</p>
   </div>
 
   <div class="section" style="padding-top:1.5rem;">
     <!-- KPI Ribbon -->
     <div class="kpi-ribbon" style="margin-bottom:2rem;">
       <div class="kpi-card teal">
-        <div class="kpi-label">Monitored Cohorts (k ≥ 5)</div>
+        <div class="kpi-label">Monitored Cohorts (Privacy Protected)</div>
         <div class="kpi-value tabular">14</div>
         <div class="kpi-delta">+2 this week</div>
         <div class="kpi-subtext">Across 6 departments</div>
@@ -343,7 +343,7 @@ export function renderDashboard(): string {
   <div id="drawer-mount"></div>
 
   <footer class="site-footer">
-    THEODRA IC Dashboard · All data generalized (k ≥ 5) · Dashboard access logged with hash receipt · <span>POSH Act 2013 Compliant</span>
+    THEODRA IC Dashboard · All data generalized (Privacy Protected) · Dashboard access logged with hash receipt · <span>POSH Act 2013 Compliant</span>
   </footer>
 </div>`;
 }

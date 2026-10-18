@@ -1,80 +1,89 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Phone, ExternalLink, HeartHandshake, Shield, ArrowLeft, Scale, LifeBuoy } from "lucide-react";
+import { Phone, ExternalLink, ArrowLeft, LifeBuoy, HeartHandshake, Scale, ShieldAlert } from "lucide-react";
 
 export const ReportResourcesPage: React.FC = () => {
   const resourceCards = [
     {
-      name: "iCall Psychosocial Helpline",
-      tagline: "Tata Institute of Social Sciences (TISS)",
+      name: "National Commission for Women (NCW)",
+      tagline: "Government of India Statutory Body",
+      contact: "7827170170 (24/7 Helpline)",
       offers:
-        "Free, confidential telephone and email-based counseling and psychosocial support by trained professionals across India for stress, trauma, and workplace abuse.",
-      contact: "+91 91529 87821",
-      linkText: "icallhelpline.org",
-      linkUrl: "https://icallhelpline.org",
+        "Emergency distress intake, legal counseling referrals, and direct monitoring of workplace harassment inquiries nationwide.",
+      linkText: "ncw.nic.in",
+      linkUrl: "http://ncw.nic.in",
     },
     {
-      name: "National Women's Helpline 181",
-      tagline: "Ministry of Women and Child Development",
+      name: "SHe-Box (Sexual Harassment e-Box)",
+      tagline: "Ministry of Women & Child Development",
+      contact: "Official Central Government Portal",
       offers:
-        "24/7 toll-free emergency response and grievance support service for women affected by violence, harassment, or distress in workplace and public environments.",
-      contact: "181 (Toll-Free All India)",
-      linkText: "wcd.nic.in",
-      linkUrl: "https://wcd.nic.in",
-    },
-    {
-      name: "Shakti Shalini Crisis Intervention",
-      tagline: "Community Support & Shelter NGO",
-      offers:
-        "Comprehensive crisis management, counseling, legal aid advocacy, and safe emergency accommodation for women facing gender harassment and domestic distress.",
-      contact: "+91 11 2437 3736 / +91 98113 90630",
-      linkText: "shaktishalini.org",
-      linkUrl: "https://shaktishalini.org",
-    },
-    {
-      name: "SHe-Box (Sexual Harassment Electronic Box)",
-      tagline: "Government of India Central Portal",
-      offers:
-        "Centralized online complaint management system allowing any female employee in India (organized or unorganized sector) to lodge workplace sexual harassment complaints directly to the Ministry.",
-      contact: "Online Statutory Gateway",
+        "Direct central government tracking mechanism. Any complaint filed here routes directly to the District Officer and the employer's Internal Committee with mandated oversight.",
       linkText: "shebox.wcd.gov.in",
       linkUrl: "https://shebox.wcd.gov.in",
     },
     {
-      name: "POSH at Work",
-      tagline: "Legal Practice & Awareness Advisory",
+      name: "National Women Helpline (181)",
+      tagline: "Toll-Free 24/7 Government Emergency Support",
+      contact: "Dial 181 (Toll-Free Nationwide)",
       offers:
-        "Specialized legal advisory, employee rights consultations, inquiry procedure assistance, and compliance guidance under the Sexual Harassment Act 2013.",
-      contact: "+91 90041 33334",
-      linkText: "poshatwork.com",
-      linkUrl: "https://poshatwork.com",
+        "24-hour emergency response, psychological counseling referrals, hospital coordination, and immediate intervention.",
+      linkText: "wcd.nic.in/women-helpline",
+      linkUrl: "https://wcd.nic.in",
+    },
+    {
+      name: "iCall Psychosocial Helpline (TISS)",
+      tagline: "Tata Institute of Social Sciences Counseling",
+      contact: "9152987821 (Mon–Sat, 10 AM – 8 PM)",
+      offers:
+        "Confidential, free psychological support and mental health counseling for workplace distress, trauma, and anxiety.",
+      linkText: "icallhelpline.org",
+      linkUrl: "https://icallhelpline.org",
+    },
+    {
+      name: "VIMHANS Mental Health Helpline",
+      tagline: "Specialized Psychiatric Counseling",
+      contact: "011-26924371 (24/7 Mental Health Support)",
+      offers:
+        "Trauma-informed crisis counseling, stress decompensation support, and clinical mental healthcare assistance.",
+      linkText: "vimhans.com",
+      linkUrl: "https://vimhans.com",
+    },
+    {
+      name: "National Legal Services Authority (NALSA)",
+      tagline: "Statutory Legal Aid & Representation",
+      contact: "Dial 15100 (Toll-Free Legal Aid)",
+      offers:
+        "Free, state-provided legal counsel, representation before Magistrate courts, and statutory dispute defense for women under the Legal Services Authorities Act 1987.",
+      linkText: "nalsa.gov.in",
+      linkUrl: "https://nalsa.gov.in",
     },
   ];
 
   const legalAidTypes = [
     {
-      title: "1. National & State Legal Services Authorities (NALSA / SLSA)",
+      title: "State Legal Services Authorities (SLSA)",
       description:
-        "Under the Legal Services Authorities Act 1987, all women in India are entitled to free, state-funded legal aid regardless of their income level. This covers court representation, drafting legal pleadings, and advocates assigned through District Legal Services Authorities (DLSA).",
-      link: "nalsa.gov.in",
+        "Every state high court administers an SLSA providing free advocate appointments and dispute guidance without any income-test threshold for women complainants under Indian law.",
+      link: "nalsa.gov.in/state-legal-services-authorities",
     },
     {
-      title: "2. High Court & Supreme Court Legal Aid Committees",
+      title: "Local Committee (LC) established by District Officer",
       description:
-        "For appeals or judicial review against employer or IC proceedings, institutional legal aid cells provide pro bono senior panel counsel representation in High Courts across states and the Supreme Court of India.",
-      link: "main.sci.gov.in/legal-aid",
+        "If you work at an organization with fewer than 10 employees, or if your complaint is against the employer or CEO directly, the statutory inquiry must be handled by the District Officer's Local Committee.",
+      link: "Contact your local District Collector or Deputy Commissioner office",
     },
     {
-      title: "3. Accredited Pro-Bono Legal Clinics & Women's Law Networks",
+      title: "Pro-Bono POSH Legal Clinics",
       description:
-        "Civil society organizations such as the Human Rights Law Network (HRLN) and Majlis Legal Centre offer specialized legal counselors who advise victims through preliminary IC conciliations and formal inquiry hearings.",
-      link: "hrln.org",
+        "Multiple certified women advocates and legal non-profits offer confidential pro-bono advisory sessions to help you evaluate evidence, draft complaints, and understand your rights.",
+      link: "Access pro-bono directory through bar council panels",
     },
   ];
 
   return (
     <div className="bg-[#0A0E28] text-[#F4F1EB] min-h-[85vh] py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto space-y-10">
+      <div className="max-w-5xl mx-auto space-y-8">
         {/* Back Link */}
         <Link
           to="/report"
@@ -85,7 +94,7 @@ export const ReportResourcesPage: React.FC = () => {
         </Link>
 
         {/* Header */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-6 sm:p-8 shadow-2xl">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl">
           <div className="flex items-center gap-3 mb-2">
             <LifeBuoy className="w-6 h-6 text-[#DDA162]" />
             <span className="text-[11px] font-semibold uppercase tracking-widest text-[#DDA162]">
@@ -105,17 +114,19 @@ export const ReportResourcesPage: React.FC = () => {
           {resourceCards.map((res, i) => (
             <div
               key={i}
-              className="bg-[#2C3259] border border-[#304A78] p-6 flex flex-col justify-between"
+              className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] hover:border-[#DDA162] p-6 rounded-2xl shadow-xl flex flex-col justify-between transition-all group"
             >
               <div>
                 <span className="text-[10px] font-mono text-[#DDA162] uppercase tracking-wider block mb-1">
                   {res.tagline}
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#F4F1EB] mb-2">{res.name}</h3>
+                <h3 className="font-serif text-lg font-bold text-[#F4F1EB] group-hover:text-[#DDA162] mb-2 transition-colors">
+                  {res.name}
+                </h3>
                 <p className="font-serif text-xs text-[#A87C56] leading-relaxed mb-4">{res.offers}</p>
               </div>
 
-              <div className="pt-4 border-t border-[#304A78] space-y-2 text-xs">
+              <div className="pt-4 border-t border-[#262E5F]/60 space-y-2 text-xs">
                 <div className="flex items-center gap-2 text-[#EBBA4A] font-semibold">
                   <Phone className="w-3.5 h-3.5 shrink-0" />
                   <span>{res.contact}</span>
@@ -135,7 +146,7 @@ export const ReportResourcesPage: React.FC = () => {
         </div>
 
         {/* Legal Support Section */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-6 sm:p-8 shadow-2xl">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl">
           <div className="flex items-center gap-3 mb-4">
             <Scale className="w-5 h-5 text-[#DDA162]" />
             <h2 className="font-serif text-xl font-bold text-[#F4F1EB]">
@@ -148,7 +159,7 @@ export const ReportResourcesPage: React.FC = () => {
 
           <div className="space-y-4">
             {legalAidTypes.map((item, idx) => (
-              <div key={idx} className="p-4 bg-[#0A0E28] border border-[#304A78] space-y-1.5">
+              <div key={idx} className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl space-y-1.5 hover:bg-[#262E5F] transition-colors">
                 <h4 className="font-serif text-sm font-semibold text-[#DDA162]">{item.title}</h4>
                 <p className="font-serif text-xs text-[#F4F1EB] opacity-90 leading-relaxed">{item.description}</p>
                 <span className="text-[11px] font-mono text-[#A87C56] block pt-1">

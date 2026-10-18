@@ -17,7 +17,7 @@ export const ICTrainingPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Statutory Competency & Training
@@ -29,21 +29,21 @@ export const ICTrainingPage: React.FC = () => {
             Tracking mandatory annual jurisprudence certification and trauma-informed inquiry training.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs bg-[#2C3259] px-3.5 py-2 border border-[#304A78] text-[#DDA162]">
-          <Award className="w-4 h-4" />
+        <div className="flex items-center gap-2 text-xs bg-[#0E1438] px-3.5 py-2 border border-[#262E5F] rounded-xl text-[#DDA162]">
+          <Award className="w-4 h-4 text-[#DDA162]" />
           <span>Annual Compliance Standard §4</span>
         </div>
       </div>
 
       {remindedMember && (
-        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+        <div className="p-3.5 bg-[#0E1438] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl flex items-center gap-2 animate-in fade-in duration-200">
           <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
           <span>Official training renewal reminder dispatched to {remindedMember}.</span>
         </div>
       )}
 
       {/* Top Summary Banner */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-[#DDA162]">
             Certification Quorum Status
@@ -56,16 +56,16 @@ export const ICTrainingPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="w-full sm:w-64 bg-[#0A0E28] p-3 border border-[#304A78]">
-          <div className="flex justify-between text-xs text-[#A87C56] mb-1">
+        <div className="w-full sm:w-64 bg-[#0E1438] p-4 rounded-xl border border-[#262E5F]">
+          <div className="flex justify-between text-xs text-[#A87C56] mb-1.5">
             <span>Overall Readiness</span>
-            <span className="text-[#DDA162] font-mono">
+            <span className="text-[#DDA162] font-mono font-semibold">
               {Math.round((certifiedCount / totalCount) * 100)}%
             </span>
           </div>
-          <div className="w-full bg-[#2C3259] h-2 overflow-hidden">
+          <div className="w-full bg-[#11173D] h-2 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#DDA162]"
+              className="h-full bg-[#DDA162] rounded-full transition-all duration-300"
               style={{ width: `${(certifiedCount / totalCount) * 100}%` }}
             />
           </div>
@@ -73,39 +73,39 @@ export const ICTrainingPage: React.FC = () => {
       </div>
 
       {/* Training Table */}
-      <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider">
-                <th className="py-3 px-4">Member Name</th>
-                <th className="py-3 px-4">Role</th>
-                <th className="py-3 px-4">Training Module</th>
-                <th className="py-3 px-4">Status</th>
-                <th className="py-3 px-4">Completion Date</th>
-                <th className="py-3 px-4">Certificate ID</th>
-                <th className="py-3 px-4">Days Remaining</th>
-                <th className="py-3 px-4 text-right">Action</th>
+              <tr className="bg-[#0A0E28] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider">
+                <th className="py-3.5 px-4">Member Name</th>
+                <th className="py-3.5 px-4">Role</th>
+                <th className="py-3.5 px-4">Training Module</th>
+                <th className="py-3.5 px-4">Status</th>
+                <th className="py-3.5 px-4">Completion Date</th>
+                <th className="py-3.5 px-4">Certificate ID</th>
+                <th className="py-3.5 px-4">Days Remaining</th>
+                <th className="py-3.5 px-4 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#304A78]/50">
+            <tbody className="divide-y divide-[#262E5F]/60">
               {records.map((rec) => {
                 const isOverdue = rec.status === "Overdue";
                 const isCompleted = rec.status === "Completed";
 
                 return (
-                  <tr key={rec.id} className="hover:bg-[#0A0E28]/40 transition-colors">
-                    <td className="py-3.5 px-4 font-semibold text-[#F4F1EB]">{rec.memberName}</td>
+                  <tr key={rec.id} className="hover:bg-[#262E5F] transition-colors cursor-pointer group">
+                    <td className="py-3.5 px-4 font-semibold text-[#F4F1EB] group-hover:text-[#DDA162]">{rec.memberName}</td>
                     <td className="py-3.5 px-4 text-[#A87C56]">{rec.role}</td>
                     <td className="py-3.5 px-4 text-[#F4F1EB] max-w-xs">{rec.trainingModule}</td>
                     <td className="py-3.5 px-4">
                       <span
-                        className={`text-[10px] px-2.5 py-0.5 font-bold uppercase tracking-wider ${
+                        className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${
                           isCompleted
-                            ? "bg-[#304A78] text-[#DDA162]"
+                            ? "bg-[#161E48] text-[#DDA162] border-[#262E5F]"
                             : isOverdue
-                            ? "bg-amber-950/80 text-[#EBBA4A] border border-[#EBBA4A]"
-                            : "bg-[#0A0E28] text-[#A87C56]"
+                            ? "bg-amber-950/80 text-[#EBBA4A] border-[#EBBA4A]"
+                            : "bg-[#0E1438] text-[#A87C56] border-[#262E5F]"
                         }`}
                       >
                         {rec.status}
@@ -128,7 +128,7 @@ export const ICTrainingPage: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => handleSendReminder(rec.memberName)}
-                        className="px-2.5 py-1 bg-[#0A0E28] border border-[#304A78] text-[11px] font-semibold text-[#DDA162] hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors inline-flex items-center gap-1 cursor-pointer"
+                        className="px-3 py-1.5 bg-[#0E1438] border border-[#262E5F] text-[11px] font-semibold text-[#DDA162] hover:bg-[#DDA162] hover:text-[#0A0E28] rounded-xl transition-colors inline-flex items-center gap-1.5 cursor-pointer shadow-sm"
                       >
                         <BellRing className="w-3 h-3" />
                         <span>Send Reminder</span>

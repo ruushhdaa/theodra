@@ -28,7 +28,7 @@ export const CookiePolicyPage: React.FC = () => {
         </Link>
 
         {/* Title */}
-        <div className="border-b border-[#304A78] pb-6">
+        <div className="border-b border-[#262E5F] pb-6">
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-mono font-semibold">
             Cookie & Local Storage Governance
           </span>
@@ -41,14 +41,14 @@ export const CookiePolicyPage: React.FC = () => {
         </div>
 
         {resetNotice && (
-          <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+          <div className="p-3 bg-[#0E1438] border border-[#DDA162] rounded-xl text-xs text-[#DDA162] flex items-center gap-2 shadow">
             <CheckCircle2 className="w-4 h-4 text-[#EBBA4A]" />
             <span>Cookie preferences reset. Reloading session banner...</span>
           </div>
         )}
 
         {/* Document Body in Editorial Lora */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed text-xs sm:text-sm text-[#F4F1EB] opacity-95">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed text-xs sm:text-sm text-[#F4F1EB] opacity-95">
           <section className="space-y-3">
             <h2 className="font-serif text-lg font-bold text-[#DDA162]">1. Introduction & Zero-Tracking Architecture</h2>
             <p>
@@ -61,27 +61,27 @@ export const CookiePolicyPage: React.FC = () => {
             <p>
               We maintain only three strictly functional, non-advertising tokens required for platform security:
             </p>
-            <div className="overflow-x-auto font-sans">
-              <table className="w-full text-left text-xs border border-[#304A78]">
+            <div className="overflow-x-auto font-sans rounded-xl border border-[#262E5F]">
+              <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="bg-[#0A0E28] text-[#A87C56] uppercase text-[10px]">
+                  <tr className="bg-[#0E1438] text-[#A87C56] uppercase text-[10px]">
                     <th className="p-3">Identifier Name</th>
                     <th className="p-3">Classification</th>
                     <th className="p-3">Purpose & Lifespan</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#304A78]/50">
-                  <tr>
+                <tbody className="divide-y divide-[#262E5F]/50">
+                  <tr className="hover:bg-[#262E5F]/40 transition-colors">
                     <td className="p-3 font-mono text-[#DDA162]">theodra_auth_user</td>
                     <td className="p-3">Essential Functional</td>
                     <td className="p-3 text-[#A87C56]">Maintains encrypted session authentication for logged-in IC and HR members. Expires upon logout.</td>
                   </tr>
-                  <tr>
+                  <tr className="hover:bg-[#262E5F]/40 transition-colors">
                     <td className="p-3 font-mono text-[#DDA162]">theodra_cookie_consent</td>
                     <td className="p-3">Essential Preference</td>
                     <td className="p-3 text-[#A87C56]">Remembers user acknowledgment of this essential cookie policy. Stored for 365 days.</td>
                   </tr>
-                  <tr>
+                  <tr className="hover:bg-[#262E5F]/40 transition-colors">
                     <td className="p-3 font-mono text-[#DDA162]">theodra_tour_seen_*</td>
                     <td className="p-3">Essential Interface</td>
                     <td className="p-3 text-[#A87C56]">Records whether a user has completed the first-time onboarding walkthrough tour.</td>
@@ -96,7 +96,7 @@ export const CookiePolicyPage: React.FC = () => {
             <p>
               When an employee visits <strong className="text-[#F4F1EB]">/report</strong>, <strong className="text-[#F4F1EB]">/report/track</strong>, or any reporting sub-routes:
             </p>
-            <div className="p-4 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#F4F1EB] space-y-2">
+            <div className="p-4 bg-[#0E1438] border border-[#DDA162] rounded-xl text-xs text-[#F4F1EB] space-y-2">
               <p className="font-semibold text-[#DDA162]">Statutory Protection Guarantee:</p>
               <p>
                 Zero cookies of any kind are set. No localStorage tokens are written unless the user explicitly copies their anonymous reference code. Your browser fingerprint, IP address, and session headers are never recorded.
@@ -113,7 +113,7 @@ export const CookiePolicyPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleResetPreferences}
-                className="px-4 py-2 bg-[#304A78] text-[#F4F1EB] text-xs font-semibold hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors"
+                className="px-4 py-2 bg-[#0E1438] border border-[#262E5F] text-[#F4F1EB] text-xs font-semibold rounded-lg hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors shadow-sm"
               >
                 Reset Cookie Consent Preferences
               </button>

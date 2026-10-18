@@ -83,7 +83,7 @@ export const ICMinutesPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#304A78]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#262E5F]">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold">
             Statutory Governance & Records
@@ -99,7 +99,7 @@ export const ICMinutesPage: React.FC = () => {
           <button
             type="button"
             onClick={handleExportPDF}
-            className="px-4 py-2 bg-[#0A0E28] border border-[#304A78] text-xs font-semibold text-[#DDA162] hover:bg-[#304A78] transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs font-semibold text-[#DDA162] hover:bg-[#262E5F] hover:border-[#DDA162] transition-colors flex items-center gap-1.5 cursor-pointer shadow-sm"
           >
             <Download className="w-4 h-4" />
             <span>Export as PDF</span>
@@ -107,7 +107,7 @@ export const ICMinutesPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setBuilderOpen(true)}
-            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+            className="px-4 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 cursor-pointer shadow-lg"
           >
             <Plus className="w-4 h-4" />
             <span>New Minutes</span>
@@ -116,7 +116,7 @@ export const ICMinutesPage: React.FC = () => {
       </div>
 
       {pdfDownloaded && (
-        <div className="p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+        <div className="p-3.5 bg-[#0E1438] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl flex items-center gap-2 animate-in fade-in duration-200">
           <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
           <span>Statutory meeting minutes PDF generated and downloaded.</span>
         </div>
@@ -124,9 +124,9 @@ export const ICMinutesPage: React.FC = () => {
 
       {/* Two Column Layout: Past Minutes List & Active Minutes Detail */}
       <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 items-start">
-        {/* Past Minutes List (3.5 cols) */}
-        <div className="lg:col-span-4 bg-[#2C3259] border border-[#304A78] p-4 shadow-2xl space-y-3">
-          <h3 className="font-serif text-sm font-bold text-[#F4F1EB] pb-2 border-b border-[#304A78]">
+        {/* Past Minutes List (4 cols) */}
+        <div className="lg:col-span-4 bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-4 shadow-xl space-y-3">
+          <h3 className="font-serif text-sm font-bold text-[#F4F1EB] pb-2 border-b border-[#262E5F]">
             Archived Minutes ({minutesList.length})
           </h3>
           <div className="space-y-2">
@@ -135,10 +135,10 @@ export const ICMinutesPage: React.FC = () => {
                 key={m.id}
                 type="button"
                 onClick={() => setSelectedMinutes(m)}
-                className={`w-full text-left p-3.5 border text-xs transition-colors ${
+                className={`w-full text-left p-3.5 rounded-xl border text-xs transition-colors cursor-pointer ${
                   selectedMinutes?.id === m.id
-                    ? "bg-[#0A0E28] border-[#DDA162] text-[#DDA162]"
-                    : "bg-[#0A0E28]/40 border-[#304A78] text-[#F4F1EB] hover:border-[#DDA162]"
+                    ? "bg-[#161E48] border-[#DDA162] text-[#DDA162]"
+                    : "bg-[#0E1438] border-[#262E5F] text-[#F4F1EB] hover:bg-[#262E5F]"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -154,11 +154,11 @@ export const ICMinutesPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Selected Minutes Detail (6.5 cols) */}
-        <div className="lg:col-span-6 bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl space-y-6">
+        {/* Selected Minutes Detail (6 cols) */}
+        <div className="lg:col-span-6 bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl space-y-6">
           {selectedMinutes ? (
             <>
-              <div className="pb-4 border-b border-[#304A78]">
+              <div className="pb-4 border-b border-[#262E5F]">
                 <div className="flex items-center justify-between text-xs text-[#A87C56] mb-1">
                   <span className="font-mono font-bold text-[#DDA162]">{selectedMinutes.id}</span>
                   <span>Date: {selectedMinutes.date}</span>
@@ -171,7 +171,7 @@ export const ICMinutesPage: React.FC = () => {
                   {selectedMinutes.attendees.map((att) => (
                     <span
                       key={att}
-                      className="px-2 py-0.5 bg-[#0A0E28] border border-[#304A78] text-xs text-[#F4F1EB]"
+                      className="px-2.5 py-0.5 bg-[#0E1438] border border-[#262E5F] rounded-lg text-xs text-[#F4F1EB]"
                     >
                       {att}
                     </span>
@@ -185,7 +185,7 @@ export const ICMinutesPage: React.FC = () => {
                   Agenda Items & Deliberations
                 </h3>
                 {selectedMinutes.agendaItems.map((item, idx) => (
-                  <div key={idx} className="p-3 bg-[#0A0E28] border border-[#304A78] text-xs space-y-1">
+                  <div key={idx} className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs space-y-1">
                     <span className="font-semibold text-[#F4F1EB] block">
                       {idx + 1}. {item.topic}
                     </span>
@@ -203,7 +203,7 @@ export const ICMinutesPage: React.FC = () => {
                   {selectedMinutes.decisions.map((dec, i) => (
                     <div
                       key={i}
-                      className="p-2.5 bg-[#0A0E28] border border-[#304A78] text-xs text-[#F4F1EB] flex items-start gap-2"
+                      className="p-3 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-[#F4F1EB] flex items-start gap-2"
                     >
                       <span className="text-[#EBBA4A] font-bold">✓</span>
                       <span>{dec}</span>
@@ -217,9 +217,9 @@ export const ICMinutesPage: React.FC = () => {
                 <h3 className="font-serif text-sm font-bold text-[#DDA162] uppercase tracking-wider">
                   Assigned Action Items
                 </h3>
-                <div className="divide-y divide-[#304A78] border border-[#304A78] bg-[#0A0E28]">
+                <div className="divide-y divide-[#262E5F] border border-[#262E5F] bg-[#0E1438] rounded-xl overflow-hidden">
                   {selectedMinutes.actionItems.map((act, i) => (
-                    <div key={i} className="p-3 flex items-center justify-between text-xs">
+                    <div key={i} className="p-3.5 flex items-center justify-between text-xs">
                       <div>
                         <span className="font-medium text-[#F4F1EB]">{act.task}</span>
                         <div className="text-[10px] text-[#A87C56] mt-0.5">
@@ -227,10 +227,10 @@ export const ICMinutesPage: React.FC = () => {
                         </div>
                       </div>
                       <span
-                        className={`text-[10px] px-2 py-0.5 font-bold uppercase ${
+                        className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase border ${
                           act.status === "Done"
-                            ? "bg-[#304A78] text-[#DDA162]"
-                            : "bg-[#2C3259] text-[#EBBA4A]"
+                            ? "bg-[#161E48] text-[#DDA162] border-[#262E5F]"
+                            : "bg-amber-950/80 text-[#EBBA4A] border-[#EBBA4A]"
                         }`}
                       >
                         {act.status}
@@ -240,7 +240,7 @@ export const ICMinutesPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#304A78] flex items-center justify-between text-xs text-[#A87C56]">
+              <div className="pt-3 border-t border-[#262E5F] flex items-center justify-between text-xs text-[#A87C56]">
                 <span>Next Scheduled Meeting:</span>
                 <span className="font-mono text-[#F4F1EB] font-bold">
                   {selectedMinutes.nextMeetingDate}
@@ -257,10 +257,10 @@ export const ICMinutesPage: React.FC = () => {
 
       {/* Minutes Builder Modal Form */}
       {builderOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/80 backdrop-blur-none overflow-y-auto">
-          <div className="bg-[#2C3259] border border-[#304A78] max-w-2xl w-full p-6 text-[#F4F1EB] shadow-2xl space-y-5 my-8">
-            <div className="flex items-center justify-between pb-3 border-b border-[#304A78]">
-              <div className="flex items-center gap-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/85 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl max-w-2xl w-full p-6 text-[#F4F1EB] shadow-2xl space-y-5 my-8 animate-in fade-in duration-200">
+            <div className="flex items-center justify-between pb-3.5 border-b border-[#262E5F]">
+              <div className="flex items-center gap-2.5">
                 <FileText className="w-5 h-5 text-[#DDA162]" />
                 <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
                   Record Statutory Meeting Minutes
@@ -269,7 +269,7 @@ export const ICMinutesPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setBuilderOpen(false)}
-                className="text-[#A87C56] hover:text-[#F4F1EB]"
+                className="text-[#A87C56] hover:text-[#F4F1EB] p-1 rounded-lg hover:bg-[#262E5F] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -278,7 +278,7 @@ export const ICMinutesPage: React.FC = () => {
             <form onSubmit={handleSaveMinutes} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                     Meeting Date
                   </label>
                   <input
@@ -286,11 +286,11 @@ export const ICMinutesPage: React.FC = () => {
                     required
                     value={bDate}
                     onChange={(e) => setBDate(e.target.value)}
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                  <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                     Meeting Title
                   </label>
                   <input
@@ -298,7 +298,7 @@ export const ICMinutesPage: React.FC = () => {
                     required
                     value={bTitle}
                     onChange={(e) => setBTitle(e.target.value)}
-                    className="w-full bg-[#0A0E28] border border-[#304A78] px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none"
+                    className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                   />
                 </div>
               </div>
@@ -316,10 +316,10 @@ export const ICMinutesPage: React.FC = () => {
                         key={mem.id}
                         type="button"
                         onClick={() => handleToggleAttendee(mem.name)}
-                        className={`p-2 text-left border text-xs flex items-center justify-between ${
+                        className={`p-2.5 rounded-xl text-left border text-xs flex items-center justify-between cursor-pointer transition-colors ${
                           isSelected
-                            ? "bg-[#0A0E28] border-[#DDA162] text-[#DDA162]"
-                            : "bg-[#0A0E28]/40 border-[#304A78] text-[#A87C56]"
+                            ? "bg-[#161E48] border-[#DDA162] text-[#DDA162]"
+                            : "bg-[#0E1438] border-[#262E5F] text-[#A87C56] hover:bg-[#262E5F]"
                         }`}
                       >
                         <span className="truncate">{mem.name}</span>
@@ -337,13 +337,13 @@ export const ICMinutesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleAddAgendaItem}
-                    className="text-[11px] text-[#DDA162] hover:underline"
+                    className="text-[11px] text-[#DDA162] hover:underline cursor-pointer"
                   >
                     + Add Agenda Item
                   </button>
                 </div>
                 {bAgenda.map((ag, i) => (
-                  <div key={i} className="p-3 bg-[#0A0E28] border border-[#304A78] space-y-2">
+                  <div key={i} className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl space-y-2">
                     <input
                       type="text"
                       placeholder="Agenda topic..."
@@ -353,7 +353,7 @@ export const ICMinutesPage: React.FC = () => {
                         copy[i].topic = e.target.value;
                         setBAgenda(copy);
                       }}
-                      className="w-full bg-[#2C3259] border border-[#304A78] px-2.5 py-1.5 text-xs text-[#F4F1EB] focus:outline-none"
+                      className="w-full bg-[#0A0E28] border border-[#262E5F] rounded-lg px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                     />
                     <textarea
                       rows={2}
@@ -364,7 +364,7 @@ export const ICMinutesPage: React.FC = () => {
                         copy[i].discussion = e.target.value;
                         setBAgenda(copy);
                       }}
-                      className="w-full bg-[#2C3259] border border-[#304A78] p-2 text-xs text-[#F4F1EB] focus:outline-none"
+                      className="w-full bg-[#0A0E28] border border-[#262E5F] rounded-lg p-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                     />
                   </div>
                 ))}
@@ -377,7 +377,7 @@ export const ICMinutesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleAddActionItem}
-                    className="text-[11px] text-[#DDA162] hover:underline"
+                    className="text-[11px] text-[#DDA162] hover:underline cursor-pointer"
                   >
                     + Add Action Item
                   </button>
@@ -393,7 +393,7 @@ export const ICMinutesPage: React.FC = () => {
                         copy[i].task = e.target.value;
                         setBActions(copy);
                       }}
-                      className="flex-1 bg-[#0A0E28] border border-[#304A78] px-2.5 py-1.5 text-xs text-[#F4F1EB]"
+                      className="flex-1 bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2 text-xs text-[#F4F1EB]"
                     />
                     <input
                       type="text"
@@ -404,35 +404,35 @@ export const ICMinutesPage: React.FC = () => {
                         copy[i].owner = e.target.value;
                         setBActions(copy);
                       }}
-                      className="w-32 bg-[#0A0E28] border border-[#304A78] px-2 py-1.5 text-xs text-[#F4F1EB]"
+                      className="w-36 bg-[#0E1438] border border-[#262E5F] rounded-xl px-3 py-2 text-xs text-[#F4F1EB]"
                     />
                   </div>
                 ))}
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+                <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                   Next Scheduled Meeting Date
                 </label>
                 <input
                   type="text"
                   value={bNextMeeting}
                   onChange={(e) => setBNextMeeting(e.target.value)}
-                  className="w-full bg-[#0A0E28] border border-[#304A78] px-3 py-2 text-xs text-[#F4F1EB]"
+                  className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#304A78]">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#262E5F]">
                 <button
                   type="button"
                   onClick={() => setBuilderOpen(false)}
-                  className="px-4 py-2 border border-[#304A78] text-xs text-[#A87C56]"
+                  className="px-4 py-2 rounded-xl border border-[#262E5F] text-xs text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB] transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A]"
+                  className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors cursor-pointer shadow-md"
                 >
                   Save & Archive Minutes
                 </button>

@@ -16,7 +16,7 @@ export const PrivacyPolicyPage: React.FC = () => {
         </Link>
 
         {/* Title */}
-        <div className="border-b border-[#304A78] pb-6">
+        <div className="border-b border-[#262E5F] pb-6">
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-mono font-semibold">
             Data Protection Architecture
           </span>
@@ -29,7 +29,7 @@ export const PrivacyPolicyPage: React.FC = () => {
         </div>
 
         {/* Document Body in Editorial Lora */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed text-xs sm:text-sm text-[#F4F1EB] opacity-95">
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-8 sm:p-12 shadow-2xl space-y-8 font-serif leading-relaxed text-xs sm:text-sm text-[#F4F1EB] opacity-95">
           <section className="space-y-3">
             <h2 className="font-serif text-lg font-bold text-[#DDA162]">1. Privacy Philosophy & Overview</h2>
             <p>
@@ -42,7 +42,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             <p>
               Our platform ingests strictly bounded interaction telemetry from enterprise collaboration platforms (Slack, Microsoft Teams, Google Workspace) via read-only APIs:
             </p>
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78] font-mono text-xs space-y-2 text-[#A87C56]">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl font-mono text-xs space-y-2 text-[#A87C56]">
               <p>• <span className="text-[#DDA162]">Interaction Timestamp Bucket:</span> Hourly aggregate buckets (e.g., 22:00–23:00) identifying off-hours or weekend frequency.</p>
               <p>• <span className="text-[#DDA162]">Seniority / Hierarchy Delta:</span> Numerical delta between corporate chart seniority levels of interlocutors.</p>
               <p>• <span className="text-[#DDA162]">Channel Type Topology:</span> Classification of interaction surface (Public Team Channel, Private Multi-User Group, Direct 1:1 Message).</p>
@@ -65,12 +65,12 @@ export const PrivacyPolicyPage: React.FC = () => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-serif text-lg font-bold text-[#DDA162]">4. The Mathematical k-Anonymity Guarantee (k ≥ 5)</h2>
+            <h2 className="font-serif text-lg font-bold text-[#DDA162]">4. The Mathematical Cohort Privacy Guarantee</h2>
             <p>
-              In plain English: <strong className="text-[#F4F1EB]">No pattern is ever shown to an Internal Committee reviewer unless at least five people share that exact pattern</strong>.
+              In plain English: <strong className="text-[#F4F1EB]">No pattern is ever shown to an Internal Committee reviewer unless multiple peers share that exact pattern</strong>.
             </p>
             <p>
-              If our algorithms detect an unusual after-hours interaction spike between a specific lead and associate, that dynamic is mathematically suppressed from view. It will only surface as an observable cohort if at least four other individuals in that department exhibit equivalent role pairings and after-hours messaging ratios. This mathematically prevents witch-hunts, gossip, or targeted supervisory retaliation.
+              If our algorithms detect an unusual after-hours interaction spike between a specific lead and associate, that dynamic is mathematically suppressed from view. It will only surface as an observable cohort if multiple other individuals in that department exhibit equivalent role pairings and after-hours messaging ratios. This mathematically prevents witch-hunts, gossip, or targeted supervisory retaliation.
             </p>
           </section>
 
@@ -100,7 +100,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             <p>
               In accordance with Section 8(1) of the DPDP Act 2023, THEODRA has designated a qualified Data Protection Officer for regulatory inquiries:
             </p>
-            <div className="p-4 bg-[#0A0E28] border border-[#304A78] font-sans text-xs space-y-1">
+            <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl font-sans text-xs space-y-1">
               <p><span className="text-[#A87C56]">Designation:</span> Data Protection & Privacy Officer</p>
               <p><span className="text-[#A87C56]">Email Contact:</span> <strong className="text-[#DDA162] font-mono">privacy@theodra.in</strong></p>
               <p><span className="text-[#A87C56]">Address:</span> THEODRA Systems India Pvt. Ltd., Tech Corridor, Bengaluru, Karnataka 560103</p>

@@ -82,23 +82,23 @@ export const ICReportDetailPage: React.FC = () => {
       </div>
 
       {/* Top Header Card */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#304A78]">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#262E5F]">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-[#0A0E28] border border-[#304A78] text-[#DDA162]">
+            <div className="p-3 bg-[#0E1438] border border-[#262E5F] rounded-xl text-[#DDA162]">
               <Inbox className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="font-serif text-2xl font-bold text-[#F4F1EB]">{report.id}</h1>
-                <span className="font-mono text-xs px-2.5 py-0.5 bg-[#0A0E28] text-[#DDA162] border border-[#304A78]">
+                <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-[#11173D] text-[#DDA162] border border-[#262E5F]">
                   Code: {report.referenceCode}
                 </span>
-                <span className="text-[10px] px-2 py-0.5 bg-[#304A78] text-[#EBBA4A] font-bold uppercase">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#161E48] text-[#EBBA4A] font-bold uppercase border border-[#262E5F]">
                   {status}
                 </span>
               </div>
-              <p className="text-xs text-[#A87C56] mt-0.5">
+              <p className="text-xs text-[#A87C56] mt-1">
                 Submitted: <span className="text-[#F4F1EB]">{report.submissionWeek}</span> ({report.submissionDate})
               </p>
             </div>
@@ -106,17 +106,17 @@ export const ICReportDetailPage: React.FC = () => {
 
           <div className="flex items-center gap-3">
             {/* Status Selector */}
-            <div className="flex items-center gap-1.5 bg-[#0A0E28] p-1 border border-[#304A78]">
+            <div className="flex items-center gap-1.5 bg-[#0E1438] p-1.5 rounded-xl border border-[#262E5F]">
               <span className="text-[11px] text-[#A87C56] px-2">Status:</span>
               {(["Under Review", "Responded", "Closed"] as const).map((st) => (
                 <button
                   key={st}
                   type="button"
                   onClick={() => handleStatusChange(st)}
-                  className={`px-2.5 py-1 text-[11px] font-semibold transition-colors ${
+                  className={`px-3 py-1 rounded-lg text-[11px] font-semibold transition-colors cursor-pointer ${
                     status === st
                       ? "bg-[#DDA162] text-[#0A0E28]"
-                      : "text-[#A87C56] hover:text-[#F4F1EB]"
+                      : "text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB]"
                   }`}
                 >
                   {st}
@@ -128,7 +128,7 @@ export const ICReportDetailPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setLinkCaseModalOpen(true)}
-              className="px-3.5 py-2 bg-[#0A0E28] border border-[#304A78] text-xs font-semibold text-[#DDA162] hover:border-[#DDA162] transition-colors flex items-center gap-1.5"
+              className="px-4 py-2 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs font-semibold text-[#DDA162] hover:bg-[#262E5F] hover:border-[#DDA162] transition-colors flex items-center gap-1.5 cursor-pointer shadow-sm"
             >
               <LinkIcon className="w-3.5 h-3.5" />
               <span>{report.linkedCaseId ? `Linked: ${report.linkedCaseId}` : "Link to Case"}</span>
@@ -137,7 +137,7 @@ export const ICReportDetailPage: React.FC = () => {
         </div>
 
         {linkedSuccess && (
-          <div className="mt-4 p-3 bg-[#0A0E28] border border-[#DDA162] text-xs text-[#DDA162] flex items-center gap-2">
+          <div className="mt-4 p-3.5 bg-[#0E1438] border border-[#DDA162] text-xs text-[#DDA162] rounded-xl flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-[#EBBA4A]" />
             <span>Report successfully associated with case {report.linkedCaseId}.</span>
           </div>
@@ -145,13 +145,13 @@ export const ICReportDetailPage: React.FC = () => {
 
         {/* Tags & Timeframe Row */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 text-xs">
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78]">
+          <div className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl">
             <span className="text-[10px] uppercase text-[#A87C56] block">Nature of Concern</span>
-            <div className="flex flex-wrap gap-1 mt-1">
+            <div className="flex flex-wrap gap-1 mt-1.5">
               {report.concernTags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 bg-[#2C3259] text-[#DDA162] text-[10px] font-semibold"
+                  className="px-2 py-0.5 bg-[#161E48] text-[#DDA162] text-[10px] font-semibold rounded-md border border-[#262E5F]"
                 >
                   {tag}
                 </span>
@@ -159,16 +159,16 @@ export const ICReportDetailPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78]">
+          <div className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl">
             <span className="text-[10px] uppercase text-[#A87C56] block">Communication Channel</span>
-            <span className="font-semibold text-[#F4F1EB] block mt-1">
+            <span className="font-semibold text-[#F4F1EB] block mt-1.5">
               {report.communicationChannel}
             </span>
           </div>
 
-          <div className="p-3 bg-[#0A0E28] border border-[#304A78]">
+          <div className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl">
             <span className="text-[10px] uppercase text-[#A87C56] block">Approximate Timeframe</span>
-            <span className="font-semibold text-[#F4F1EB] block mt-1">
+            <span className="font-semibold text-[#F4F1EB] block mt-1.5">
               {report.approximateTimeframe}
             </span>
           </div>
@@ -179,14 +179,14 @@ export const ICReportDetailPage: React.FC = () => {
           <span className="text-xs font-semibold uppercase tracking-wider text-[#DDA162] block mb-2">
             Free-Text Statement from Reporting Individual
           </span>
-          <div className="p-4 bg-[#0A0E28] border border-[#304A78] text-xs text-[#F4F1EB] leading-relaxed font-serif">
-            "{report.description}"
+          <div className="p-4 bg-[#0E1438] border border-[#262E5F] rounded-xl text-xs text-[#F4F1EB] leading-relaxed font-serif">
+            &ldquo;{report.description}&rdquo;
           </div>
         </div>
 
         {/* Uploaded Evidence items */}
         {report.evidenceItems.length > 0 && (
-          <div className="mt-6 pt-4 border-t border-[#304A78]">
+          <div className="mt-6 pt-4 border-t border-[#262E5F]">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#DDA162] block mb-2">
               Uploaded Digital Evidence Files ({report.evidenceItems.length})
             </span>
@@ -194,9 +194,9 @@ export const ICReportDetailPage: React.FC = () => {
               {report.evidenceItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-3 bg-[#0A0E28] border border-[#304A78] flex items-center justify-between text-xs"
+                  className="p-3.5 bg-[#0E1438] border border-[#262E5F] rounded-xl flex items-center justify-between text-xs"
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     {item.fileType === "PNG" ? (
                       <ImageIcon className="w-4 h-4 text-[#DDA162]" />
                     ) : (
@@ -213,23 +213,23 @@ export const ICReportDetailPage: React.FC = () => {
       </div>
 
       {/* Two-Way Message Thread */}
-      <div className="bg-[#2C3259] border border-[#304A78] p-6 shadow-2xl">
-        <div className="pb-4 border-b border-[#304A78] mb-4 flex items-center justify-between">
+      <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 shadow-2xl">
+        <div className="pb-4 border-b border-[#262E5F] mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h3 className="font-serif text-lg font-bold text-[#F4F1EB]">
               Two-Way Anonymous Reporter Channel
             </h3>
-            <p className="font-serif text-xs text-[#A87C56]">
-              All messages sent here are delivered directly to the employee's Case Tracker under reference code {report.referenceCode}.
+            <p className="font-serif text-xs text-[#A87C56] mt-0.5">
+              All messages sent here are delivered directly to the employee&apos;s Case Tracker under reference code {report.referenceCode}.
             </p>
           </div>
-          <span className="text-xs text-[#DDA162] bg-[#0A0E28] px-2.5 py-1 border border-[#304A78] font-semibold">
+          <span className="text-xs text-[#DDA162] bg-[#0E1438] px-3 py-1 rounded-full border border-[#262E5F] font-semibold self-start sm:self-auto">
             Confidential Session
           </span>
         </div>
 
         {/* Chat Bubbles Thread */}
-        <div className="bg-[#0A0E28] border border-[#304A78] p-5 space-y-4 max-h-80 overflow-y-auto mb-4">
+        <div className="bg-[#0E1438] border border-[#262E5F] rounded-2xl p-5 space-y-4 max-h-80 overflow-y-auto mb-4">
           {report.messages.map((msg) => {
             const isIC = msg.sender === "IC Member";
             return (
@@ -247,8 +247,8 @@ export const ICReportDetailPage: React.FC = () => {
                 <div
                   className={`max-w-lg p-3.5 text-xs leading-relaxed ${
                     isIC
-                      ? "bg-[#304A78] text-[#F4F1EB] rounded-tl-lg rounded-bl-lg rounded-tr-lg"
-                      : "bg-[#2C3259] text-[#F4F1EB] border border-[#304A78] rounded-tr-lg rounded-br-lg rounded-tl-lg"
+                      ? "bg-[#161E48] text-[#F4F1EB] rounded-2xl rounded-tr-none border border-[#262E5F]"
+                      : "bg-[#0A0E28] text-[#F4F1EB] border border-[#262E5F] rounded-2xl rounded-tl-none"
                   }`}
                 >
                   {msg.text}
@@ -265,12 +265,12 @@ export const ICReportDetailPage: React.FC = () => {
             value={replyText}
             onChange={(e) => setReplyText(e.target.value)}
             placeholder="Type a confidential inquiry question or protective relief notice to the reporter..."
-            className="flex-1 bg-[#0A0E28] border border-[#304A78] px-4 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
+            className="flex-1 bg-[#0E1438] border border-[#262E5F] rounded-xl px-4 py-2.5 text-xs text-[#F4F1EB] placeholder-[#A87C56] focus:outline-none focus:border-[#DDA162]"
           />
           <button
             type="submit"
             disabled={!replyText.trim()}
-            className="px-5 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 disabled:opacity-40 cursor-pointer"
+            className="px-5 py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors flex items-center gap-1.5 disabled:opacity-40 cursor-pointer shadow-md"
           >
             <span>Send Reply</span>
             <Send className="w-3.5 h-3.5" />
@@ -280,9 +280,9 @@ export const ICReportDetailPage: React.FC = () => {
 
       {/* Link to Case Modal */}
       {linkCaseModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/80 backdrop-blur-none">
-          <div className="bg-[#2C3259] border border-[#304A78] max-w-md w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#304A78]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E28]/85 backdrop-blur-sm">
+          <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl max-w-md w-full p-6 text-[#F4F1EB] shadow-2xl space-y-4 animate-in fade-in duration-200">
+            <div className="flex items-center justify-between pb-3 border-b border-[#262E5F]">
               <div className="flex items-center gap-2">
                 <LinkIcon className="w-4 h-4 text-[#DDA162]" />
                 <h3 className="font-serif text-base font-bold text-[#F4F1EB]">
@@ -292,24 +292,24 @@ export const ICReportDetailPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLinkCaseModalOpen(false)}
-                className="text-[#A87C56] hover:text-[#F4F1EB]"
+                className="text-[#A87C56] hover:text-[#F4F1EB] p-1 rounded-lg hover:bg-[#262E5F] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <p className="text-xs text-[#F4F1EB] leading-relaxed">
-              Linking report {report.id} ({report.referenceCode}) to a formal Kanban case allows the Internal Committee to aggregate evidence items while maintaining the complainant's identity seal.
+              Linking report {report.id} ({report.referenceCode}) to a formal Kanban case allows the Internal Committee to aggregate evidence items while maintaining the complainant&apos;s identity seal.
             </p>
 
             <div>
-              <label className="block text-xs font-semibold text-[#F4F1EB] mb-1">
+              <label className="block text-xs font-semibold text-[#F4F1EB] mb-1.5">
                 Select Active Case File
               </label>
               <select
                 value={selectedCaseId}
                 onChange={(e) => setSelectedCaseId(e.target.value)}
-                className="w-full bg-[#0A0E28] border border-[#304A78] px-3 py-2 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
+                className="w-full bg-[#0E1438] border border-[#262E5F] rounded-xl px-3.5 py-2.5 text-xs text-[#F4F1EB] focus:outline-none focus:border-[#DDA162]"
               >
                 {MOCK_KANBAN_CASES.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -319,18 +319,18 @@ export const ICReportDetailPage: React.FC = () => {
               </select>
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#304A78]">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#262E5F]">
               <button
                 type="button"
                 onClick={() => setLinkCaseModalOpen(false)}
-                className="px-4 py-2 border border-[#304A78] text-xs text-[#A87C56] hover:text-[#F4F1EB]"
+                className="px-4 py-2 rounded-xl border border-[#262E5F] text-xs text-[#A87C56] hover:bg-[#262E5F] hover:text-[#F4F1EB] transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleLinkCase}
-                className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A]"
+                className="px-5 py-2 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors cursor-pointer shadow-md"
               >
                 Confirm Linkage
               </button>
