@@ -52,10 +52,7 @@ export const PublicNavbar: React.FC = () => {
         {/* Right Action buttons */}
         <div className="hidden lg:flex items-center space-x-3">
           <Link
-            to="/report?mode=form"
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent("theodra-open-report-form"));
-            }}
+            to="/report"
             className="px-4 py-2 border border-[#DDA162] text-[#DDA162] text-xs font-semibold tracking-wide rounded-xl hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
           >
             <Shield className="w-3.5 h-3.5" />
@@ -116,11 +113,7 @@ export const PublicNavbar: React.FC = () => {
         {/* Mobile Hamburger */}
         <div className="lg:hidden flex items-center gap-2">
           <Link
-            to="/report?mode=form"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              window.dispatchEvent(new CustomEvent("theodra-open-report-form"));
-            }}
+            to="/report"
             className="px-3 py-1.5 border border-[#DDA162] text-[#DDA162] text-xs font-semibold rounded-lg"
           >
             Report

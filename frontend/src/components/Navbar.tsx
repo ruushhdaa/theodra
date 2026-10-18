@@ -165,10 +165,7 @@ export const Navbar: React.FC = () => {
 
         {/* Primary CTA (Bright Yellow-Gold, rounded 6px) */}
         <Link
-          to="/report?mode=form"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("theodra-open-report-form"));
-          }}
+          to="/report"
           className="font-sans text-xs font-semibold bg-[#F0B83A] text-[#0A0E28] px-4 py-2 rounded-[6px] hover:bg-[#F0B83A]/90 transition-colors whitespace-nowrap shadow-sm"
         >
           Anonymous Report
@@ -200,11 +197,8 @@ export const Navbar: React.FC = () => {
             Product
           </Link>
           <Link
-            to="/report?mode=form"
-            onClick={() => {
-              setMobileOpen(false);
-              window.dispatchEvent(new CustomEvent("theodra-open-report-form"));
-            }}
+            to="/report"
+            onClick={() => setMobileOpen(false)}
             className={`font-sans text-sm font-medium px-3 py-2 rounded-[6px] ${
               isActive("/report") ? "text-[#F0B83A] bg-[#13193A]" : "text-[#BDB9AD]"
             }`}

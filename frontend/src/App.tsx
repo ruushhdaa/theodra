@@ -92,7 +92,6 @@ export const App: React.FC = () => {
             <Route path="/report" element={<ReportLandingPage />} />
             <Route path="/report/track" element={<ReportTrackPage />} />
             <Route path="/report/quiet-flag" element={<ReportQuietFlagPage />} />
-            <Route path="/report/flag" element={<Navigate to="/report/quiet-flag" replace />} />
             <Route path="/report/rights" element={<ReportRightsPage />} />
             <Route path="/report/resources" element={<ReportResourcesPage />} />
 

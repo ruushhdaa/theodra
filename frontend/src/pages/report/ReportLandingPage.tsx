@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ShieldCheck,
   EyeOff,
@@ -19,37 +19,10 @@ import {
 import { api } from "../../api/client";
 
 export const ReportLandingPage: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const modeParam = searchParams.get("mode");
-  const [activeMode, setActiveMode] = useState<"landing" | "form">(
-    modeParam === "form" ? "form" : "landing"
-  );
+  const [activeMode, setActiveMode] = useState<"landing" | "form">("landing");
   const [currentStep, setCurrentStep] = useState(1);
   const [pulseScore, setPulseScore] = useState<number | null>(null);
   const [pulseSubmitted, setPulseSubmitted] = useState(false);
-
-  // Sync state if URL query param changes
-  useEffect(() => {
-    if (modeParam === "form") {
-      setActiveMode("form");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (modeParam === "landing") {
-      setActiveMode("landing");
-    }
-  }, [modeParam]);
-
-  // Handle immediate form opening if custom event dispatched from navbar
-  useEffect(() => {
-    const handleOpenForm = () => {
-      setActiveMode("form");
-      setCurrentStep(1);
-      setSearchParams({ mode: "form" }, { replace: true });
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    window.addEventListener("theodra-open-report-form", handleOpenForm);
-    return () => window.removeEventListener("theodra-open-report-form", handleOpenForm);
-  }, [setSearchParams]);
 
   // Form states
   const [concerns, setConcerns] = useState<string[]>([]);
@@ -139,19 +112,12 @@ export const ReportLandingPage: React.FC = () => {
       {/* Sub-navigation bar for Employee Portal */}
       <div className="bg-[#0A0E28] border-b border-[#262E5F] px-4 py-2.5">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs">
-          <button
-            type="button"
-            onClick={() => {
-              setActiveMode("landing");
-              setSearchParams({}, { replace: true });
-            }}
-            className="flex items-center gap-2 text-[#DDA162] hover:text-[#EBBA4A] transition-colors cursor-pointer text-left"
-          >
+          <div className="flex items-center gap-2 text-[#DDA162]">
             <ShieldCheck className="w-4 h-4" />
             <span className="font-semibold tracking-wide uppercase text-[11px]">
               Confidential Reporting Gateway
             </span>
-          </button>
+          </div>
           <div className="flex items-center gap-4 text-xs">
             <Link to="/report/track" className="text-[#F4F1EB] hover:text-[#DDA162] transition-colors">
               Track Report
@@ -186,11 +152,7 @@ export const ReportLandingPage: React.FC = () => {
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 type="button"
-                onClick={() => {
-                  setActiveMode("form");
-                  setSearchParams({ mode: "form" });
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+                onClick={() => setActiveMode("form")}
                 className="w-full sm:w-auto px-7 py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold tracking-wider uppercase hover:bg-[#EBBA4A] rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg"
               >
                 <span>Make a Report</span>
@@ -378,10 +340,7 @@ export const ReportLandingPage: React.FC = () => {
                 <div className="flex items-center justify-between pt-4 border-t border-[#262E5F]">
                   <button
                     type="button"
-                    onClick={() => {
-                      setActiveMode("landing");
-                      setSearchParams({}, { replace: true });
-                    }}
+                    onClick={() => setActiveMode("landing")}
                     className="text-xs text-[#A87C56] hover:text-[#F4F1EB] cursor-pointer"
                   >
                     Cancel
@@ -695,7 +654,6 @@ export const ReportLandingPage: React.FC = () => {
                     type="button"
                     onClick={() => {
                       setActiveMode("landing");
-                      setSearchParams({}, { replace: true });
                       setCurrentStep(1);
                       setDescription("");
                       setConcerns([]);

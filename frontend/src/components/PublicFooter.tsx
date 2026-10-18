@@ -69,13 +69,7 @@ export const PublicFooter: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link
-                  to="/report?mode=form"
-                  onClick={() => {
-                    window.dispatchEvent(new CustomEvent("theodra-open-report-form"));
-                  }}
-                  className="text-[#A87C56] hover:text-[#F4F1EB] transition-colors"
-                >
+                <Link to="/report" className="text-[#A87C56] hover:text-[#F4F1EB] transition-colors">
                   Make Anonymous Report
                 </Link>
               </li>
@@ -85,7 +79,7 @@ export const PublicFooter: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/report/quiet-flag" className="text-[#A87C56] hover:text-[#F4F1EB] transition-colors">
+                <Link to="/report/flag" className="text-[#A87C56] hover:text-[#F4F1EB] transition-colors">
                   Quiet Flag (Escrow)
                 </Link>
               </li>
