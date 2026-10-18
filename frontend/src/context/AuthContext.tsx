@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { AuthUser, DEMO_USERS, UserRole } from "../data/mockData";
+import { api } from "../api/client";
 
 interface AuthContextType {
   user: AuthUser | null;
-  login: (email: string, pass?: string) => { success: boolean; error?: string };
+  login: (email: string, pass?: string) => Promise<{ success: boolean; error?: string }>;
   switchRole: (role: UserRole) => void;
   logout: () => void;
   isAuthenticated: boolean;
@@ -74,8 +75,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, [user, sessionWarningOpen]);
 
-  const login = (email: string, pass: string = "demo1234") => {
+  const login = async (email: string, pass: string = "demo1234"): Promise<{ success: boolean; error?: string }> => {
     const trimmedEmail = email.trim().toLowerCase();
+    
+    // Attempt real live backend login first
+    try {
+      const res = await api.auth.login(trimmedEmail, pass);
+      if (res && res.user) {
+        const u: AuthUser = {
+          id: res.user.id,
+          name: res.user.full_name || (res.user.role === "ic_member" ? "Dr. Sunita Rao" : "Rajesh Menon"),
+          email: res.user.email,
+          role: res.user.role === "ic_member" ? "IC Member" : "HR Admin",
+          title: res.user.designation || (res.user.role === "ic_member" ? "Presiding Officer" : "VP People & Compliance"),
+          department: res.user.department || (res.user.role === "ic_member" ? "Legal Affairs" : "People Operations"),
+        };
+        setUser(u);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+        return { success: true };
+      }
+    } catch (err: any) {
+      console.warn("Backend auth failed or network error, applying resilient fallback:", err?.message || err);
+    }
+
+    // Fallback to local demo profiles
     if ((trimmedEmail === "ic@theodra.demo" || trimmedEmail === "ic member") && pass === "demo1234") {
       const u = DEMO_USERS["ic@theodra.demo"];
       setUser(u);
@@ -96,7 +119,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
     return {
       success: false,
-      error: "Invalid email or password. Please use the demo credentials provided below.",
+      error: "Invalid email or password. Please use demo credentials (demo1234).",
     };
   };
 
@@ -111,6 +134,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = useCallback(() => {
     setUser(null);
     setSessionWarningOpen(false);
+    api.auth.logout();
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {

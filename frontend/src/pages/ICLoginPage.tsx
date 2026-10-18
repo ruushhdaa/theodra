@@ -16,15 +16,15 @@ export const ICLoginPage: React.FC = () => {
     setError(null);
     setLoading(true);
 
-    setTimeout(() => {
-      const res = login(email, password);
+    setTimeout(async () => {
+      const res = await login(email, password);
       setLoading(false);
       if (res.success) {
         navigate("/ic/dashboard");
       } else {
         setError(res.error || "Invalid credentials for IC Member Portal.");
       }
-    }, 600);
+    }, 400);
   };
 
   const handleUseDemo = () => {

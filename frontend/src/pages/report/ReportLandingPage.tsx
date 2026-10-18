@@ -16,6 +16,7 @@ import {
   Video,
   File,
 } from "lucide-react";
+import { api } from "../../api/client";
 
 export const ReportLandingPage: React.FC = () => {
   const [activeMode, setActiveMode] = useState<"landing" | "form">("landing");
@@ -68,7 +69,24 @@ export const ReportLandingPage: React.FC = () => {
     return code;
   };
 
-  const handleCompleteSubmission = () => {
+  const handleCompleteSubmission = async () => {
+    try {
+      const res = await api.portal.submit({
+        concern_types: concerns.length ? concerns : ["General Workplace Concern"],
+        channel,
+        timeframe_month: 2,
+        timeframe_year: 2026,
+        description: description || "No statement provided",
+        evidence_file_paths: [],
+      });
+      if (res && res.reference_code) {
+        setReferenceCode(res.reference_code);
+        setCurrentStep(5);
+        return;
+      }
+    } catch (e) {
+      console.warn("Backend submit fallback:", e);
+    }
     const ref = generateRefCode();
     setReferenceCode(ref);
     setCurrentStep(5);

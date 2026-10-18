@@ -19,9 +19,9 @@ export const LoginPage: React.FC = () => {
     setEmail(DEMO_USERS[role].email);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    login(email, password);
+    await login(email, password);
 
     if (redirectUrl) {
       navigate(redirectUrl);

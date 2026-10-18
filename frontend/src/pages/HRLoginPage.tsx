@@ -16,15 +16,15 @@ export const HRLoginPage: React.FC = () => {
     setError(null);
     setLoading(true);
 
-    setTimeout(() => {
-      const res = login(email, password);
+    setTimeout(async () => {
+      const res = await login(email, password);
       setLoading(false);
       if (res.success) {
         navigate("/hr/dashboard");
       } else {
         setError(res.error || "Invalid credentials for HR Admin Console.");
       }
-    }, 600);
+    }, 400);
   };
 
   const handleUseDemo = () => {
