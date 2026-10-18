@@ -41,7 +41,9 @@
   --font-sans: var(--font-jakarta);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -68,13 +70,16 @@ body {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0A0E28;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #262E5F;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #E0A96D;
 }

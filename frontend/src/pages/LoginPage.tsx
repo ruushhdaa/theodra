@@ -21,15 +21,15 @@ export const LoginPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    login(selectedRole);
+    login(email, password);
 
     if (redirectUrl) {
       navigate(redirectUrl);
     } else {
       if (selectedRole === "IC Member") {
-        navigate("/dashboard/ic");
+        navigate("/ic/dashboard");
       } else if (selectedRole === "HR Admin") {
-        navigate("/dashboard/admin");
+        navigate("/hr/dashboard");
       } else {
         navigate("/report");
       }

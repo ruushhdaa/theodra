@@ -1,52 +1,125 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { AuthUser, DEMO_USERS, UserRole } from "../data/mockData";
 
 interface AuthContextType {
   user: AuthUser | null;
-  login: (role: UserRole) => void;
-  logout: () => void;
+  login: (email: string, pass?: string) => { success: boolean; error?: string };
   switchRole: (role: UserRole) => void;
+  logout: () => void;
   isAuthenticated: boolean;
+  isIC: boolean;
+  isHR: boolean;
+  sessionWarningOpen: boolean;
+  dismissSessionWarning: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const STORAGE_KEY = "theodra_demo_user_role";
+const STORAGE_KEY = "theodra_auth_user";
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AuthUser | null>(() => {
     try {
-      const savedRole = localStorage.getItem(STORAGE_KEY) as UserRole | null;
-      if (savedRole && DEMO_USERS[savedRole]) {
-        return DEMO_USERS[savedRole];
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        return JSON.parse(saved);
       }
     } catch {
-      // Ignore localStorage errors
+      // Ignore
     }
     return null;
   });
 
-  const login = (role: UserRole) => {
-    const selectedUser = DEMO_USERS[role];
-    setUser(selectedUser);
-    try {
-      localStorage.setItem(STORAGE_KEY, role);
-    } catch {
-      // Ignore
+  const [sessionWarningOpen, setSessionWarningOpen] = useState(false);
+
+  // Inactivity session timer: warn after 15 minutes of inactivity
+  useEffect(() => {
+    if (!user) {
+      setSessionWarningOpen(false);
+      return;
     }
+
+    let warningTimer: ReturnType<typeof setTimeout>;
+    let logoutTimer: ReturnType<typeof setTimeout>;
+
+    const resetTimers = () => {
+      clearTimeout(warningTimer);
+      clearTimeout(logoutTimer);
+
+      // 15 mins = 900,000 ms. For demo we set to 15 mins (or 900,000ms)
+      warningTimer = setTimeout(() => {
+        setSessionWarningOpen(true);
+      }, 15 * 60 * 1000);
+
+      // 17 mins total (2 mins after warning) -> auto logout
+      logoutTimer = setTimeout(() => {
+        logout();
+      }, 17 * 60 * 1000);
+    };
+
+    const activityEvents = ["mousedown", "keydown", "scroll", "touchstart"];
+    const handleActivity = () => {
+      if (!sessionWarningOpen) {
+        resetTimers();
+      }
+    };
+
+    activityEvents.forEach((ev) => window.addEventListener(ev, handleActivity));
+    resetTimers();
+
+    return () => {
+      clearTimeout(warningTimer);
+      clearTimeout(logoutTimer);
+      activityEvents.forEach((ev) => window.removeEventListener(ev, handleActivity));
+    };
+  }, [user, sessionWarningOpen]);
+
+  const login = (email: string, pass: string = "demo1234") => {
+    const trimmedEmail = email.trim().toLowerCase();
+    if ((trimmedEmail === "ic@theodra.demo" || trimmedEmail === "ic member") && pass === "demo1234") {
+      const u = DEMO_USERS["ic@theodra.demo"];
+      setUser(u);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+      return { success: true };
+    }
+    if ((trimmedEmail === "hr@theodra.demo" || trimmedEmail === "hr admin") && pass === "demo1234") {
+      const u = DEMO_USERS["hr@theodra.demo"];
+      setUser(u);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+      return { success: true };
+    }
+    if (DEMO_USERS[email]) {
+      const u = DEMO_USERS[email];
+      setUser(u);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+      return { success: true };
+    }
+    return {
+      success: false,
+      error: "Invalid email or password. Please use the demo credentials provided below.",
+    };
   };
 
-  const switchRole = (role: UserRole) => {
-    login(role);
-  };
+  const switchRole = useCallback((role: UserRole) => {
+    const u = DEMO_USERS[role];
+    if (u) {
+      setUser(u);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+    }
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
+    setSessionWarningOpen(false);
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {
       // Ignore
     }
+  }, []);
+
+  const dismissSessionWarning = () => {
+    setSessionWarningOpen(false);
   };
 
   return (
@@ -54,9 +127,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       value={{
         user,
         login,
-        logout,
         switchRole,
+        logout,
         isAuthenticated: !!user,
+        isIC: user?.role === "IC Member",
+        isHR: user?.role === "HR Admin",
+        sessionWarningOpen,
+        dismissSessionWarning,
       }}
     >
       {children}
