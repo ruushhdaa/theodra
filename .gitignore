@@ -20,6 +20,8 @@ venv/
 *.egg-info/
 data/synthetic/*.csv
 data/synthetic/*.parquet
+data/raw/
+data/processed/*.csv
 .ipynb_checkpoints/
 *.log
 instance/

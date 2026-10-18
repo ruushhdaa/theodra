@@ -1,0 +1,17 @@
+{
+  "watch": 0.2297533501847549,
+  "elevated": 0.3185040843219729,
+  "flagged": 0.6249398252387054,
+  "features": [
+    "freq_mean",
+    "freq_std",
+    "freq_trend",
+    "after_hours_ratio",
+    "role_asymmetry",
+    "latency_asymmetry",
+    "exclusivity_score",
+    "avg_message_length"
+  ],
+  "contamination": 0.05,
+  "n_estimators": 200
+}
