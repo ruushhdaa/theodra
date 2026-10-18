@@ -1,16 +1,21 @@
 from datetime import datetime, timedelta
+import bcrypt
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from .config import settings
 from .database import supabase
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 bearer = HTTPBearer()
 
-def hash_password(p): return pwd_context.hash(p)
-def verify_password(p, h): return pwd_context.verify(p, h)
+def hash_password(p: str) -> str:
+    return bcrypt.hashpw(p.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+
+def verify_password(p: str, h: str) -> bool:
+    try:
+        return bcrypt.checkpw(p.encode("utf-8"), h.encode("utf-8"))
+    except Exception:
+        return False
 
 def create_token(user_id: str, role: str) -> str:
     exp = datetime.utcnow() + timedelta(minutes=settings.jwt_expiry_minutes)

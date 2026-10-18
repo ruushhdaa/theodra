@@ -1,14 +1,15 @@
-import httpx, os
-from passlib.context import CryptContext
+import httpx, os, bcrypt
 from dotenv import load_dotenv
 
 load_dotenv()
-pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def hash_password(password: str) -> str:
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 users = [
     {
         "email": "ic@theodra.demo",
-        "password_hash": pwd.hash("demo1234"),
+        "password_hash": hash_password("demo1234"),
         "role": "ic_member",
         "full_name": "Priya Sharma",
         "department": "Legal",
@@ -16,7 +17,7 @@ users = [
     },
     {
         "email": "hr@theodra.demo",
-        "password_hash": pwd.hash("demo1234"),
+        "password_hash": hash_password("demo1234"),
         "role": "hr_admin",
         "full_name": "Ananya Krishnan",
         "department": "Human Resources",
