@@ -31,7 +31,7 @@ export const LoginPage: React.FC = () => {
       } else if (selectedRole === "HR Admin") {
         navigate("/hr/dashboard");
       } else {
-        navigate("/report");
+        navigate("/employee/dashboard");
       }
     }
   };

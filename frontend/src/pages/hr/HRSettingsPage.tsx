@@ -82,8 +82,8 @@ export const HRSettingsPage: React.FC = () => {
             <input
               type="text"
               readOnly
-              value="Meridian Technologies Pvt. Ltd."
-              className="w-full bg-[#0A0E28] border border-[#304A78] p-2 text-[#F4F1EB] focus:outline-none"
+              value="Enterprise Corporation"
+              className="w-full bg-[#0A0E28] border border-[#262E5F] rounded-lg p-2 text-[#F4F1EB] focus:outline-none"
             />
           </div>
         </div>

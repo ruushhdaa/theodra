@@ -1916,7 +1916,7 @@ export interface AnnualReportData {
 }
 
 export const MOCK_ANNUAL_REPORT_DATA: AnnualReportData = {
-  organizationName: "Meridian Technologies Pvt. Ltd.",
+  organizationName: "Enterprise Corporation",
   registrationNumber: "CIN: U72200KA2018PTC112345",
   financialYear: "2025-2026",
   presidingOfficer: "Dr. Sunita Rao (Senior Director, Legal Affairs)",

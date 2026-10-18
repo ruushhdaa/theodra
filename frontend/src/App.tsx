@@ -19,7 +19,8 @@ import { TermsPage } from "./pages/legal/TermsPage";
 import { PrivacyPolicyPage } from "./pages/legal/PrivacyPolicyPage";
 import { CookiePolicyPage } from "./pages/legal/CookiePolicyPage";
 
-// Employee Reporting Portal Pages
+// Employee Portal Pages
+import { EmployeeDashboardPage } from "./pages/employee/EmployeeDashboardPage";
 import { ReportLandingPage } from "./pages/report/ReportLandingPage";
 import { ReportTrackPage } from "./pages/report/ReportTrackPage";
 import { ReportQuietFlagPage } from "./pages/report/ReportQuietFlagPage";
@@ -81,6 +82,11 @@ export const App: React.FC = () => {
             <Route path="/why-theodra" element={<WhyTheodraPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/about" element={<AboutPage />} />
+
+            {/* Dedicated Employee Portal / Dashboard */}
+            <Route path="/employee" element={<Navigate to="/employee/dashboard" replace />} />
+            <Route path="/employee/dashboard" element={<EmployeeDashboardPage />} />
+            <Route path="/report/dashboard" element={<Navigate to="/employee/dashboard" replace />} />
 
             {/* Employee Anonymous Reporting Flow */}
             <Route path="/report" element={<ReportLandingPage />} />

@@ -2,15 +2,16 @@
 
 :root {
   --bg-navy: #0A0E28;
-  --surface-navy: #13193A;
-  --surface-elevated: #1C234E;
-  --surface-card: #151C3E;
+  --surface-navy: #0A0E28;
+  --surface-card: #0A0E28;
+  --surface-elevated: #11173D;
+  --surface-hover: #262E5F;
   --border-navy: #262E5F;
   --border-subtle: #1D244C;
 
   /* Logo-sampled colors */
-  --gold-amber: #E0A96D;
-  --gold-bright: #F0B83A;
+  --gold-amber: #DDA162;
+  --gold-bright: #EBBA4A;
   --maroon-wine: #4E182A;
 
   --text-primary: #F4F1EB;
@@ -26,6 +27,7 @@
   --color-surface: var(--surface-navy);
   --color-surface-elevated: var(--surface-elevated);
   --color-surface-card: var(--surface-card);
+  --color-surface-hover: var(--surface-hover);
   --color-border-navy: var(--border-navy);
   --color-border-subtle: var(--border-subtle);
 
@@ -77,9 +79,22 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #262E5F;
-  border-radius: 3px;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E0A96D;
+  background: #DDA162;
+}
+
+/* Smooth Interactive Card & Element Classes */
+.theodra-card {
+  background-color: #0A0E28;
+  border: 1px solid #262E5F;
+  border-radius: 0.75rem; /* rounded-xl */
+  transition: all 0.2s ease-in-out;
+}
+
+.theodra-card-hover:hover {
+  background-color: #262E5F;
+  border-color: #DDA162;
 }

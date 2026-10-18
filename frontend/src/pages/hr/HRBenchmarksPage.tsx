@@ -36,10 +36,10 @@ export const HRBenchmarksPage: React.FC = () => {
             Peer Benchmarks
           </h1>
           <p className="font-serif text-xs text-[#A87C56] mt-1">
-            Benchmarking Meridian Technologies vs IT & Technology Sector Average and Top Quartile performers.
+            Benchmarking Your Organization vs IT & Technology Sector Average and Top Quartile performers.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs bg-[#2C3259] px-3.5 py-2 border border-[#304A78] text-[#DDA162]">
+        <div className="flex items-center gap-2 text-xs bg-[#0A0E28] px-3.5 py-2 border border-[#262E5F] rounded-lg text-[#DDA162]">
           <BarChart3 className="w-4 h-4" />
           <span>India Tech Sector Cohort</span>
         </div>
@@ -110,9 +110,9 @@ export const HRBenchmarksPage: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider">
+              <tr className="bg-[#0A0E28] border-b border-[#262E5F] text-[#A87C56] uppercase text-[10px] tracking-wider">
                 <th className="py-3 px-4">Metric</th>
-                <th className="py-3 px-4">Meridian Technologies</th>
+                <th className="py-3 px-4 text-[#DDA162]">Your Organization</th>
                 <th className="py-3 px-4">Industry Average</th>
                 <th className="py-3 px-4">Top Quartile (P75)</th>
                 <th className="py-3 px-4">Interpretation</th>

@@ -51,12 +51,12 @@ export const NotificationBell: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#2C3259] border border-[#304A78] shadow-2xl z-50 text-[#F4F1EB] overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-[#304A78] bg-[#0A0E28]">
+        <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#0A0E28] border border-[#262E5F] rounded-xl shadow-2xl z-50 text-[#F4F1EB] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-[#262E5F] bg-[#0E1438]">
             <div className="flex items-center gap-2">
               <span className="font-serif text-sm font-semibold">Notifications</span>
               {unreadCount > 0 && (
-                <span className="text-[10px] bg-[#304A78] text-[#DDA162] px-1.5 py-0.5 font-mono">
+                <span className="text-[10px] bg-[#11173D] text-[#DDA162] px-2 py-0.5 rounded-full font-mono font-semibold border border-[#262E5F]">
                   {unreadCount} new
                 </span>
               )}
@@ -65,21 +65,21 @@ export const NotificationBell: React.FC = () => {
               <button
                 type="button"
                 onClick={markAllAsRead}
-                className="text-xs text-[#DDA162] hover:text-[#EBBA4A] flex items-center gap-1 transition-colors"
+                className="text-xs text-[#DDA162] hover:text-[#EBBA4A] flex items-center gap-1 transition-colors cursor-pointer"
               >
                 <Check className="w-3.5 h-3.5" /> Mark read
               </button>
             )}
           </div>
 
-          <div className="max-h-72 overflow-y-auto divide-y divide-[#304A78]/50">
+          <div className="max-h-72 overflow-y-auto divide-y divide-[#262E5F]/60">
             {notifications.slice(0, 5).map((n) => (
               <Link
                 key={n.id}
                 to={n.link}
                 onClick={() => setIsOpen(false)}
-                className={`block p-3 hover:bg-[#304A78]/40 transition-colors ${
-                  !n.read ? "bg-[#304A78]/20" : ""
+                className={`block p-3.5 hover:bg-[#262E5F] transition-colors ${
+                  !n.read ? "bg-[#11173D]/60" : ""
                 }`}
               >
                 <div className="flex items-center justify-between text-xs mb-1">
@@ -93,7 +93,7 @@ export const NotificationBell: React.FC = () => {
             ))}
           </div>
 
-          <div className="px-4 py-2.5 border-t border-[#304A78] bg-[#0A0E28] text-center">
+          <div className="px-4 py-2.5 border-t border-[#262E5F] bg-[#0A0E28] text-center">
             <Link
               to={destinationAll}
               onClick={() => setIsOpen(false)}

@@ -92,10 +92,10 @@ export const GlobalSearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose 
     docResults.length > 0;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-[#0A0E28]/80 backdrop-blur-none">
-      <div className="bg-[#2C3259] border border-[#304A78] max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-[#0A0E28]/90">
+      <div className="bg-[#0A0E28] border border-[#262E5F] max-w-2xl w-full shadow-2xl rounded-2xl overflow-hidden flex flex-col max-h-[80vh]">
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3 border-b border-[#304A78] bg-[#0A0E28]">
+        <div className="flex items-center px-4 py-3.5 border-b border-[#262E5F] bg-[#0A0E28]">
           <Search className="w-5 h-5 text-[#DDA162] mr-3 shrink-0" />
           <input
             type="text"
@@ -113,12 +113,12 @@ export const GlobalSearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose 
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="text-[#A87C56] hover:text-[#F4F1EB] p-1"
+              className="text-[#A87C56] hover:text-[#F4F1EB] p-1 rounded hover:bg-[#262E5F]"
             >
               <X className="w-4 h-4" />
             </button>
           )}
-          <kbd className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] text-[#A87C56] bg-[#2C3259] border border-[#304A78]">
+          <kbd className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] text-[#A87C56] bg-[#11173D] border border-[#262E5F] rounded">
             ESC
           </kbd>
         </div>

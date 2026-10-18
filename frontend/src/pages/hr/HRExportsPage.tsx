@@ -68,7 +68,7 @@ export const HRExportsPage: React.FC = () => {
       setReadyNotice(`Export ready: ${option.title} (${option.format}) downloaded successfully.`);
 
       // Trigger actual dummy file download
-      const content = `THEODRA COMPLIANCE EXPORT: ${option.title}\nGenerated on: ${new Date().toISOString()}\nOrganization: Meridian Technologies Pvt. Ltd.\nStatus: Statutorily Verified`;
+      const content = `THEODRA COMPLIANCE EXPORT: ${option.title}\nGenerated on: ${new Date().toISOString()}\nOrganization: Corporate Compliance Organization\nStatus: Statutorily Verified`;
       const blob = new Blob([content], {
         type: option.format === "PDF" ? "application/pdf" : "text/csv;charset=utf-8;",
       });

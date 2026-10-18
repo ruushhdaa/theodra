@@ -14,10 +14,15 @@ import {
   Activity,
   HeartPulse,
   Sparkles,
+  KeyRound,
+  FileText,
+  ShieldCheck,
+  Cpu,
 } from "lucide-react";
 
 export const LandingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"detect" | "protect" | "resolve">("detect");
+  const [telemetryMode, setTelemetryMode] = useState<"theodra" | "invasive">("theodra");
 
   const problemCards = [
     {
@@ -84,11 +89,13 @@ export const LandingPage: React.FC = () => {
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
         {/* Centered Logo */}
         <div className="mb-6 inline-block">
-          <img
-            src="/theodra-logo.png"
-            alt="THEODRA Logo"
-            className="h-20 w-auto mx-auto object-contain"
-          />
+          <Link to="/" title="THEODRA Platform" className="group block">
+            <img
+              src="/theodra-logo.png"
+              alt="THEODRA Logo"
+              className="h-20 w-auto mx-auto object-contain rounded-xl transition-transform group-hover:scale-105"
+            />
+          </Link>
         </div>
 
         {/* Headline in Lora */}
@@ -105,22 +112,23 @@ export const LandingPage: React.FC = () => {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             to="/how-it-works"
-            className="w-full sm:w-auto px-8 py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>See How It Works</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
-            to="/pricing"
-            className="w-full sm:w-auto px-8 py-3.5 border border-[#304A78] text-[#F4F1EB] text-xs font-semibold uppercase tracking-wider hover:bg-[#2C3259] transition-colors flex items-center justify-center gap-2"
+            to="/employee/dashboard"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#0A0E28] border border-[#262E5F] text-[#F4F1EB] text-xs font-semibold uppercase tracking-wider rounded-xl hover:bg-[#262E5F] hover:text-[#DDA162] transition-colors flex items-center justify-center gap-2 cursor-pointer"
           >
-            <span>Book a Demo</span>
+            <Shield className="w-4 h-4 text-[#EBBA4A]" />
+            <span>Open Employee Portal</span>
           </Link>
         </div>
 
-        {/* Trust Bar Below Hero: Three items in plain English */}
-        <div className="mt-16 pt-8 border-t border-[#304A78] grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          <div className="p-4 bg-[#2C3259] border border-[#304A78] flex items-start gap-3">
+        {/* Trust Bar Below Hero */}
+        <div className="mt-16 pt-8 border-t border-[#262E5F] grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div className="p-5 bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] rounded-xl transition-colors flex items-start gap-3.5 shadow-md">
             <EyeOff className="w-5 h-5 text-[#DDA162] shrink-0 mt-0.5" />
             <div>
               <span className="font-serif text-xs font-bold text-[#F4F1EB] block">
@@ -132,7 +140,7 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-4 bg-[#2C3259] border border-[#304A78] flex items-start gap-3">
+          <div className="p-5 bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] rounded-xl transition-colors flex items-start gap-3.5 shadow-md">
             <Users className="w-5 h-5 text-[#DDA162] shrink-0 mt-0.5" />
             <div>
               <span className="font-serif text-xs font-bold text-[#F4F1EB] block">
@@ -144,7 +152,7 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-4 bg-[#2C3259] border border-[#304A78] flex items-start gap-3">
+          <div className="p-5 bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] rounded-xl transition-colors flex items-start gap-3.5 shadow-md">
             <Scale className="w-5 h-5 text-[#DDA162] shrink-0 mt-0.5" />
             <div>
               <span className="font-serif text-xs font-bold text-[#F4F1EB] block">
@@ -159,7 +167,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 2. Problem Section (3 Cards) */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#304A78]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#262E5F]">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold block mb-2">
             The Structural Challenge
@@ -175,10 +183,10 @@ export const LandingPage: React.FC = () => {
             return (
               <div
                 key={i}
-                className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl flex flex-col justify-between"
+                className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] p-8 rounded-2xl shadow-xl flex flex-col justify-between transition-all duration-200"
               >
                 <div>
-                  <div className="w-12 h-12 bg-[#0A0E28] border border-[#304A78] flex items-center justify-center text-[#DDA162] mb-6">
+                  <div className="w-12 h-12 bg-[#11173D] border border-[#262E5F] rounded-xl flex items-center justify-center text-[#DDA162] mb-6">
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="font-serif text-lg font-bold text-[#F4F1EB] mb-3 leading-snug">
@@ -195,7 +203,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 3. How It Works (Tabbed: Detect / Protect / Report & Resolve) */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#304A78]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#262E5F]">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold block mb-2">
             Architectural Workflow
@@ -207,16 +215,16 @@ export const LandingPage: React.FC = () => {
 
         {/* Tab Buttons */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-[#2C3259] border border-[#304A78] p-1 gap-1">
+          <div className="inline-flex bg-[#0A0E28] border border-[#262E5F] p-1.5 rounded-xl gap-1.5">
             {(["detect", "protect", "resolve"] as const).map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                className={`px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
                   activeTab === tab
-                    ? "bg-[#DDA162] text-[#0A0E28]"
-                    : "text-[#F4F1EB] hover:text-[#DDA162]"
+                    ? "bg-[#DDA162] text-[#0A0E28] shadow-md"
+                    : "text-[#F4F1EB] hover:bg-[#262E5F] hover:text-[#DDA162]"
                 }`}
               >
                 {tab === "detect" && "1. Detect"}
@@ -228,9 +236,9 @@ export const LandingPage: React.FC = () => {
         </div>
 
         {/* Active Tab Panel */}
-        <div className="bg-[#2C3259] border border-[#304A78] p-8 sm:p-12 shadow-2xl max-w-4xl mx-auto">
+        <div className="bg-[#0A0E28] border border-[#262E5F] p-8 sm:p-12 rounded-2xl shadow-2xl max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2">
-            <span className="font-mono text-xs px-2 py-0.5 bg-[#0A0E28] text-[#DDA162] border border-[#304A78]">
+            <span className="font-mono text-xs px-2.5 py-0.5 bg-[#11173D] text-[#DDA162] border border-[#262E5F] rounded-md font-semibold">
               Stage {currentTabData.num}
             </span>
             <span className="font-serif text-xs text-[#A87C56] uppercase tracking-wider">
@@ -246,11 +254,11 @@ export const LandingPage: React.FC = () => {
             {currentTabData.description}
           </p>
 
-          <div className="space-y-3 pt-6 border-t border-[#304A78]">
+          <div className="space-y-3 pt-6 border-t border-[#262E5F]">
             {currentTabData.features.map((feat, i) => (
               <div key={i} className="flex items-start gap-3 text-xs text-[#F4F1EB]">
-                <div className="w-4 h-4 bg-[#0A0E28] border border-[#DDA162] text-[#DDA162] flex items-center justify-center shrink-0 mt-0.5">
-                  <Check className="w-3 h-3 stroke-[3]" />
+                <div className="w-5 h-5 bg-[#11173D] border border-[#DDA162] text-[#DDA162] rounded-md flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
                 <span>{feat}</span>
               </div>
@@ -259,8 +267,8 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Role Preview Section: Three Columns, one per role, each with a CTA into demo */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#304A78]">
+      {/* 4. Role Preview Section: Three Columns, one per role */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#262E5F]">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold block mb-2">
             Tailored User Interfaces
@@ -275,7 +283,7 @@ export const LandingPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Role 1: Employees */}
-          <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl flex flex-col justify-between">
+          <div className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F]/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between transition-all">
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#DDA162] block mb-2">
                 Public Gateway • No Login
@@ -286,12 +294,12 @@ export const LandingPage: React.FC = () => {
               <p className="font-serif text-xs text-[#A87C56] leading-relaxed mb-6">
                 Zero-account anonymous reporting, two-way encrypted case tracker, quiet flag escrow matching, and know-your-rights education.
               </p>
-              <div className="space-y-2 text-xs text-[#F4F1EB] mb-8">
+              <div className="space-y-2.5 text-xs text-[#F4F1EB] mb-8">
                 <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-[#DDA162]" /> No corporate email needed
+                  <Check className="w-3.5 h-3.5 text-[#DDA162]" /> Dedicated Employee Dashboard
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-[#DDA162]" /> 8-character reference code
+                  <Check className="w-3.5 h-3.5 text-[#DDA162]" /> 8-character reference code tracker
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-[#DDA162]" /> Quiet flag peer matching
@@ -300,16 +308,16 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <Link
-              to="/report"
-              className="w-full py-2.5 bg-[#0A0E28] border border-[#304A78] text-[#DDA162] text-xs font-bold uppercase tracking-wider hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors text-center"
+              to="/employee/dashboard"
+              className="w-full py-3 bg-[#0A0E28] border border-[#262E5F] hover:border-[#DDA162] text-[#DDA162] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#DDA162] hover:text-[#0A0E28] transition-colors text-center cursor-pointer"
             >
               Enter Employee Portal
             </Link>
           </div>
 
           {/* Role 2: IC Members */}
-          <div className="bg-[#2C3259] border-2 border-[#DDA162] p-8 shadow-2xl flex flex-col justify-between relative">
-            <span className="absolute -top-3 right-6 text-[10px] font-bold px-2 py-0.5 bg-[#DDA162] text-[#0A0E28] uppercase tracking-wider">
+          <div className="bg-[#0A0E28] border-2 border-[#DDA162] hover:bg-[#262E5F]/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between relative transition-all">
+            <span className="absolute -top-3 right-6 text-[10px] font-bold px-2.5 py-0.5 bg-[#DDA162] text-[#0A0E28] uppercase tracking-wider rounded-full shadow-sm">
               Statutory Quasi-Judicial
             </span>
             <div>
@@ -322,7 +330,7 @@ export const LandingPage: React.FC = () => {
               <p className="font-serif text-xs text-[#A87C56] leading-relaxed mb-6">
                 Cohort pattern detection tables, 3-metric weekly telemetry charts, case Kanban board, statutory compliance clock, and response ledger.
               </p>
-              <div className="space-y-2 text-xs text-[#F4F1EB] mb-8">
+              <div className="space-y-2.5 text-xs text-[#F4F1EB] mb-8">
                 <div className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-[#EBBA4A]" /> Two-vote escalation protocol
                 </div>
@@ -337,14 +345,14 @@ export const LandingPage: React.FC = () => {
 
             <Link
               to="/ic/login"
-              className="w-full py-2.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors text-center"
+              className="w-full py-3 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors text-center cursor-pointer shadow-md"
             >
               Demo IC Portal (ic@theodra.demo)
             </Link>
           </div>
 
           {/* Role 3: HR Admins */}
-          <div className="bg-[#2C3259] border border-[#304A78] p-8 shadow-2xl flex flex-col justify-between">
+          <div className="bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F]/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between transition-all">
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#DDA162] block mb-2">
                 Executive Oversight
@@ -355,7 +363,7 @@ export const LandingPage: React.FC = () => {
               <p className="font-serif text-xs text-[#A87C56] leading-relaxed mb-6">
                 67/100 organisation health score, peer benchmark comparisons, department wellness heatmaps, annual report generator, and retaliation shield.
               </p>
-              <div className="space-y-2 text-xs text-[#F4F1EB] mb-8">
+              <div className="space-y-2.5 text-xs text-[#F4F1EB] mb-8">
                 <div className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-[#DDA162]" /> Zero individual case access
                 </div>
@@ -370,7 +378,7 @@ export const LandingPage: React.FC = () => {
 
             <Link
               to="/hr/login"
-              className="w-full py-2.5 bg-[#0A0E28] border border-[#304A78] text-[#F4F1EB] text-xs font-bold uppercase tracking-wider hover:bg-[#304A78] transition-colors text-center"
+              className="w-full py-3 bg-[#0A0E28] border border-[#262E5F] hover:border-[#DDA162] text-[#F4F1EB] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#262E5F] hover:text-[#DDA162] transition-colors text-center cursor-pointer"
             >
               Demo HR Console (hr@theodra.demo)
             </Link>
@@ -378,61 +386,158 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Old-Way vs New-Way Comparison Table */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-[#304A78]">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+      {/* 5. Modern Interactive Architecture Showcase (Replaces Old Comparison Matrix) */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-[#262E5F]">
+        <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase tracking-widest text-[#DDA162] font-semibold block mb-2">
-            The Paradigm Shift
+            Technological Foundation
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#F4F1EB]">
-            The Old Way vs. THEODRA
+            The Architecture of Mathematical Trust
           </h2>
+          <p className="font-serif text-xs text-[#A87C56] mt-2">
+            How THEODRA protects individual civil liberties while surfacing institutional risk.
+          </p>
         </div>
 
-        <div className="bg-[#2C3259] border border-[#304A78] overflow-hidden shadow-2xl">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="bg-[#0A0E28] border-b border-[#304A78] text-[#A87C56] uppercase text-[10px] tracking-wider">
-                  <th className="py-4 px-6 w-1/3">Core Dimension</th>
-                  <th className="py-4 px-6 w-1/3">Traditional HR Tools & Hotlines</th>
-                  <th className="py-4 px-6 w-1/3 text-[#DDA162]">THEODRA B2B Platform</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#304A78]/60 font-serif">
-                <tr>
-                  <td className="py-4 px-6 font-semibold text-[#F4F1EB] font-sans">Detection Timing</td>
-                  <td className="py-4 px-6 text-[#A87C56]">100% reactive after trauma escalates</td>
-                  <td className="py-4 px-6 text-[#EBBA4A] font-semibold">Weeks ahead via off-hours metadata telemetry</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-semibold text-[#F4F1EB] font-sans">Privacy & Content Inspection</td>
-                  <td className="py-4 px-6 text-[#A87C56]">Intrusive email / chat surveillance or blind forms</td>
-                  <td className="py-4 px-6 text-[#DDA162]">Mathematical k-anonymity (k ≥ 5), zero words read</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-semibold text-[#F4F1EB] font-sans">Employee Trust Barrier</td>
-                  <td className="py-4 px-6 text-[#A87C56]">Single-reporter fear of career retaliation</td>
-                  <td className="py-4 px-6 text-[#DDA162]">Quiet flag escrow matching & no account requirements</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-semibold text-[#F4F1EB] font-sans">Statutory Separation of Duties</td>
-                  <td className="py-4 px-6 text-[#A87C56]">HR admins see private case files and names</td>
-                  <td className="py-4 px-6 text-[#DDA162]">Strict code guard: HR sees zero case/report data</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-semibold text-[#F4F1EB] font-sans">Compliance Governance</td>
-                  <td className="py-4 px-6 text-[#A87C56]">Manual spreadsheets prone to 90-day expiry</td>
-                  <td className="py-4 px-6 text-[#EBBA4A] font-semibold">Automated statutory clocks & tamper-evident ledger</td>
-                </tr>
-              </tbody>
-            </table>
+        {/* Live Interactive Telemetry Simulator Widget */}
+        <div className="bg-[#0A0E28] border border-[#262E5F] rounded-2xl p-6 sm:p-8 shadow-2xl mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#262E5F] gap-4">
+            <div>
+              <span className="text-[11px] font-mono text-[#DDA162] uppercase tracking-wider font-semibold">
+                Interactive Demonstration
+              </span>
+              <h3 className="font-serif text-lg font-bold text-[#F4F1EB] mt-0.5">
+                Compare Telemetry Mechanics in Real Time
+              </h3>
+            </div>
+            {/* Mode Switcher */}
+            <div className="inline-flex bg-[#11173D] border border-[#262E5F] p-1 rounded-xl">
+              <button
+                type="button"
+                onClick={() => setTelemetryMode("theodra")}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  telemetryMode === "theodra"
+                    ? "bg-[#DDA162] text-[#0A0E28] shadow-sm"
+                    : "text-[#A87C56] hover:text-[#F4F1EB]"
+                }`}
+              >
+                THEODRA Zero-Knowledge
+              </button>
+              <button
+                type="button"
+                onClick={() => setTelemetryMode("invasive")}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  telemetryMode === "invasive"
+                    ? "bg-rose-900/80 text-rose-200 border border-rose-600 shadow-sm"
+                    : "text-[#A87C56] hover:text-[#F4F1EB]"
+                }`}
+              >
+                Traditional Spyware
+              </button>
+            </div>
+          </div>
+
+          {/* Interactive Simulation View */}
+          <div className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-5 bg-[#0E1438] border border-[#262E5F] rounded-xl">
+              <div className="flex items-center gap-2 mb-2 text-[#DDA162]">
+                <Cpu className="w-4 h-4" />
+                <span className="text-xs font-bold uppercase tracking-wider">Data Ingestion</span>
+              </div>
+              <p className="text-xs font-mono text-[#F4F1EB]/90 leading-relaxed">
+                {telemetryMode === "theodra" ? (
+                  <span className="text-emerald-400">
+                    BLIND VECTORS: 23:42 IST · 4 msgs · Delta: 4.8h. Zero text, no sender/recipient strings parsed.
+                  </span>
+                ) : (
+                  <span className="text-rose-400">
+                    INVASIVE: Full Slack chat body & attachments extracted, keywords scanned by HR admin.
+                  </span>
+                )}
+              </p>
+            </div>
+
+            <div className="p-5 bg-[#0E1438] border border-[#262E5F] rounded-xl">
+              <div className="flex items-center gap-2 mb-2 text-[#DDA162]">
+                <ShieldCheck className="w-4 h-4" />
+                <span className="text-xs font-bold uppercase tracking-wider">Privacy Protection</span>
+              </div>
+              <p className="text-xs font-mono text-[#F4F1EB]/90 leading-relaxed">
+                {telemetryMode === "theodra" ? (
+                  <span className="text-[#DDA162]">
+                    k-Anonymity Verified (k ≥ 5): Cohort must contain at least 5 peers before committee signal appears.
+                  </span>
+                ) : (
+                  <span className="text-rose-400">
+                    Zero Anonymity: Individual employee name, profile picture, and private messages logged in plain view.
+                  </span>
+                )}
+              </p>
+            </div>
+
+            <div className="p-5 bg-[#0E1438] border border-[#262E5F] rounded-xl">
+              <div className="flex items-center gap-2 mb-2 text-[#DDA162]">
+                <KeyRound className="w-4 h-4" />
+                <span className="text-xs font-bold uppercase tracking-wider">Escalation Authority</span>
+              </div>
+              <p className="text-xs font-mono text-[#F4F1EB]/90 leading-relaxed">
+                {telemetryMode === "theodra" ? (
+                  <span className="text-[#EBBA4A]">
+                    Bilateral Consensus: Requires 2 of 2 statutory IC members to cast independent digital authorization votes.
+                  </span>
+                ) : (
+                  <span className="text-rose-400">
+                    Unilateral Access: Single manager or IT staff can inspect private communication without audit trail.
+                  </span>
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Three Pillar Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] rounded-2xl shadow-xl transition-all">
+            <div className="w-10 h-10 rounded-xl bg-[#11173D] border border-[#262E5F] text-[#DDA162] flex items-center justify-center mb-4">
+              <EyeOff className="w-5 h-5" />
+            </div>
+            <h4 className="font-serif text-base font-bold text-[#F4F1EB] mb-2">
+              Zero-Content Mathematical Blindness
+            </h4>
+            <p className="text-xs text-[#A87C56] leading-relaxed">
+              Proprietary entropy filters extract only interaction rhythms — response latency, off-hours clustering, and group exclusion — without ever ingesting natural language text.
+            </p>
+          </div>
+
+          <div className="p-6 bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] rounded-2xl shadow-xl transition-all">
+            <div className="w-10 h-10 rounded-xl bg-[#11173D] border border-[#262E5F] text-[#EBBA4A] flex items-center justify-center mb-4">
+              <Users className="w-5 h-5" />
+            </div>
+            <h4 className="font-serif text-base font-bold text-[#F4F1EB] mb-2">
+              Quiet Escrow Peer Matching
+            </h4>
+            <p className="text-xs text-[#A87C56] leading-relaxed">
+              Allows hesitant employees to lodge quiet flags that only reveal if another colleague reports the same perpetrator or team, dissolving the fear of solitary whistleblowing.
+            </p>
+          </div>
+
+          <div className="p-6 bg-[#0A0E28] border border-[#262E5F] hover:bg-[#262E5F] rounded-2xl shadow-xl transition-all">
+            <div className="w-10 h-10 rounded-xl bg-[#11173D] border border-[#262E5F] text-[#DDA162] flex items-center justify-center mb-4">
+              <Scale className="w-5 h-5" />
+            </div>
+            <h4 className="font-serif text-base font-bold text-[#F4F1EB] mb-2">
+              Section 65B Certified Ledger
+            </h4>
+            <p className="text-xs text-[#A87C56] leading-relaxed">
+              Every committee action, notice, and disposition is sealed with SHA-256 cryptographic hashes, guaranteeing court-admissibility under the Indian Evidence Act.
+            </p>
           </div>
         </div>
       </section>
 
       {/* 6. Final CTA Band */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-[#304A78] text-center">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-[#262E5F] text-center">
         <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#F4F1EB] mb-4">
           Equip your organization with early detection today.
         </h2>
@@ -442,15 +547,15 @@ export const LandingPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             to="/pricing"
-            className="w-full sm:w-auto px-8 py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider hover:bg-[#EBBA4A] transition-colors shadow-lg cursor-pointer"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#DDA162] text-[#0A0E28] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#EBBA4A] transition-colors shadow-lg cursor-pointer"
           >
             Schedule Corporate Pilot
           </Link>
           <Link
-            to="/why-theodra"
-            className="w-full sm:w-auto px-8 py-3.5 border border-[#304A78] text-[#F4F1EB] text-xs font-semibold uppercase tracking-wider hover:bg-[#2C3259] transition-colors"
+            to="/employee/dashboard"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#0A0E28] border border-[#262E5F] text-[#F4F1EB] text-xs font-semibold uppercase tracking-wider rounded-xl hover:bg-[#262E5F] hover:text-[#DDA162] transition-colors"
           >
-            Read Technical Architecture
+            Explore Employee Portal
           </Link>
         </div>
       </section>

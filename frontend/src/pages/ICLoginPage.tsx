@@ -136,12 +136,18 @@ export const ICLoginPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-4 text-center">
+            <div className="mt-4 text-center space-y-1.5">
               <Link
                 to="/hr/login"
-                className="text-xs text-[#A87C56] hover:text-[#DDA162] transition-colors"
+                className="text-xs text-[#A87C56] hover:text-[#DDA162] transition-colors block"
               >
                 Need HR Admin Console instead? Switch to HR Login →
+              </Link>
+              <Link
+                to="/employee/dashboard"
+                className="text-xs text-[#EBBA4A] hover:underline transition-colors block"
+              >
+                Looking for Employee Portal? Go to Employee Dashboard →
               </Link>
             </div>
           </div>
